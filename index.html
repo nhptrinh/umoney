@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo cáo hiệu suất Facebook Ads - Umoney</title>
+    <meta name="robots" content="noindex, nofollow">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="style.css?v=4f782951">
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="logo-area">
+            <div class="brand-logos">
+                <img src="logo-umoney.png" class="brand-logo-umoney" alt="Umoney Logo">
+                <span class="divider-line"></span>
+                <img src="logo.webp" class="brand-logo-fooogle" alt="Fooogle Logo">
+            </div>
+            <span class="brand-subtitle">Analytics Report</span>
+        </div>
+        <ul class="nav-links">
+            <li><a class="nav-item active" onclick="switchTab(event, 'cover-tab')"><i class="fa-solid fa-file-invoice"></i> Trang Bìa</a></li>
+            <li><a class="nav-item" onclick="switchTab(event, 'kpi-tab')"><i class="fa-solid fa-chart-pie"></i> Tổng Quan KPI</a></li>
+            <li><a class="nav-item" onclick="switchTab(event, 'campaign-tab')"><i class="fa-solid fa-rectangle-ad"></i> Hiệu Suất Chiến Dịch</a></li>
+            <li><a class="nav-item" onclick="switchTab(event, 'post-perf-tab')"><i class="fa-solid fa-images"></i> Post/Ads Performance</a></li>
+            <li><a class="nav-item" onclick="switchTab(event, 'trend-tab')"><i class="fa-solid fa-chart-line"></i> Xu Hướng Ngày</a></li>
+            <li><a class="nav-item" onclick="switchTab(event, 'rec-tab')"><i class="fa-solid fa-comment-medical"></i> Khuyến Nghị</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <header>
+            <div class="header-title">
+                <h1>Báo Cáo Hiệu Suất Quảng Cáo Facebook</h1>
+                <p>Khách hàng: <strong>Umoney (Unitel)</strong> | Báo cáo bởi <strong>Fooogle</strong></p>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: center;">
+                <button onclick="window.print()" class="download-pdf-btn">
+                    <i class="fa-solid fa-file-pdf"></i> Tải Báo Cáo PDF
+                </button>
+                <div class="date-badge">
+                    <i class="fa-solid fa-calendar-days"></i> Tháng 05/2026 (so với Tháng 04/2026)
+                </div>
+            </div>
+        </header>
+
+        <!-- TAB 1: COVER -->
+        <div id="cover-tab" class="tab-content active">
+            <div class="cover-container">
+                <div class="cover-decor"></div>
+                <div class="cover-header">
+                    <img src="logo-umoney.png" style="height: 48px; object-fit: contain;" alt="Umoney Logo">
+                </div>
+                <img src="logo.webp" class="cover-right-logo" alt="Fooogle Logo">
+                <div class="cover-body">
+                    <span class="cover-tag">Facebook Ads Performance Report</span>
+                    <h1 class="cover-title">BÁO CÁO HIỆU SUẤT QUẢNG CÁO Umoney</h1>
+                    <p class="cover-subtitle">Phân tích chuyên sâu về chỉ số tăng trưởng, chi phí tối ưu hóa lượt tải ứng dụng (App Installs) và lượng hội thoại khách hàng (Messaging) trên nền tảng Meta Ads Manager.</p>
+                </div>
+                <div class="cover-meta">
+                    <div class="meta-item">
+                        <span>Đơn Vị Thực Hiện</span>
+                        <strong>FOOGLESEO Analytics Team</strong>
+                    </div>
+                    <div class="meta-item">
+                        <span>Kỳ Báo Cáo</span>
+                        <strong>Tháng 05/2026 (So với Tháng 04/2026)</strong>
+                    </div>
+                    <div class="meta-item">
+                        <span>Đơn Vị Tiền Tệ</span>
+                        <strong>USD ($) - Múi giờ Vientiane</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: KPI OVERVIEW -->
+        <div id="kpi-tab" class="tab-content">
+            <!-- First Row KPIs -->
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-title">Tổng Chi Phí <i class="fa-solid fa-hand-holding-dollar"></i></div>
+                    <div class="kpi-value">$14,351.94</div>
+                    <div class="kpi-unit">USD</div>
+                    <div class="kpi-trend up">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                        +124.6%
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-title">Lượt Tải App <i class="fa-solid fa-download"></i></div>
+                    <div class="kpi-value">15,619</div>
+                    <div class="kpi-unit">Lượt cài đặt</div>
+                    <div class="kpi-trend up">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                        +168.5%
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-title">Chi phí / Lượt tải (CPI) <i class="fa-solid fa-calculator"></i></div>
+                    <div class="kpi-value">$0.92</div>
+                    <div class="kpi-unit">USD / Lượt tải</div>
+                    <div class="kpi-trend up">
+                        <i class="fa-solid fa-arrow-trend-down"></i>
+                        -16.4%
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-title">Lượt Tin Nhắn Mới <i class="fa-solid fa-comments"></i></div>
+                    <div class="kpi-value">4,817</div>
+                    <div class="kpi-unit">Lượt kết nối</div>
+                    <div class="kpi-trend down">
+                        <i class="fa-solid fa-arrow-trend-down"></i>
+                        -32.7%
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second Row KPIs -->
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-title">Lượt Hiển Thị (Impressions) <i class="fa-solid fa-eye"></i></div>
+                    <div class="kpi-value">39,302,132</div>
+                    <div class="kpi-unit">Lượt xem</div>
+                    <div class="kpi-trend up">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                        +123.0%
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-title">Tỷ lệ Click (CTR) <i class="fa-solid fa-arrow-pointer"></i></div>
+                    <div class="kpi-value">180.05%</div>
+                    <div class="kpi-unit">Tất cả các Click</div>
+                    <div class="kpi-trend down">
+                        <i class="fa-solid fa-arrow-trend-down"></i>
+                        -19.4%
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-title">Giá mỗi Click (CPC) <i class="fa-solid fa-dollar-sign"></i></div>
+                    <div class="kpi-value">$0.0203</div>
+                    <div class="kpi-unit">USD / Click</div>
+                    <div class="kpi-trend down">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                        +25.0%
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-title">Giá mỗi 1000 lượt (CPM) <i class="fa-solid fa-sliders"></i></div>
+                    <div class="kpi-value">$0.37</div>
+                    <div class="kpi-unit">USD / 1000 hiển thị</div>
+                    <div class="kpi-trend down">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                        +0.7%
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detail Comparison Table -->
+            <div class="table-container">
+                <div class="table-header-area">
+                    <h3>Bảng So Sánh Chi Tiết Với Kỳ Trước</h3>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Chỉ số</th>
+                            <th>Tháng 05/2026 (Kỳ này)</th>
+                            <th>Tháng 04/2026 (Kỳ trước)</th>
+                            <th>Thay đổi</th>
+                            <th>% Thay đổi</th>
+                            <th>Đánh giá</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tổng Chi Phí (USD)</td>
+                            <td>$14,351.94</td>
+                            <td>$6,389.90</td>
+                            <td>$+7,962.04</td>
+                            <td style="color: var(--danger); font-weight:700;">+124.6%</td>
+                            <td><span class="badge evaluation caution">Tăng chi phí</span></td>
+                        </tr>
+                        <tr>
+                            <td>Lượt Tải App (Installs)</td>
+                            <td>15,619</td>
+                            <td>5,817</td>
+                            <td>+9,802</td>
+                            <td style="color: var(--success); font-weight:700;">+168.5%</td>
+                            <td><span class="badge evaluation good">Tăng tốt</span></td>
+                        </tr>
+                        <tr>
+                            <td>Chi phí / Lượt tải (CPI)</td>
+                            <td>$0.92</td>
+                            <td>$1.10</td>
+                            <td>-0.18</td>
+                            <td style="color: var(--success); font-weight:700;">-16.4%</td>
+                            <td><span class="badge evaluation good">Tối ưu tốt</span></td>
+                        </tr>
+                        <tr>
+                            <td>Lượt Tin Nhắn Mới</td>
+                            <td>4,817</td>
+                            <td>7,161</td>
+                            <td>-2,344</td>
+                            <td style="color: var(--danger); font-weight:700;">-32.7%</td>
+                            <td><span class="badge evaluation caution">Giảm sút</span></td>
+                        </tr>
+                        <tr>
+                            <td>Tỷ lệ Click (CTR %)</td>
+                            <td>180.05%</td>
+                            <td>223.36%</td>
+                            <td>-43.31%</td>
+                            <td style="color: var(--danger); font-weight:700;">-19.4%</td>
+                            <td><span class="badge evaluation caution">Kém tương tác</span></td>
+                        </tr>
+                        <tr>
+                            <td>Giá mỗi Click (CPC USD)</td>
+                            <td>$0.0203</td>
+                            <td>$0.0162</td>
+                            <td>+0.0041</td>
+                            <td style="color: var(--danger); font-weight:700;">+25.0%</td>
+                            <td><span class="badge evaluation caution">Tăng nhẹ</span></td>
+                        </tr>
+                        <tr>
+                            <td>Lượt Hiển Thị (Impressions)</td>
+                            <td>39,302,132</td>
+                            <td>17,625,122</td>
+                            <td>+21,677,010</td>
+                            <td style="color: var(--success); font-weight:700;">+123.0%</td>
+                            <td><span class="badge evaluation good">Mở rộng hiển thị</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TAB 3: CAMPAIGN PERFORMANCE -->
+        <div id="campaign-tab" class="tab-content">
+            <div class="table-container">
+                <div class="table-header-area">
+                    <h3>Chi Tiết Hiệu Suất Từng Chiến Dịch</h3>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Tên Chiến Dịch</th>
+                                <th>Trạng Thái</th>
+                                <th>Chi Phí (USD)</th>
+                                <th>Lượt Tải App</th>
+                                <th>CPI (USD)</th>
+                                <th>Tin Nhắn</th>
+                                <th>Lượt Xem Video</th>
+                                <th>Hiển Thị</th>
+                                <th>CTR (%)</th>
+                                <th>CPC (USD)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>1</td>
+                                <td><strong>Umoney KYC 3_4</strong></td>
+                                <td><span class="badge active">Đang chạy</span></td>
+                                <td>$1,406.88</td>
+                                <td>902</td>
+                                <td>$1.56</td>
+                                <td>1,358</td>
+                                <td>0</td>
+                                <td>6,145,174</td>
+                                <td>150.77%</td>
+                                <td>$0.0152</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2</td>
+                                <td><strong>Umoney KYC app google play  t4</strong></td>
+                                <td><span class="badge paused">Tạm dừng</span></td>
+                                <td>$1,939.80</td>
+                                <td>7,433</td>
+                                <td>$0.26</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>4,032,618</td>
+                                <td>140.23%</td>
+                                <td>$0.0343</td>
+                            </tr>
+    
+                            <tr>
+                                <td>3</td>
+                                <td><strong>Umoney_App-Actions_Transfer b1 inb t4+Apr</strong></td>
+                                <td><span class="badge paused">Tạm dừng</span></td>
+                                <td>$64.43</td>
+                                <td>0</td>
+                                <td>-</td>
+                                <td>335</td>
+                                <td>4,240</td>
+                                <td>30,237</td>
+                                <td>539.41%</td>
+                                <td>$0.0395</td>
+                            </tr>
+    
+                            <tr>
+                                <td>4</td>
+                                <td><strong>Umoney_Followers_T4_Apr</strong></td>
+                                <td><span class="badge paused">Tạm dừng</span></td>
+                                <td>$2,117.25</td>
+                                <td>0</td>
+                                <td>-</td>
+                                <td>0</td>
+                                <td>545,827</td>
+                                <td>3,935,972</td>
+                                <td>130.04%</td>
+                                <td>$0.0414</td>
+                            </tr>
+    
+                            <tr>
+                                <td>5</td>
+                                <td><strong>Umoney_App-Actions_Saving INB_May</strong></td>
+                                <td><span class="badge paused">Tạm dừng</span></td>
+                                <td>$149.06</td>
+                                <td>0</td>
+                                <td>-</td>
+                                <td>37</td>
+                                <td>0</td>
+                                <td>439,054</td>
+                                <td>59.58%</td>
+                                <td>$0.0570</td>
+                            </tr>
+    
+                            <tr>
+                                <td>6</td>
+                                <td><strong>Umoney_App-Actions_buy data click to app T4_Apr</strong></td>
+                                <td><span class="badge paused">Tạm dừng</span></td>
+                                <td>$956.58</td>
+                                <td>242</td>
+                                <td>$3.95</td>
+                                <td>18</td>
+                                <td>0</td>
+                                <td>1,434,465</td>
+                                <td>1285.95%</td>
+                                <td>$0.0052</td>
+                            </tr>
+    
+                            <tr>
+                                <td>7</td>
+                                <td><strong>Umoney KYC rmkt</strong></td>
+                                <td><span class="badge active">Đang chạy</span></td>
+                                <td>$1,252.52</td>
+                                <td>554</td>
+                                <td>$2.26</td>
+                                <td>1,801</td>
+                                <td>0</td>
+                                <td>4,625,080</td>
+                                <td>156.32%</td>
+                                <td>$0.0173</td>
+                            </tr>
+    
+                            <tr>
+                                <td>8</td>
+                                <td><strong>Umoney_Other_truyenthong  TT T4</strong></td>
+                                <td><span class="badge paused">Tạm dừng</span></td>
+                                <td>$319.47</td>
+                                <td>0</td>
+                                <td>-</td>
+                                <td>31</td>
+                                <td>0</td>
+                                <td>617,240</td>
+                                <td>152.60%</td>
+                                <td>$0.0339</td>
+                            </tr>
+    
+                            <tr>
+                                <td>9</td>
+                                <td><strong>Umoney_Followers_T5 new_May</strong></td>
+                                <td><span class="badge paused">Tạm dừng</span></td>
+                                <td>$466.89</td>
+                                <td>222</td>
+                                <td>$2.10</td>
+                                <td>0</td>
+                                <td>206,492</td>
+                                <td>1,448,338</td>
+                                <td>96.17%</td>
+                                <td>$0.0335</td>
+                            </tr>
+    
+                            <tr>
+                                <td>10</td>
+                                <td><strong>Umoney_App-Actions_buy data click to app T5_May</strong></td>
+                                <td><span class="badge paused">Tạm dừng</span></td>
+                                <td>$28.42</td>
+                                <td>32</td>
+                                <td>$0.89</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>43,651</td>
+                                <td>85.68%</td>
+                                <td>$0.0760</td>
+                            </tr>
+    
+                            <tr>
+                                <td>11</td>
+                                <td><strong>Umoney KYC app google play  t5 new</strong></td>
+                                <td><span class="badge paused">Tạm dừng</span></td>
+                                <td>$504.48</td>
+                                <td>1,644</td>
+                                <td>$0.31</td>
+                                <td>85</td>
+                                <td>0</td>
+                                <td>1,127,343</td>
+                                <td>127.02%</td>
+                                <td>$0.0352</td>
+                            </tr>
+    
+                            <tr>
+                                <td>12</td>
+                                <td><strong>Umoney_App-Actions_Transfer t5 clicl link app_May</strong></td>
+                                <td><span class="badge paused">Tạm dừng</span></td>
+                                <td>$165.13</td>
+                                <td>0</td>
+                                <td>-</td>
+                                <td>176</td>
+                                <td>0</td>
+                                <td>1,132,297</td>
+                                <td>121.84%</td>
+                                <td>$0.0120</td>
+                            </tr>
+    
+                            <tr>
+                                <td>13</td>
+                                <td><strong>Umoney_App-Actions_Transfer  TT T5 b2_May</strong></td>
+                                <td><span class="badge paused">Tạm dừng</span></td>
+                                <td>$108.66</td>
+                                <td>0</td>
+                                <td>-</td>
+                                <td>26</td>
+                                <td>9,806</td>
+                                <td>176,947</td>
+                                <td>263.86%</td>
+                                <td>$0.0233</td>
+                            </tr>
+    
+                            <tr>
+                                <td>14</td>
+                                <td><strong>Umoney_Followers_T5 new b2_May</strong></td>
+                                <td><span class="badge active">Đang chạy</span></td>
+                                <td>$487.65</td>
+                                <td>186</td>
+                                <td>$2.62</td>
+                                <td>0</td>
+                                <td>196,055</td>
+                                <td>1,554,178</td>
+                                <td>83.32%</td>
+                                <td>$0.0377</td>
+                            </tr>
+    
+                            <tr>
+                                <td>15</td>
+                                <td><strong>Umoney_Followers_T5 new post hinh_May</strong></td>
+                                <td><span class="badge active">Đang chạy</span></td>
+                                <td>$428.08</td>
+                                <td>627</td>
+                                <td>$0.68</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>1,488,371</td>
+                                <td>95.39%</td>
+                                <td>$0.0302</td>
+                            </tr>
+    
+                            <tr>
+                                <td>16</td>
+                                <td><strong>Umoney KYC app google play  t5</strong></td>
+                                <td><span class="badge paused">Tạm dừng</span></td>
+                                <td>$368.67</td>
+                                <td>1,048</td>
+                                <td>$0.35</td>
+                                <td>59</td>
+                                <td>0</td>
+                                <td>771,933</td>
+                                <td>147.77%</td>
+                                <td>$0.0323</td>
+                            </tr>
+    
+                            <tr>
+                                <td>17</td>
+                                <td><strong>Umoney KYC app google play  t5 moi</strong></td>
+                                <td><span class="badge paused">Tạm dừng</span></td>
+                                <td>$361.95</td>
+                                <td>844</td>
+                                <td>$0.43</td>
+                                <td>23</td>
+                                <td>184,891</td>
+                                <td>706,878</td>
+                                <td>496.48%</td>
+                                <td>$0.0103</td>
+                            </tr>
+    
+                            <tr>
+                                <td>18</td>
+                                <td><strong>Umoney_App-Actions_Transfer t5 video new click link app_May</strong></td>
+                                <td><span class="badge active">Đang chạy</span></td>
+                                <td>$343.15</td>
+                                <td>120</td>
+                                <td>$2.86</td>
+                                <td>132</td>
+                                <td>46,652</td>
+                                <td>1,106,074</td>
+                                <td>155.98%</td>
+                                <td>$0.0199</td>
+                            </tr>
+    
+                            <tr>
+                                <td>19</td>
+                                <td><strong>Umoney_App-Actions_Topup 20% T5 sukien app_May</strong></td>
+                                <td><span class="badge paused">Tạm dừng</span></td>
+                                <td>$63.07</td>
+                                <td>88</td>
+                                <td>$0.72</td>
+                                <td>4</td>
+                                <td>0</td>
+                                <td>102,059</td>
+                                <td>155.20%</td>
+                                <td>$0.0398</td>
+                            </tr>
+    
+                            <tr>
+                                <td>20</td>
+                                <td><strong>Umoney_App-Actions_Topup 20% T5 click to app_May</strong></td>
+                                <td><span class="badge active">Đang chạy</span></td>
+                                <td>$55.14</td>
+                                <td>19</td>
+                                <td>$2.90</td>
+                                <td>41</td>
+                                <td>11,557</td>
+                                <td>139,812</td>
+                                <td>354.05%</td>
+                                <td>$0.0111</td>
+                            </tr>
+    
+                            <tr>
+                                <td>21</td>
+                                <td><strong>Umoney_App-Actions_Transfer t5 video new TT_May</strong></td>
+                                <td><span class="badge active">Đang chạy</span></td>
+                                <td>$54.57</td>
+                                <td>17</td>
+                                <td>$3.21</td>
+                                <td>22</td>
+                                <td>7,533</td>
+                                <td>79,218</td>
+                                <td>401.30%</td>
+                                <td>$0.0172</td>
+                            </tr>
+    
+                            <tr>
+                                <td>22</td>
+                                <td><strong>Umoney_Followers_T5 new Transfer_May</strong></td>
+                                <td><span class="badge active">Đang chạy</span></td>
+                                <td>$450.67</td>
+                                <td>224</td>
+                                <td>$2.01</td>
+                                <td>0</td>
+                                <td>82,100</td>
+                                <td>608,636</td>
+                                <td>149.68%</td>
+                                <td>$0.0495</td>
+                            </tr>
+    
+                            <tr>
+                                <td>23</td>
+                                <td><strong>Umoney_Followers_t5 video new click link app daymanh_May</strong></td>
+                                <td><span class="badge active">Đang chạy</span></td>
+                                <td>$886.87</td>
+                                <td>252</td>
+                                <td>$3.52</td>
+                                <td>561</td>
+                                <td>0</td>
+                                <td>3,249,422</td>
+                                <td>133.50%</td>
+                                <td>$0.0204</td>
+                            </tr>
+    
+                            <tr>
+                                <td>24</td>
+                                <td><strong>Umoney_App-Actions_Transfer t5 video new click link app daymanh- new_May</strong></td>
+                                <td><span class="badge paused">Tạm dừng</span></td>
+                                <td>$186.01</td>
+                                <td>61</td>
+                                <td>$3.05</td>
+                                <td>99</td>
+                                <td>0</td>
+                                <td>837,850</td>
+                                <td>112.19%</td>
+                                <td>$0.0198</td>
+                            </tr>
+    
+                            <tr>
+                                <td>25</td>
+                                <td><strong>Umoney_Followers_T5 Transfer No Fee_May</strong></td>
+                                <td><span class="badge active">Đang chạy</span></td>
+                                <td>$998.85</td>
+                                <td>378</td>
+                                <td>$2.64</td>
+                                <td>0</td>
+                                <td>73,668</td>
+                                <td>3,094,691</td>
+                                <td>68.60%</td>
+                                <td>$0.0470</td>
+                            </tr>
+    
+                            <tr>
+                                <td>26</td>
+                                <td><strong>Umoney KYC app google play Transfer</strong></td>
+                                <td><span class="badge paused">Tạm dừng</span></td>
+                                <td>$187.69</td>
+                                <td>726</td>
+                                <td>$0.26</td>
+                                <td>9</td>
+                                <td>70,032</td>
+                                <td>374,594</td>
+                                <td>160.36%</td>
+                                <td>$0.0312</td>
+                            </tr>
+    
+                            <tr class="sum-row">
+                                <td>-</td>
+                                <td>TỔNG CỘNG</td>
+                                <td>-</td>
+                                <td>$14,351.94</td>
+                                <td>15,619</td>
+                                <td>$0.92</td>
+                                <td>4,817</td>
+                                <td>1,438,853</td>
+                                <td>39,302,132</td>
+                                <td>1.80%</td>
+                                <td>$0.0203</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- TAB: POST/ADS PERFORMANCE -->
+        <div id="post-perf-tab" class="tab-content">
+            <div class="table-container">
+                <div class="table-header-area">
+                    <h3>Hiệu Suất Nội Dung & Quảng Cáo (Post/Ads Performance)</h3>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Mã Ads Code</th>
+                                <th style="text-align: center;">Thumbnail</th>
+                                <th class="num-col">Chi Phí (USD)</th>
+                                <th>Ads Objective</th>
+                                <th class="num-col">Like & Follow</th>
+                                <th class="num-col">App Installs</th>
+                                <th class="num-col">App Activations</th>
+                                <th class="num-col">topup_success</th>
+                                <th class="num-col">buydata_request_success</th>
+                                <th class="num-col">login_success</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td>1</td>
+                                <td><span class="code-badge">MayA01</span></td>
+                                <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120246942323170695.jpg" class="ad-thumbnail" alt="MayA01 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120246942323170695.jpg')"></td>
+                                <td class="num-col" style="font-weight: 700;">$5,472.35</td>
+                                <td><span class="badge obj-badge kyc-app-install">KYC-App-Install</span></td>
+                                <td class="num-col">48</td>
+                                <td class="num-col">11,578</td>
+                                <td class="num-col">234,739</td>
+                                <td class="num-col">2,167</td>
+                                <td class="num-col">2,948</td>
+                                <td class="num-col">171,408</td>
+                            </tr>
+                
+                            <tr>
+                                <td>2</td>
+                                <td><span class="code-badge">MayA02</span></td>
+                                <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120243712091210695.jpg" class="ad-thumbnail" alt="MayA02 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120243712091210695.jpg')"></td>
+                                <td class="num-col" style="font-weight: 700;">$1,107.05</td>
+                                <td><span class="badge obj-badge followers">Followers</span></td>
+                                <td class="num-col">4,842</td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">0</td>
+                            </tr>
+                
+                            <tr>
+                                <td>3</td>
+                                <td><span class="code-badge">MayA03</span></td>
+                                <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120244544842190695.jpg" class="ad-thumbnail" alt="MayA03 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120244544842190695.jpg')"></td>
+                                <td class="num-col" style="font-weight: 700;">$956.58</td>
+                                <td><span class="badge obj-badge app-action">App-Action</span></td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">242</td>
+                                <td class="num-col">20,728</td>
+                                <td class="num-col">331</td>
+                                <td class="num-col">240</td>
+                                <td class="num-col">13,674</td>
+                            </tr>
+                
+                            <tr>
+                                <td>4</td>
+                                <td><span class="code-badge">MayA04</span></td>
+                                <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120245523162290695.jpg" class="ad-thumbnail" alt="MayA04 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120245523162290695.jpg')"></td>
+                                <td class="num-col" style="font-weight: 700;">$2,326.69</td>
+                                <td><span class="badge obj-badge followers">Followers</span></td>
+                                <td class="num-col">8,219</td>
+                                <td class="num-col">1,252</td>
+                                <td class="num-col">71,024</td>
+                                <td class="num-col">1,456</td>
+                                <td class="num-col">909</td>
+                                <td class="num-col">49,704</td>
+                            </tr>
+                
+                            <tr>
+                                <td>5</td>
+                                <td><span class="code-badge">MayA05</span></td>
+                                <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120246937177680695.jpg" class="ad-thumbnail" alt="MayA05 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120246937177680695.jpg')"></td>
+                                <td class="num-col" style="font-weight: 700;">$428.08</td>
+                                <td><span class="badge obj-badge followers">Followers</span></td>
+                                <td class="num-col">2,939</td>
+                                <td class="num-col">627</td>
+                                <td class="num-col">80,616</td>
+                                <td class="num-col">2,250</td>
+                                <td class="num-col">964</td>
+                                <td class="num-col">58,525</td>
+                            </tr>
+                
+                            <tr>
+                                <td>6</td>
+                                <td><span class="code-badge">MayA06</span></td>
+                                <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120247285776450695.jpg" class="ad-thumbnail" alt="MayA06 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120247285776450695.jpg')"></td>
+                                <td class="num-col" style="font-weight: 700;">$970.35</td>
+                                <td><span class="badge obj-badge followers">Followers</span></td>
+                                <td class="num-col">3,034</td>
+                                <td class="num-col">1,188</td>
+                                <td class="num-col">42,709</td>
+                                <td class="num-col">2,056</td>
+                                <td class="num-col">532</td>
+                                <td class="num-col">30,831</td>
+                            </tr>
+                
+                            <tr>
+                                <td>7</td>
+                                <td><span class="code-badge">MayA07</span></td>
+                                <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120247428378750695.jpg" class="ad-thumbnail" alt="MayA07 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120247428378750695.jpg')"></td>
+                                <td class="num-col" style="font-weight: 700;">$1,302.15</td>
+                                <td><span class="badge obj-badge app-action">App-Action</span></td>
+                                <td class="num-col">1,510</td>
+                                <td class="num-col">348</td>
+                                <td class="num-col">34,088</td>
+                                <td class="num-col">1,392</td>
+                                <td class="num-col">535</td>
+                                <td class="num-col">23,872</td>
+                            </tr>
+                
+                            <tr>
+                                <td>8</td>
+                                <td><span class="code-badge">MayA08</span></td>
+                                <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120247285582800695.jpg" class="ad-thumbnail" alt="MayA08 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120247285582800695.jpg')"></td>
+                                <td class="num-col" style="font-weight: 700;">$503.77</td>
+                                <td><span class="badge obj-badge app-action">App-Action</span></td>
+                                <td class="num-col">8</td>
+                                <td class="num-col">156</td>
+                                <td class="num-col">15,879</td>
+                                <td class="num-col">832</td>
+                                <td class="num-col">203</td>
+                                <td class="num-col">10,876</td>
+                            </tr>
+                
+                            <tr>
+                                <td>9</td>
+                                <td><span class="code-badge">MayA09</span></td>
+                                <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120246813809120695.jpg" class="ad-thumbnail" alt="MayA09 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120246813809120695.jpg')"></td>
+                                <td class="num-col" style="font-weight: 700;">$391.74</td>
+                                <td><span class="badge obj-badge app-action">App-Action</span></td>
+                                <td class="num-col">1,616</td>
+                                <td class="num-col">66</td>
+                                <td class="num-col">7,472</td>
+                                <td class="num-col">296</td>
+                                <td class="num-col">115</td>
+                                <td class="num-col">5,224</td>
+                            </tr>
+                
+                            <tr>
+                                <td>10</td>
+                                <td><span class="code-badge">MayA10</span></td>
+                                <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120246372598010695.jpg" class="ad-thumbnail" alt="MayA10 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120246372598010695.jpg')"></td>
+                                <td class="num-col" style="font-weight: 700;">$165.13</td>
+                                <td><span class="badge obj-badge app-action">App-Action</span></td>
+                                <td class="num-col">1</td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">0</td>
+                            </tr>
+                
+                            <tr>
+                                <td>11</td>
+                                <td><span class="code-badge">MayA11</span></td>
+                                <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120244238475000695.jpg" class="ad-thumbnail" alt="MayA11 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120244238475000695.jpg')"></td>
+                                <td class="num-col" style="font-weight: 700;">$149.06</td>
+                                <td><span class="badge obj-badge app-action">App-Action</span></td>
+                                <td class="num-col">1</td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">0</td>
+                            </tr>
+                
+                            <tr>
+                                <td>12</td>
+                                <td><span class="code-badge">MayA12</span></td>
+                                <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120244810609270695.jpg" class="ad-thumbnail" alt="MayA12 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120244810609270695.jpg')"></td>
+                                <td class="num-col" style="font-weight: 700;">$204.93</td>
+                                <td><span class="badge obj-badge other">Other</span></td>
+                                <td class="num-col">3</td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">0</td>
+                            </tr>
+                
+                            <tr>
+                                <td>13</td>
+                                <td><span class="code-badge">MayA13</span></td>
+                                <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120246813600060695.jpg" class="ad-thumbnail" alt="MayA13 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120246813600060695.jpg')"></td>
+                                <td class="num-col" style="font-weight: 700;">$76.17</td>
+                                <td><span class="badge obj-badge other">Other</span></td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">0</td>
+                            </tr>
+                
+                            <tr>
+                                <td>14</td>
+                                <td><span class="code-badge">MayA14</span></td>
+                                <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120247428031150695.jpg" class="ad-thumbnail" alt="MayA14 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120247428031150695.jpg')"></td>
+                                <td class="num-col" style="font-weight: 700;">$52.15</td>
+                                <td><span class="badge obj-badge app-action">App-Action</span></td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">12</td>
+                                <td class="num-col">1,321</td>
+                                <td class="num-col">51</td>
+                                <td class="num-col">23</td>
+                                <td class="num-col">942</td>
+                            </tr>
+                
+                            <tr>
+                                <td>15</td>
+                                <td><span class="code-badge">MayA15</span></td>
+                                <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120243438205420695.jpg" class="ad-thumbnail" alt="MayA15 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120243438205420695.jpg')"></td>
+                                <td class="num-col" style="font-weight: 700;">$92.85</td>
+                                <td><span class="badge obj-badge app-action">App-Action</span></td>
+                                <td class="num-col">6</td>
+                                <td class="num-col">32</td>
+                                <td class="num-col">124</td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">1</td>
+                                <td class="num-col">78</td>
+                            </tr>
+                
+                            <tr>
+                                <td>16</td>
+                                <td><span class="code-badge">MayA16</span></td>
+                                <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120244810420530695.jpg" class="ad-thumbnail" alt="MayA16 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120244810420530695.jpg')"></td>
+                                <td class="num-col" style="font-weight: 700;">$25.45</td>
+                                <td><span class="badge obj-badge other">Other</span></td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">0</td>
+                            </tr>
+                
+                            <tr>
+                                <td>17</td>
+                                <td><span class="code-badge">MayA17</span></td>
+                                <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120246975803010695.jpg" class="ad-thumbnail" alt="MayA17 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120246975803010695.jpg')"></td>
+                                <td class="num-col" style="font-weight: 700;">$75.99</td>
+                                <td><span class="badge obj-badge other">Other</span></td>
+                                <td class="num-col">3</td>
+                                <td class="num-col">88</td>
+                                <td class="num-col">296</td>
+                                <td class="num-col">14</td>
+                                <td class="num-col">1</td>
+                                <td class="num-col">233</td>
+                            </tr>
+                
+                            <tr>
+                                <td>18</td>
+                                <td><span class="code-badge">MayA18</span></td>
+                                <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120247428255270695.jpg" class="ad-thumbnail" alt="MayA18 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120247428255270695.jpg')"></td>
+                                <td class="num-col" style="font-weight: 700;">$51.45</td>
+                                <td><span class="badge obj-badge app-action">App-Action</span></td>
+                                <td class="num-col">0</td>
+                                <td class="num-col">27</td>
+                                <td class="num-col">3,193</td>
+                                <td class="num-col">97</td>
+                                <td class="num-col">51</td>
+                                <td class="num-col">2,401</td>
+                            </tr>
+                
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 5: DAILY TREND -->
+        <div id="trend-tab" class="tab-content">
+            <!-- Charts Row -->
+            <div class="chart-grid">
+                <div class="chart-card">
+                    <h3>Biểu đồ Xu hướng Chi tiêu & Lượt Click</h3>
+                    <canvas id="spendTrendChart" style="max-height: 400px;"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Tỷ lệ Đóng góp Lượt Tải của Chiến dịch</h3>
+                    <canvas id="installShareChart" style="max-height: 400px;"></canvas>
+                </div>
+            </div>
+
+            <!-- Daily Table -->
+            <div class="table-container">
+                <div class="table-header-area">
+                    <h3>Dữ Liệu Thống Kê Theo Ngày</h3>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ngày</th>
+                                <th>Chi Phí (USD)</th>
+                                <th>Hiển Thị</th>
+                                <th>Click</th>
+                                <th>CTR (%)</th>
+                                <th>CPC (USD)</th>
+                                <th>CPM (USD)</th>
+                                <th>Lượt Tải App</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>2026-05-01</td>
+                                <td>$216.41</td>
+                                <td>391,349</td>
+                                <td>10,730</td>
+                                <td>274.18%</td>
+                                <td>$0.0202</td>
+                                <td>$0.55</td>
+                                <td>330</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-02</td>
+                                <td>$163.24</td>
+                                <td>404,759</td>
+                                <td>10,153</td>
+                                <td>250.84%</td>
+                                <td>$0.0161</td>
+                                <td>$0.40</td>
+                                <td>264</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-03</td>
+                                <td>$198.13</td>
+                                <td>510,876</td>
+                                <td>11,737</td>
+                                <td>229.74%</td>
+                                <td>$0.0169</td>
+                                <td>$0.39</td>
+                                <td>268</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-04</td>
+                                <td>$201.20</td>
+                                <td>490,846</td>
+                                <td>11,096</td>
+                                <td>226.06%</td>
+                                <td>$0.0181</td>
+                                <td>$0.41</td>
+                                <td>270</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-05</td>
+                                <td>$251.82</td>
+                                <td>632,546</td>
+                                <td>12,608</td>
+                                <td>199.32%</td>
+                                <td>$0.0200</td>
+                                <td>$0.40</td>
+                                <td>279</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-06</td>
+                                <td>$297.26</td>
+                                <td>799,397</td>
+                                <td>15,055</td>
+                                <td>188.33%</td>
+                                <td>$0.0197</td>
+                                <td>$0.37</td>
+                                <td>331</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-07</td>
+                                <td>$291.33</td>
+                                <td>758,111</td>
+                                <td>14,581</td>
+                                <td>192.33%</td>
+                                <td>$0.0200</td>
+                                <td>$0.38</td>
+                                <td>374</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-08</td>
+                                <td>$284.35</td>
+                                <td>758,564</td>
+                                <td>14,485</td>
+                                <td>190.95%</td>
+                                <td>$0.0196</td>
+                                <td>$0.37</td>
+                                <td>371</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-09</td>
+                                <td>$278.86</td>
+                                <td>803,991</td>
+                                <td>14,469</td>
+                                <td>179.96%</td>
+                                <td>$0.0193</td>
+                                <td>$0.35</td>
+                                <td>321</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-10</td>
+                                <td>$307.00</td>
+                                <td>894,797</td>
+                                <td>16,060</td>
+                                <td>179.48%</td>
+                                <td>$0.0191</td>
+                                <td>$0.34</td>
+                                <td>457</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-11</td>
+                                <td>$264.31</td>
+                                <td>752,905</td>
+                                <td>12,465</td>
+                                <td>165.56%</td>
+                                <td>$0.0212</td>
+                                <td>$0.35</td>
+                                <td>449</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-12</td>
+                                <td>$293.11</td>
+                                <td>853,564</td>
+                                <td>14,916</td>
+                                <td>174.75%</td>
+                                <td>$0.0197</td>
+                                <td>$0.34</td>
+                                <td>419</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-13</td>
+                                <td>$268.84</td>
+                                <td>689,298</td>
+                                <td>14,737</td>
+                                <td>213.80%</td>
+                                <td>$0.0182</td>
+                                <td>$0.39</td>
+                                <td>383</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-14</td>
+                                <td>$262.74</td>
+                                <td>737,512</td>
+                                <td>15,532</td>
+                                <td>210.60%</td>
+                                <td>$0.0169</td>
+                                <td>$0.36</td>
+                                <td>381</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-15</td>
+                                <td>$265.50</td>
+                                <td>748,906</td>
+                                <td>14,658</td>
+                                <td>195.73%</td>
+                                <td>$0.0181</td>
+                                <td>$0.35</td>
+                                <td>363</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-16</td>
+                                <td>$290.49</td>
+                                <td>774,698</td>
+                                <td>16,095</td>
+                                <td>207.76%</td>
+                                <td>$0.0180</td>
+                                <td>$0.37</td>
+                                <td>378</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-17</td>
+                                <td>$301.70</td>
+                                <td>760,652</td>
+                                <td>16,145</td>
+                                <td>212.25%</td>
+                                <td>$0.0187</td>
+                                <td>$0.40</td>
+                                <td>341</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-18</td>
+                                <td>$282.87</td>
+                                <td>726,226</td>
+                                <td>14,987</td>
+                                <td>206.37%</td>
+                                <td>$0.0189</td>
+                                <td>$0.39</td>
+                                <td>332</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-19</td>
+                                <td>$286.24</td>
+                                <td>802,472</td>
+                                <td>16,002</td>
+                                <td>199.41%</td>
+                                <td>$0.0179</td>
+                                <td>$0.36</td>
+                                <td>385</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-20</td>
+                                <td>$288.86</td>
+                                <td>791,691</td>
+                                <td>16,538</td>
+                                <td>208.89%</td>
+                                <td>$0.0175</td>
+                                <td>$0.36</td>
+                                <td>489</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-21</td>
+                                <td>$279.67</td>
+                                <td>747,885</td>
+                                <td>15,968</td>
+                                <td>213.51%</td>
+                                <td>$0.0175</td>
+                                <td>$0.37</td>
+                                <td>329</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-22</td>
+                                <td>$388.10</td>
+                                <td>971,672</td>
+                                <td>19,007</td>
+                                <td>195.61%</td>
+                                <td>$0.0204</td>
+                                <td>$0.40</td>
+                                <td>468</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-23</td>
+                                <td>$471.57</td>
+                                <td>1,270,084</td>
+                                <td>25,757</td>
+                                <td>202.80%</td>
+                                <td>$0.0183</td>
+                                <td>$0.37</td>
+                                <td>554</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-24</td>
+                                <td>$502.96</td>
+                                <td>1,427,129</td>
+                                <td>26,984</td>
+                                <td>189.08%</td>
+                                <td>$0.0186</td>
+                                <td>$0.35</td>
+                                <td>559</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-25</td>
+                                <td>$473.80</td>
+                                <td>1,336,788</td>
+                                <td>24,614</td>
+                                <td>184.13%</td>
+                                <td>$0.0192</td>
+                                <td>$0.35</td>
+                                <td>696</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-26</td>
+                                <td>$498.23</td>
+                                <td>1,470,546</td>
+                                <td>26,994</td>
+                                <td>183.56%</td>
+                                <td>$0.0185</td>
+                                <td>$0.34</td>
+                                <td>641</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-27</td>
+                                <td>$499.08</td>
+                                <td>1,485,176</td>
+                                <td>26,847</td>
+                                <td>180.77%</td>
+                                <td>$0.0186</td>
+                                <td>$0.34</td>
+                                <td>745</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-28</td>
+                                <td>$944.98</td>
+                                <td>2,684,958</td>
+                                <td>42,542</td>
+                                <td>158.45%</td>
+                                <td>$0.0222</td>
+                                <td>$0.35</td>
+                                <td>966</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-29</td>
+                                <td>$1,636.92</td>
+                                <td>4,404,225</td>
+                                <td>70,330</td>
+                                <td>159.69%</td>
+                                <td>$0.0233</td>
+                                <td>$0.37</td>
+                                <td>1,166</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-30</td>
+                                <td>$1,613.00</td>
+                                <td>4,405,428</td>
+                                <td>70,298</td>
+                                <td>159.57%</td>
+                                <td>$0.0229</td>
+                                <td>$0.37</td>
+                                <td>1,061</td>
+                            </tr>
+    
+                            <tr>
+                                <td>2026-05-31</td>
+                                <td>$1,749.37</td>
+                                <td>5,015,081</td>
+                                <td>75,252</td>
+                                <td>150.05%</td>
+                                <td>$0.0232</td>
+                                <td>$0.35</td>
+                                <td>1,249</td>
+                            </tr>
+    
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 6: RECOMMENDATIONS -->
+        <div id="rec-tab" class="tab-content">
+            <div class="rec-container">
+                <div class="rec-card">
+                    <h3 class="strengths"><i class="fa-solid fa-circle-check"></i> 1. ĐIỂM MẠNH TRONG KỲ</h3>
+                    <ul class="rec-list strengths">
+                        <li><i class="fa-solid fa-check-double"></i> Đã tải về thành công 15,619 lượt cài đặt ứng dụng Umoney trong Tháng 05/2026 với ngân sách tối ưu.</li>
+                        <li><i class="fa-solid fa-check-double"></i> Giá CPI (Chi phí/lượt tải) trung bình đạt mức rất tốt ($0.92 USD/lượt tải), đây là lợi thế cạnh tranh cao.</li>
+                        <li><i class="fa-solid fa-check-double"></i> Lượt tin nhắn kết nối mới đạt 4,817 hội thoại mới hỗ trợ đắc lực cho phễu tư vấn mở tài khoản trực tiếp.</li>
+                        <li><i class="fa-solid fa-check-double"></i> CTR trung bình ở mức rất tốt (180.05%), chứng tỏ tệp đối tượng và thông điệp truyền thông đang được tối ưu hóa hiệu quả.</li>
+                    </ul>
+                </div>
+                <div class="rec-card">
+                    <h3 class="weaknesses"><i class="fa-solid fa-triangle-exclamation"></i> 2. ĐIỂM CẦN CẢI THIỆN</h3>
+                    <ul class="rec-list weaknesses">
+                        <li><i class="fa-solid fa-xmark"></i> Giá CPM dao động ở mức $0.37 USD/1000 lượt hiển thị, cần theo dõi sự gia tăng cạnh tranh trong các phiên đấu thầu quảng cáo.</li>
+                        <li><i class="fa-solid fa-xmark"></i> Các chiến dịch có ngân sách nhỏ có chi phí CPA/tin nhắn khá cao. Nên gộp tệp đối tượng để tối ưu hóa máy học của Meta.</li>
+                        <li><i class="fa-solid fa-xmark"></i> Phân bổ ngân sách vẫn còn dàn trải ở nhiều chiến dịch nhỏ (Paused/Active xen kẽ), làm kéo dài thời gian máy học của Ad Sets.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="rec-container" style="margin-top: 1.5rem;">
+                <div class="rec-card" style="grid-column: span 2;">
+                    <h3 class="actions"><i class="fa-solid fa-bullseye"></i> 3. KHUYẾN NGHỊ HÀNH ĐỘNG CỤ THỂ (30 NGÀY TỚI)</h3>
+                    <ul class="rec-list actions">
+                        <li><i class="fa-solid fa-circle-play"></i> <strong>Tập trung ngân sách:</strong> Tăng 15-20% ngân sách cho nhóm các chiến dịch có CPI dưới $1.00 USD (như các nhóm chiến dịch App Promotion đang chạy ổn định).</li>
+                        <li><i class="fa-solid fa-circle-play"></i> <strong>Tối ưu nhóm quảng cáo:</strong> Tắt bớt các Ad Set nhỏ lẻ có lượng install thấp để dồn ngân sách vào các Ad Set chuyển đổi cao giúp tăng tốc độ máy học.</li>
+                        <li><i class="fa-solid fa-circle-play"></i> <strong>A/B Testing:</strong> Thử nghiệm thêm 3-5 mẫu quảng cáo video ngắn (15s) nhấn mạnh các ưu đãi hoàn tiền, chuyển tiền miễn phí của Umoney để tăng CTR.</li>
+                        <li><i class="fa-solid fa-circle-play"></i> <strong>Tích hợp phễu Remarketing:</strong> Chạy chiến dịch custom audience hướng đến nhóm khách hàng đã cài đặt nhưng chưa đăng ký tài khoản (đáp ứng tệp tin nhắn cũ).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="rec-card" style="margin-top: 1.5rem;">
+                <h3 class="conclusions"><i class="fa-solid fa-clipboard-check"></i> KẾT LUẬN CHUNG</h3>
+                <p class="conclusion-text">
+                    Hoạt động quảng cáo Meta Ads trong Tháng 05/2026 của thương hiệu Umoney đang đi đúng hướng, đặc biệt hiệu quả trong việc thu hút lượt cài đặt app mới và mở rộng nhận diện thương hiệu tại Lào. Việc tối ưu hóa các tệp Lookalike và tối ưu ngân sách tự động (CBO) đã giúp duy trì mức giá CPI rất cạnh tranh. Đội ngũ kỹ thuật FOOGLESEO khuyến nghị duy trì cấu trúc hiện tại và tiếp tục thử nghiệm sáng tạo nội dung mới để duy trì đà tăng trưởng.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" class="modal" onclick="closeLightbox()">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+    </div>
+
+    <!-- Custom JavaScript Sheet -->
+    <script src="script.js?v=821abf2c" defer></script>
+</body>
+</html>
