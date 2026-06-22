@@ -24,6 +24,14 @@
             </div>
             <span class="brand-subtitle">Analytics Report</span>
         </div>
+        <!-- Month Selector Dropdown -->
+        <div style="margin: 0.5rem 0 1.5rem 0; padding: 0.75rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background-color: var(--primary-light); border-radius: 12px;">
+            <label for="month-select" style="font-size: 0.75rem; color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 6px;">Chọn Tháng Báo Cáo</label>
+            <select id="month-select" onchange="location = this.value;" style="width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(255, 102, 0, 0.25); font-weight: 700; color: var(--text-main); cursor: pointer; font-size: 0.85rem; background-color: #ffffff; outline: none;">
+                <option value="jun-report.html">Tháng 06/2026</option>
+                <option value="may-report.html" selected>Tháng 05/2026</option>
+            </select>
+        </div>
         <ul class="nav-links">
             <li><a class="nav-item active" onclick="switchTab(event, 'cover-tab')"><i class="fa-solid fa-file-invoice"></i> Trang Bìa</a></li>
             <li><a class="nav-item" onclick="switchTab(event, 'kpi-tab')"><i class="fa-solid fa-chart-pie"></i> Tổng Quan KPI</a></li>
@@ -1365,7 +1373,15 @@
         <img class="modal-content" id="img01">
     </div>
 
+    <!-- Embedded Data for Charts -->
+    <script>
+        const DAILY_DATES = ["2026-05-01", "2026-05-02", "2026-05-03", "2026-05-04", "2026-05-05", "2026-05-06", "2026-05-07", "2026-05-08", "2026-05-09", "2026-05-10", "2026-05-11", "2026-05-12", "2026-05-13", "2026-05-14", "2026-05-15", "2026-05-16", "2026-05-17", "2026-05-18", "2026-05-19", "2026-05-20", "2026-05-21", "2026-05-22", "2026-05-23", "2026-05-24", "2026-05-25", "2026-05-26", "2026-05-27", "2026-05-28", "2026-05-29", "2026-05-30", "2026-05-31"];
+        const DAILY_SPENDS = [216.41, 163.24, 198.13, 201.2, 251.82, 297.26, 291.33, 284.35, 278.86, 307.0, 264.31, 293.11, 268.84, 262.74, 265.5, 290.49, 301.7, 282.87, 286.24, 288.86, 279.67, 388.1, 471.57, 502.96, 473.8, 498.23, 499.08, 944.98, 1636.92, 1613.0, 1749.37];
+        const DAILY_INSTALLS = [330, 264, 268, 270, 279, 331, 374, 371, 321, 457, 449, 419, 383, 381, 363, 378, 341, 332, 385, 489, 329, 468, 554, 559, 696, 641, 745, 966, 1166, 1061, 1249];
+        const CAMP_NAMES = ["Umoney_App-Install-KYC_3_4_Apr", "Umoney_App-Install-KYC_app goo", "Umoney_App-Actions_Transfer b1", "Umoney_Followers_T4_Apr", "Umoney_App-Actions_Saving INB_", "Umoney_App-Actions_buy data cl", "Umoney_App-Install-KYC_rmkt_Ma", "Umoney_Other_truyenthong  TT T", "Umoney_Followers_T5 new_May", "Umoney_App-Actions_buy data cl", "Umoney_App-Install-KYC_app goo", "Umoney_App-Actions_Transfer t5", "Umoney_App-Actions_Transfer  T", "Umoney_Followers_T5 new b2_May", "Umoney_Followers_T5 new post h", "Umoney_App-Install-KYC_app goo", "Umoney_App-Install-KYC_app goo", "Umoney_App-Actions_Transfer t5", "Umoney_App-Actions_Topup 20% T", "Umoney_App-Actions_Topup 20% T", "Umoney_App-Actions_Transfer t5", "Umoney_Followers_T5 new Transf", "Umoney_Followers_t5 video new ", "Umoney_App-Actions_Transfer t5", "Umoney_Followers_T5 Transfer N", "Umoney_App-Install-KYC_app goo"];
+        const CAMP_INSTALLS = [902, 7433, 0, 0, 0, 242, 554, 0, 222, 32, 1644, 0, 0, 186, 627, 1048, 844, 120, 88, 19, 17, 224, 252, 61, 378, 726];
+    </script>
     <!-- Custom JavaScript Sheet -->
-    <script src="script.js?v=4053d16b" defer></script>
+    <script src="script.js?v=75b6bb31" defer></script>
 </body>
 </html>

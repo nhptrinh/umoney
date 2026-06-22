@@ -1,10 +1,4 @@
 /* Javascript for Umoney Ads Dashboard */
-const DAILY_DATES = ["01/06", "02/06", "03/06", "04/06", "05/06", "06/06", "07/06", "08/06", "09/06", "10/06", "11/06", "12/06", "13/06", "14/06", "15/06", "16/06", "17/06", "18/06", "19/06", "20/06", "21/06"];
-const DAILY_SPENDS = [1272.93, 883.95, 587.37, 320.77, 73.73, 577.97, 478.97, 428.46, 403.06, 345.47, 327.1, 297.13, 428.55, 366.49, 404.46, 452.6, 494.7, 489.53, 517.0, 554.13, 573.13];
-const DAILY_INSTALLS = [1309, 1053, 928, 382, 293, 205, 394, 493, 637, 461, 626, 781, 972, 801, 1008, 1113, 1180, 1054, 1030, 950, 983];
-const CAMP_NAMES = ["Umoney_App-Install-KYC_3_4_Apr", "Umoney_App-Install-KYC_app goo", "Umoney_Followers_T4_Apr", "Umoney_App-Actions_Saving INB_", "Umoney_App-Actions_buy data cl", "Umoney_App-Install-KYC_rmkt_Ma", "Umoney_Other_truyenthong  TT T", "Umoney_Followers_T5 new_May", "Umoney_App-Install-KYC_app goo", "Umoney_App-Actions_Transfer t5", "Umoney_App-Actions_Transfer  T", "Umoney_Followers_T5 new b2_May", "Umoney_Followers_T5 new post h", "Umoney_App-Install-KYC_app goo", "Umoney_App-Install-KYC_app goo", "Umoney_App-Actions_Transfer t5", "Umoney_App-Actions_Topup 20% T", "Umoney_App-Actions_Topup 20% T", "Umoney_App-Actions_Transfer t5", "Umoney_Followers_T5 new Transf", "Umoney_Followers_t5 video new ", "Umoney_App-Actions_Transfer t5", "Umoney_Followers_T5 Transfer N", "Umoney_App-Install-KYC_app goo", "Umoney_App-Actions_Saving_June", "Umoney_App-Action_Topup_June", "Umoney_App-Action_Buy-Data_Jun", "Umoney_App-Action_Transfer_Jun", "Umoney_KYC-App-Install_Install", "Umoney_KYC-App-Install_KYC_Jun", "Umoney_Other_TT _June", "Umoney_App-Install-KYC_ Google", "Umoney_App-Install-KYC_ Google"];
-const CAMP_INSTALLS = [617, 716, 0, 0, 82, 487, 0, 7, 365, 0, 0, 179, 1226, 313, 282, 138, 0, 85, 217, 271, 754, 26, 842, 342, 77, 0, 209, 0, 6048, 365, 0, 1757, 1248];
-
 function switchTab(evt, tabId) {
     const contents = document.querySelectorAll('.tab-content');
     contents.forEach(content => {
