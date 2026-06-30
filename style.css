@@ -694,6 +694,35 @@ tr.sum-row td {
     text-align: right;
 }
 
+/* Sortable table headers */
+th.sortable-col {
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s;
+}
+th.sortable-col:hover {
+    background: #fff0e5;
+    color: var(--primary);
+}
+th.sort-asc .sort-icon,
+th.sort-desc .sort-icon {
+    color: var(--primary);
+    font-weight: 700;
+}
+th.sortable-col .sort-icon {
+    display: inline-block;
+    margin-left: 4px;
+    font-size: 0.8em;
+    opacity: 0.5;
+    transition: opacity 0.15s;
+}
+th.sortable-col:hover .sort-icon,
+th.sort-asc .sort-icon,
+th.sort-desc .sort-icon {
+    opacity: 1;
+}
+
 /* Lightbox Modal */
 .modal {
     display: none;
