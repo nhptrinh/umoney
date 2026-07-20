@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch sử cập nhật báo cáo - Umoney</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ff6600;
+            --primary-light: #ffe6d5;
+            --primary-hover: #e65c00;
+            --bg-dark: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --danger: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* Header block */
+        header {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            color: white;
+            padding: 2rem 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(30, 41, 59, 0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .logo-title {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo-title img {
+            height: 50px;
+            background: white;
+            padding: 6px;
+            border-radius: 12px;
+            object-fit: contain;
+        }
+
+        .title-area h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .title-area p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-top: 4px;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .stats-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .stats-details p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .stats-details h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+
+        .stats-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            background-color: #f1f5f9;
+            color: #475569;
+        }
+
+        /* Table Block */
+        .dashboard-block {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .block-header {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
+        }
+
+        .block-header h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Table formatting */
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: #f8fafc;
+            color: var(--text-muted);
+            font-weight: 600;
+            padding: 1rem 1.25rem;
+            border-bottom: 2px solid var(--border);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border);
+            color: #334155;
+            vertical-align: middle;
+        }
+
+        tr:hover td {
+            background-color: #fafafa;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 0.35rem 0.75rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-success {
+            background-color: #ecfdf5;
+            color: var(--success);
+        }
+
+        .status-error {
+            background-color: #fef2f2;
+            color: var(--danger);
+        }
+
+        details {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 6px 10px;
+        }
+
+        summary {
+            font-weight: 600;
+            color: var(--primary);
+            cursor: pointer;
+            outline: none;
+        }
+
+        pre {
+            margin-top: 8px;
+            background: #1e293b;
+            color: #f8fafc;
+            padding: 12px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 250px;
+        }
+
+        code {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #0f172a;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            header {
+                padding: 1.5rem;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <div class="logo-title">
+                <img src="logo-umoney.png" alt="Umoney Logo">
+                <div class="title-area">
+                    <h1>Lịch sử Cập nhật Hệ thống</h1>
+                    <p>Theo dõi hoạt động tự động hóa báo cáo và chi tiết nhật ký lỗi</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- STATS GRID -->
+        <div class="stats-grid">
+            <div class="stats-card">
+                <div class="stats-details">
+                    <p>Tổng số lượt chạy</p>
+                    <h2>1 lần</h2>
+                </div>
+                <div class="stats-icon">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+            </div>
+            <div class="stats-card">
+                <div class="stats-details">
+                    <p>Tỷ lệ thành công</p>
+                    <h2>100.0%</h2>
+                </div>
+                <div class="stats-icon" style="color:var(--success); background-color:#ecfdf5;">
+                    <i class="fa-solid fa-shield-heart"></i>
+                </div>
+            </div>
+            <div class="stats-card">
+                <div class="stats-details">
+                    <p>Cập nhật cuối cùng</p>
+                    <h2 style="font-size:1.15rem; margin-top:8px;">2026-07-20 08:13:15</h2>
+                </div>
+                <div class="stats-icon" style="color:var(--primary); background-color:#fff7ed;">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- TABLE BLOCK -->
+        <div class="dashboard-block">
+            <div class="block-header">
+                <h2><i class="fa-solid fa-book" style="color:var(--primary);"></i> Nhật Ký Cập Nhật (Tối đa 100 bản ghi)</h2>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width:200px;">Thời gian</th>
+                            <th style="width:250px;">Hoạt động</th>
+                            <th style="width:160px;">Trạng thái</th>
+                            <th>Chi tiết / Server Response</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+        <tr>
+            <td style="font-weight:600; color:var(--text-muted);">2026-07-20 08:13:15</td>
+            <td style="font-weight:600;">Cập nhật Daily Report</td>
+            <td><span class="badge status-success"><i class="fa-solid fa-circle-check"></i> THÀNH CÔNG</span></td>
+            <td style="font-size:0.85rem;">
+            <details>
+                <summary>Xem chi tiết...</summary>
+                <pre>GCS Deploy: SUCCESS
+---
+GitHub/VPS Deploy: SUCCESS</pre>
+            </details>
+            </td>
+        </tr>
+        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
