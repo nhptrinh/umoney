@@ -22,9 +22,6 @@
         .pacing-row { display: flex; justify-content: space-between; font-size: 0.9rem; }
         .progress-container { background-color: var(--border); border-radius: 8px; height: 10px; width: 100%; margin: 10px 0; overflow: hidden; }
         .progress-bar { background-color: var(--primary); height: 100%; border-radius: 8px; transition: width 0.5s ease; }
-        .pacing-message { margin-top: 1rem; padding: 1rem; border-radius: 8px; font-size: 0.9rem; font-weight: 500; }
-        .pacing-ontrack { background-color: #ecfdf5; color: #065f46; border-left: 4px solid var(--success); }
-        .pacing-fast { background-color: #fffbeb; color: #92400e; border-left: 4px solid var(--warning); }
         .badge { display: inline-block; padding: 4px 8px; border-radius: 8px; font-size: 0.75rem; font-weight: 600; text-align: center; }
         .status-success { background-color: #ecfdf5; color: #047857; }
         .status-paused { background-color: #fef2f2; color: #b91c1c; }
@@ -46,24 +43,10 @@
             <span class="brand-subtitle">Weekly Performance</span>
         </div>
         
-        <!-- Month Selector Dropdown -->
-        <div style="margin: 0.5rem 0 1.5rem 0; padding: 0.75rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background-color: var(--primary-light); border-radius: 12px;">
-            <label for="month-select" style="font-size: 0.75rem; color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 6px;">Chọn Báo Cáo</label>
-            <select id="month-select" onchange="location = this.value;" style="width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(255, 102, 0, 0.25); font-weight: 700; color: var(--text-main); cursor: pointer; font-size: 0.85rem; background-color: #ffffff; outline: none;">
-                <option value="weekly-report.html" selected>Báo cáo Tuần (Mới)</option>
-                <option value="jul-report.html">Tháng 07/2026</option>
-                <option value="jun-report.html">Tháng 06/2026</option>
-                <option value="may-report.html">Tháng 05/2026</option>
-                <option value="h1-report/index.html">Báo cáo 6 Tháng (H1)</option>
-                <option value="daily-report.html">Báo cáo Daily</option>
-            </select>
-        </div>
-        
-        <ul class="nav-links">
+        <ul class="nav-links" style="margin-top: 2rem;">
             <li><a id="nav-tab1" class="nav-item active" onclick="switchTab(event, 'tab1')"><i class="fa-solid fa-chart-line"></i> Kết quả trong tuần</a></li>
             <li><a id="nav-tab2" class="nav-item" onclick="switchTab(event, 'tab2')"><i class="fa-solid fa-rectangle-ad"></i> Chiến dịch đang chạy</a></li>
             <li><a id="nav-tab3" class="nav-item" onclick="switchTab(event, 'tab3')"><i class="fa-solid fa-lightbulb"></i> Insights & Mục tiêu</a></li>
-            <li><a id="nav-tab4" class="nav-item" onclick="switchTab(event, 'tab4')"><i class="fa-solid fa-wallet"></i> Ngân sách & Tiến độ</a></li>
         </ul>
     </div>
 
@@ -87,20 +70,29 @@
         <!-- TAB 1: KẾT QUẢ TRONG TUẦN -->
         <div id="tab1" class="tab-content active">
             <div class="kpi-grid">
-                <div class="kpi-card">
-                    <div class="kpi-title">Chi Phí Tuần Qua <i class="fa-solid fa-hand-holding-dollar"></i></div>
-                    <div class="kpi-value">$3,208.25</div>
-                    <div class="kpi-unit">USD</div>
+                <div class="kpi-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div class="kpi-title">Chi Phí Tuần Qua <i class="fa-solid fa-hand-holding-dollar"></i></div>
+                        <div class="kpi-value">$3,208.28</div>
+                        <div class="kpi-unit">USD</div>
+                    </div>
+                    <div><span class="trend-badge" style="font-size: 0.8rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; margin-top: 8px; display: inline-block; background-color: #ecfdf5; color: #047857;"><i class="fa-solid fa-arrow-trend-up"></i> +3.4% so với tuần trước</span></div>
                 </div>
-                <div class="kpi-card">
-                    <div class="kpi-title">Lượt Tải App Tuần <i class="fa-solid fa-download"></i></div>
-                    <div class="kpi-value">5,051</div>
-                    <div class="kpi-unit">Lượt cài đặt (CPI: $0.64)</div>
+                <div class="kpi-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div class="kpi-title">Lượt Tải App Tuần <i class="fa-solid fa-download"></i></div>
+                        <div class="kpi-value">5,051</div>
+                        <div class="kpi-unit">Lượt cài đặt (CPI: $0.64)</div>
+                    </div>
+                    <div><span class="trend-badge" style="font-size: 0.8rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; margin-top: 8px; display: inline-block; background-color: #fef2f2; color: #b91c1c;"><i class="fa-solid fa-arrow-trend-down"></i> -4.9% so với tuần trước</span></div>
                 </div>
-                <div class="kpi-card">
-                    <div class="kpi-title">Lượt Thích Tuần <i class="fa-solid fa-thumbs-up"></i></div>
-                    <div class="kpi-value">3,134</div>
-                    <div class="kpi-unit">Facebook Likes (Cost/Like: $1.02)</div>
+                <div class="kpi-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div class="kpi-title">Lượt Thích Tuần <i class="fa-solid fa-thumbs-up"></i></div>
+                        <div class="kpi-value">3,134</div>
+                        <div class="kpi-unit">Facebook Likes (Cost/Like: $1.02)</div>
+                    </div>
+                    <div><span class="trend-badge" style="font-size: 0.8rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; margin-top: 8px; display: inline-block; background-color: #fef2f2; color: #b91c1c;"><i class="fa-solid fa-arrow-trend-down"></i> -11.1% so với tuần trước</span></div>
                 </div>
             </div>
             
@@ -135,7 +127,7 @@
                             
         <tr>
             <td style="font-weight:600;">19/07/2026</td>
-            <td>$568.34</td>
+            <td>$568.37</td>
             <td>770</td>
             <td>$0.74</td>
             <td>506</td>
@@ -151,7 +143,7 @@
             <td>$0.68</td>
             <td>485</td>
             <td>$1.07</td>
-            <td>31,265</td>
+            <td>31,266</td>
             <td>713,510</td>
         </tr>
         
@@ -511,13 +503,36 @@
 
         <!-- TAB 3: INSIGHTS & MỤC TIÊU -->
         <div id="tab3" class="tab-content">
+            <div class="kpi-grid" style="margin-bottom: 2rem;">
+                <div class="kpi-card">
+                    <div class="kpi-title">Tổng Ngân Sách Tháng <i class="fa-solid fa-wallet"></i></div>
+                    <div class="kpi-value">$15,000.00</div>
+                    <div class="kpi-unit">USD</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-title">Đã Sử Dụng MTD <i class="fa-solid fa-receipt"></i></div>
+                    <div class="kpi-value">$10,180.85</div>
+                    <div class="kpi-unit">Chiếm 67.9% Ngân sách</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-title">Ngân Sách Còn Lại <i class="fa-solid fa-vault"></i></div>
+                    <div class="kpi-value">$4,819.15</div>
+                    <div class="kpi-unit">Chiếm 32.1% Ngân sách</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-title">Thời Gian Còn Lại <i class="fa-solid fa-hourglass-half"></i></div>
+                    <div class="kpi-value">12 Ngày</div>
+                    <div class="kpi-unit">Chiếm 38.7% thời gian tháng</div>
+                </div>
+            </div>
+
             <div class="dashboard-block">
                 <div class="block-header">
                     <h2><i class="fa-solid fa-lightbulb"></i> Phân Tích Tiến Độ Mục Tiêu (Objective Pacing)</h2>
                 </div>
                 
                 <div class="pacing-grid">
-                    <!-- KPI 1 -->
+                    <!-- Followers -->
                     <div class="pacing-card">
                         <div class="pacing-header">
                             <span class="pacing-title">Followers (Likes)</span>
@@ -533,7 +548,7 @@
                         </div>
                     </div>
                     
-                    <!-- KPI 2 -->
+                    <!-- App Install -->
                     <div class="pacing-card">
                         <div class="pacing-header">
                             <span class="pacing-title">App Install & KYC</span>
@@ -549,7 +564,7 @@
                         </div>
                     </div>
                     
-                    <!-- KPI 3 -->
+                    <!-- Key Actions -->
                     <div class="pacing-card">
                         <div class="pacing-header">
                             <span class="pacing-title">App Key Actions</span>
@@ -576,128 +591,6 @@
                         <li><strong>Mục tiêu App Install & KYC:</strong> Đạt <strong>75.4%</strong>. Vượt tiến độ ngày và đang duy trì hiệu suất chuyển đổi cài đặt rất tốt.</li>
                         <li><strong>Mục tiêu Key Actions:</strong> Đạt <strong>169.4%</strong>. Đã chính thức hoàn thành vượt mức kế hoạch năm/tháng đề ra cực kỳ ấn tượng nhờ tối ưu hóa chi phí hành động tốt.</li>
                     </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 4: NGÂN SÁCH & TIẾN ĐỘ -->
-        <div id="tab4" class="tab-content">
-            <div class="kpi-grid">
-                <div class="kpi-card">
-                    <div class="kpi-title">Tổng Ngân Sách Tháng <i class="fa-solid fa-wallet"></i></div>
-                    <div class="kpi-value">$15,000.00</div>
-                    <div class="kpi-unit">USD</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-title">Đã Sử Dụng MTD <i class="fa-solid fa-receipt"></i></div>
-                    <div class="kpi-value">$10,180.85</div>
-                    <div class="kpi-unit">Chiếm 67.9% Ngân sách</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-title">Ngân Sách Còn Lại <i class="fa-solid fa-vault"></i></div>
-                    <div class="kpi-value">$4,819.15</div>
-                    <div class="kpi-unit">USD</div>
-                </div>
-            </div>
-            
-            <div class="dashboard-block" style="margin-top:2rem;">
-                <div class="block-header">
-                    <h2><i class="fa-solid fa-calendar-week"></i> Chi Tiết Kế Hoạch Ngân Sách Theo Tuần (Tự động đồng bộ Google Sheet)</h2>
-                </div>
-                <div class="table-wrapper">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Tuần</th>
-                                <th>Thời Gian</th>
-                                <th>Tỷ lệ Phân bổ</th>
-                                <th>Ngân sách Tuần</th>
-                                <th>Số Ngày</th>
-                                <th>Ngân sách Daily</th>
-                                <th style="color: var(--primary);">Đã Chi Tiêu</th>
-                                <th style="color: var(--success);">Ngân sách Còn Lại</th>
-                                <th>Ngân Sách Tuần Mới</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            
-            <tr >
-                <td style="font-weight:600;">1</td>
-                <td>1 tháng 7 - 5 tháng 7</td>
-                <td>23%</td>
-                <td> $ 3.450 </td>
-                <td>5</td>
-                <td> $ 690 </td>
-                <td style="color: var(--primary);"> $ 2.493 </td>
-                <td style="color: var(--success);"> $ 12.507 </td>
-                <td style="font-weight:700;"></td>
-            </tr>
-            
-            <tr >
-                <td style="font-weight:600;">2</td>
-                <td>6 tháng 7 - 12 tháng 7</td>
-                <td>20%</td>
-                <td> $ 3.000 </td>
-                <td>7</td>
-                <td> $ 429 </td>
-                <td style="color: var(--primary);"> $ 3.661 </td>
-                <td style="color: var(--success);"> $ 8.846 </td>
-                <td style="font-weight:700;"></td>
-            </tr>
-            
-            <tr >
-                <td style="font-weight:600;">3</td>
-                <td>13 tháng 7 - 19 tháng 7</td>
-                <td>20%</td>
-                <td> $ 3.000 </td>
-                <td>7</td>
-                <td> $ 429 </td>
-                <td style="color: var(--primary);"> $ 3.758 </td>
-                <td style="color: var(--success);"> $ 5.088 </td>
-                <td style="font-weight:700;"> $ 3.104 </td>
-            </tr>
-            
-            <tr style="background-color: var(--primary-light); font-weight: 600;">
-                <td style="font-weight:600;">4</td>
-                <td>20 tháng 7 - 26 tháng 7</td>
-                <td>25%</td>
-                <td> $ 3.750 </td>
-                <td>7</td>
-                <td> $ 536 </td>
-                <td style="color: var(--primary);"> $ 266 </td>
-                <td style="color: var(--success);"></td>
-                <td style="font-weight:700;"></td>
-            </tr>
-            
-            <tr >
-                <td style="font-weight:600;">5</td>
-                <td>27 tháng 7 - 31 tháng 7</td>
-                <td>12%</td>
-                <td> $ 1.800 </td>
-                <td>5</td>
-                <td> $ 360 </td>
-                <td style="color: var(--primary);"></td>
-                <td style="color: var(--success);"></td>
-                <td style="font-weight:700;"></td>
-            </tr>
-            
-            <tr >
-                <td style="font-weight:600;"></td>
-                <td> - Total</td>
-                <td>100,00%</td>
-                <td> $ 15.000 </td>
-                <td>31</td>
-                <td> $ 484 </td>
-                <td style="color: var(--primary);"> $ 10.178 </td>
-                <td style="color: var(--success);"> $ 4.822 </td>
-                <td style="font-weight:700;"></td>
-            </tr>
-            
-                        </tbody>
-                    </table>
-                </div>
-                <div class="pacing-message pacing-fast">
-                    <i class="fa-solid fa-circle-info"></i> Tốc độ chi tiêu ngân sách hơi nhanh so với tiến độ ngày của tháng.
                 </div>
             </div>
         </div>
@@ -731,7 +624,7 @@
                 datasets: [
                     {
                         label: 'Chi phí (USD)',
-                        data: [503.99, 497.82, 479.8, 475.17, 536.19, 557.43, 545.62, 512.31, 526.15, 501.6, 478.22, 539.75, 550.3, 536.13, 518.95, 525.08, 541.51, 518.24, 568.34],
+                        data: [503.99, 497.82, 479.8, 475.17, 536.19, 557.43, 545.62, 512.31, 526.15, 501.6, 478.22, 539.75, 550.3, 536.13, 518.95, 525.08, 541.51, 518.24, 568.37],
                         borderColor: '#ff6600',
                         backgroundColor: 'rgba(255, 102, 0, 0.1)',
                         borderWidth: 2,
