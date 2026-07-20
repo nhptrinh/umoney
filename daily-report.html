@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo cáo Quảng cáo Daily - Umoney</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #ff6600;
+            --primary-light: #ffe6d5;
+            --primary-hover: #e65c00;
+            --bg-dark: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --info: #0284c7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* Header block */
+        header {
+            background: linear-gradient(135deg, #ff6600, #ff8533);
+            color: white;
+            padding: 2rem 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(255, 102, 0, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .logo-title {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo-title img {
+            height: 50px;
+            background: white;
+            padding: 6px;
+            border-radius: 12px;
+            object-fit: contain;
+        }
+
+        .title-area h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .title-area p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-top: 4px;
+        }
+
+        .timestamp {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* KPI Grid */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .kpi-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .kpi-details p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .kpi-details h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-top: 6px;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+
+        .kpi-details span {
+            font-size: 0.8rem;
+            color: var(--primary);
+            background: var(--primary-light);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+            margin-top: 8px;
+            display: inline-block;
+        }
+
+        .kpi-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+        }
+
+        .kpi-card:nth-child(1) .kpi-icon {
+            background-color: #fff7ed;
+            color: var(--primary);
+        }
+
+        .kpi-card:nth-child(2) .kpi-icon {
+            background-color: #ecfdf5;
+            color: var(--success);
+        }
+
+        .kpi-card:nth-child(3) .kpi-icon {
+            background-color: #f0f9ff;
+            color: var(--info);
+        }
+
+        /* Dashboard Block */
+        .dashboard-block {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .block-header {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .block-header h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 400px;
+            width: 100%;
+        }
+
+        /* Table formatting */
+        .table-wrapper {
+            overflow-x: auto;
+            margin-top: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: #f8fafc;
+            color: var(--text-muted);
+            font-weight: 600;
+            padding: 1rem 1.25rem;
+            border-bottom: 2px solid var(--border);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border);
+            color: #334155;
+            vertical-align: middle;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: #fafafa;
+        }
+
+        .num-col {
+            text-align: right;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            header {
+                padding: 1.5rem;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .timestamp {
+                align-self: stretch;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <div class="logo-title">
+                <img src="logo-umoney.png" alt="Umoney Logo">
+                <div class="title-area">
+                    <h1>Báo cáo Quảng cáo Daily</h1>
+                    <p>Chiến dịch tiếp thị số kênh Meta Ads - Thương hiệu Umoney</p>
+                </div>
+            </div>
+            <div class="timestamp">
+                <i class="fa-regular fa-clock"></i>
+                Cập nhật tự động: 20/07/2026 14:40:44
+            </div>
+        </header>
+
+        <!-- KPI CARD CAROUSEL/GRID -->
+        <div class="kpi-grid">
+            <!-- CARD 1 -->
+            <div class="kpi-card">
+                <div class="kpi-details">
+                    <p>Chi phí hôm qua</p>
+                    <h2>$568.16</h2>
+                    <span>Ngày 19/07/2026</span>
+                </div>
+                <div class="kpi-icon">
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                </div>
+            </div>
+            <!-- CARD 2 -->
+            <div class="kpi-card">
+                <div class="kpi-details">
+                    <p>Lượt tải app hôm qua</p>
+                    <h2>770</h2>
+                    <span>Ngày 19/07/2026</span>
+                </div>
+                <div class="kpi-icon">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                </div>
+            </div>
+            <!-- CARD 3 -->
+            <div class="kpi-card">
+                <div class="kpi-details">
+                    <p>Lượt thích hôm qua</p>
+                    <h2>506</h2>
+                    <span>Ngày 19/07/2026</span>
+                </div>
+                <div class="kpi-icon">
+                    <i class="fa-regular fa-thumbs-up"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHART BLOCK -->
+        <div class="dashboard-block">
+            <div class="block-header">
+                <h2><i class="fa-solid fa-chart-line" style="color:var(--primary);"></i> Biểu Đồ Xu Hướng Hàng Ngày (2026-07-01 - 2026-07-19)</h2>
+            </div>
+            <div class="chart-container">
+                <canvas id="dailyTrendChart"></canvas>
+            </div>
+        </div>
+
+        <!-- TABLE BLOCK -->
+        <div class="dashboard-block">
+            <div class="block-header">
+                <h2><i class="fa-solid fa-table" style="color:var(--primary);"></i> Bảng Số Liệu Chi Tiết Hàng Ngày</h2>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ngày</th>
+                            <th class="num-col">Chi phí (USD)</th>
+                            <th class="num-col">Lượt tải App</th>
+                            <th class="num-col">Lượt thích FB</th>
+                            <th class="num-col">Lượt hiển thị</th>
+                            <th class="num-col">Tiếp cận</th>
+                            <th class="num-col">CTR (%)</th>
+                            <th class="num-col">CPC (USD)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+        <tr>
+            <td style="font-weight:600; color:var(--text-main);">19/07/2026</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$568.16</td>
+            <td class="num-col">770</td>
+            <td class="num-col">506</td>
+            <td class="num-col">1,811,446</td>
+            <td class="num-col">761,500</td>
+            <td class="num-col">77.67%</td>
+            <td class="num-col">$0.04</td>
+        </tr>
+        
+        <tr>
+            <td style="font-weight:600; color:var(--text-main);">18/07/2026</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$518.24</td>
+            <td class="num-col">766</td>
+            <td class="num-col">485</td>
+            <td class="num-col">1,640,787</td>
+            <td class="num-col">713,510</td>
+            <td class="num-col">75.92%</td>
+            <td class="num-col">$0.04</td>
+        </tr>
+        
+        <tr>
+            <td style="font-weight:600; color:var(--text-main);">17/07/2026</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$541.51</td>
+            <td class="num-col">848</td>
+            <td class="num-col">537</td>
+            <td class="num-col">1,730,542</td>
+            <td class="num-col">724,236</td>
+            <td class="num-col">74.06%</td>
+            <td class="num-col">$0.04</td>
+        </tr>
+        
+        <tr>
+            <td style="font-weight:600; color:var(--text-main);">16/07/2026</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$525.08</td>
+            <td class="num-col">846</td>
+            <td class="num-col">514</td>
+            <td class="num-col">1,675,282</td>
+            <td class="num-col">725,534</td>
+            <td class="num-col">74.15%</td>
+            <td class="num-col">$0.04</td>
+        </tr>
+        
+        <tr>
+            <td style="font-weight:600; color:var(--text-main);">15/07/2026</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$518.95</td>
+            <td class="num-col">881</td>
+            <td class="num-col">472</td>
+            <td class="num-col">1,772,585</td>
+            <td class="num-col">782,262</td>
+            <td class="num-col">72.10%</td>
+            <td class="num-col">$0.04</td>
+        </tr>
+        
+        <tr>
+            <td style="font-weight:600; color:var(--text-main);">14/07/2026</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$536.13</td>
+            <td class="num-col">940</td>
+            <td class="num-col">620</td>
+            <td class="num-col">1,813,635</td>
+            <td class="num-col">788,873</td>
+            <td class="num-col">73.45%</td>
+            <td class="num-col">$0.04</td>
+        </tr>
+        
+        <tr>
+            <td style="font-weight:600; color:var(--text-main);">13/07/2026</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$550.30</td>
+            <td class="num-col">889</td>
+            <td class="num-col">601</td>
+            <td class="num-col">1,730,691</td>
+            <td class="num-col">757,407</td>
+            <td class="num-col">75.70%</td>
+            <td class="num-col">$0.04</td>
+        </tr>
+        
+        <tr>
+            <td style="font-weight:600; color:var(--text-main);">12/07/2026</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$539.75</td>
+            <td class="num-col">781</td>
+            <td class="num-col">593</td>
+            <td class="num-col">1,638,471</td>
+            <td class="num-col">728,311</td>
+            <td class="num-col">77.72%</td>
+            <td class="num-col">$0.04</td>
+        </tr>
+        
+        <tr>
+            <td style="font-weight:600; color:var(--text-main);">11/07/2026</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$478.22</td>
+            <td class="num-col">885</td>
+            <td class="num-col">535</td>
+            <td class="num-col">1,634,733</td>
+            <td class="num-col">723,029</td>
+            <td class="num-col">69.06%</td>
+            <td class="num-col">$0.04</td>
+        </tr>
+        
+        <tr>
+            <td style="font-weight:600; color:var(--text-main);">10/07/2026</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$501.60</td>
+            <td class="num-col">856</td>
+            <td class="num-col">569</td>
+            <td class="num-col">1,602,502</td>
+            <td class="num-col">713,125</td>
+            <td class="num-col">72.55%</td>
+            <td class="num-col">$0.04</td>
+        </tr>
+        
+        <tr>
+            <td style="font-weight:600; color:var(--text-main);">09/07/2026</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$526.15</td>
+            <td class="num-col">949</td>
+            <td class="num-col">606</td>
+            <td class="num-col">1,678,857</td>
+            <td class="num-col">755,807</td>
+            <td class="num-col">73.44%</td>
+            <td class="num-col">$0.04</td>
+        </tr>
+        
+        <tr>
+            <td style="font-weight:600; color:var(--text-main);">08/07/2026</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$512.31</td>
+            <td class="num-col">895</td>
+            <td class="num-col">604</td>
+            <td class="num-col">1,641,241</td>
+            <td class="num-col">762,462</td>
+            <td class="num-col">74.73%</td>
+            <td class="num-col">$0.04</td>
+        </tr>
+        
+        <tr>
+            <td style="font-weight:600; color:var(--text-main);">07/07/2026</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$545.62</td>
+            <td class="num-col">945</td>
+            <td class="num-col">619</td>
+            <td class="num-col">1,777,702</td>
+            <td class="num-col">782,663</td>
+            <td class="num-col">72.62%</td>
+            <td class="num-col">$0.04</td>
+        </tr>
+        
+        <tr>
+            <td style="font-weight:600; color:var(--text-main);">06/07/2026</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$557.43</td>
+            <td class="num-col">950</td>
+            <td class="num-col">632</td>
+            <td class="num-col">1,815,259</td>
+            <td class="num-col">801,352</td>
+            <td class="num-col">70.05%</td>
+            <td class="num-col">$0.04</td>
+        </tr>
+        
+        <tr>
+            <td style="font-weight:600; color:var(--text-main);">05/07/2026</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$536.19</td>
+            <td class="num-col">888</td>
+            <td class="num-col">622</td>
+            <td class="num-col">1,735,727</td>
+            <td class="num-col">780,817</td>
+            <td class="num-col">71.77%</td>
+            <td class="num-col">$0.04</td>
+        </tr>
+        
+        <tr>
+            <td style="font-weight:600; color:var(--text-main);">04/07/2026</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$475.17</td>
+            <td class="num-col">684</td>
+            <td class="num-col">449</td>
+            <td class="num-col">1,500,235</td>
+            <td class="num-col">708,883</td>
+            <td class="num-col">68.20%</td>
+            <td class="num-col">$0.05</td>
+        </tr>
+        
+        <tr>
+            <td style="font-weight:600; color:var(--text-main);">03/07/2026</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$479.80</td>
+            <td class="num-col">879</td>
+            <td class="num-col">518</td>
+            <td class="num-col">1,507,073</td>
+            <td class="num-col">732,233</td>
+            <td class="num-col">70.10%</td>
+            <td class="num-col">$0.05</td>
+        </tr>
+        
+        <tr>
+            <td style="font-weight:600; color:var(--text-main);">02/07/2026</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$497.82</td>
+            <td class="num-col">957</td>
+            <td class="num-col">610</td>
+            <td class="num-col">1,596,557</td>
+            <td class="num-col">739,936</td>
+            <td class="num-col">68.07%</td>
+            <td class="num-col">$0.05</td>
+        </tr>
+        
+        <tr>
+            <td style="font-weight:600; color:var(--text-main);">01/07/2026</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$503.99</td>
+            <td class="num-col">975</td>
+            <td class="num-col">668</td>
+            <td class="num-col">1,592,391</td>
+            <td class="num-col">700,527</td>
+            <td class="num-col">66.00%</td>
+            <td class="num-col">$0.05</td>
+        </tr>
+        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart Configuration Script -->
+    <script>
+        const chartCtx = document.getElementById('dailyTrendChart').getContext('2d');
+        
+        const chartDates = ["01/07", "02/07", "03/07", "04/07", "05/07", "06/07", "07/07", "08/07", "09/07", "10/07", "11/07", "12/07", "13/07", "14/07", "15/07", "16/07", "17/07", "18/07", "19/07"];
+        const chartSpends = [503.99, 497.82, 479.8, 475.17, 536.19, 557.43, 545.62, 512.31, 526.15, 501.6, 478.22, 539.75, 550.3, 536.13, 518.95, 525.08, 541.51, 518.24, 568.16];
+        const chartInstalls = [975, 957, 879, 684, 888, 950, 945, 895, 949, 856, 885, 781, 889, 940, 881, 846, 848, 766, 770];
+        const chartLikes = [668, 610, 518, 449, 622, 632, 619, 604, 606, 569, 535, 593, 601, 620, 472, 514, 537, 485, 506];
+
+        new Chart(chartCtx, {
+            type: 'bar',
+            data: {
+                labels: chartDates,
+                datasets: [
+                    {
+                        label: 'Chi phí (USD)',
+                        data: chartSpends,
+                        type: 'line',
+                        borderColor: '#ff6600',
+                        backgroundColor: 'rgba(255, 102, 0, 0.1)',
+                        borderWidth: 3,
+                        pointBackgroundColor: '#ff6600',
+                        pointRadius: 4,
+                        yAxisID: 'y-spend'
+                    },
+                    {
+                        label: 'Lượt tải App',
+                        data: chartInstalls,
+                        backgroundColor: '#10b981',
+                        hoverBackgroundColor: '#059669',
+                        borderRadius: 6,
+                        yAxisID: 'y-counts'
+                    },
+                    {
+                        label: 'Lượt thích FB',
+                        data: chartLikes,
+                        backgroundColor: '#0284c7',
+                        hoverBackgroundColor: '#0369a1',
+                        borderRadius: 6,
+                        yAxisID: 'y-counts'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            boxWidth: 12,
+                            font: {
+                                family: 'Outfit',
+                                weight: 600,
+                                size: 12
+                            }
+                        }
+                    },
+                    tooltip: {
+                        padding: 12,
+                        backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                        titleFont: {
+                            family: 'Outfit',
+                            weight: 700,
+                            size: 13
+                        },
+                        bodyFont: {
+                            family: 'Outfit',
+                            size: 13
+                        },
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.dataset.yAxisID === 'y-spend') {
+                                    label += '$' + context.raw.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                                } else {
+                                    label += context.raw.toLocaleString();
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            font: {
+                                family: 'Outfit',
+                                weight: 500,
+                                size: 11
+                            }
+                        }
+                    },
+                    'y-spend': {
+                        type: 'linear',
+                        position: 'left',
+                        title: {
+                            display: true,
+                            text: 'Chi phí (USD)',
+                            font: {
+                                family: 'Outfit',
+                                weight: 600,
+                                size: 12
+                            }
+                        },
+                        grid: {
+                            color: '#e2e8f0'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value.toLocaleString();
+                            },
+                            font: {
+                                family: 'Outfit',
+                                size: 11
+                            }
+                        }
+                    },
+                    'y-counts': {
+                        type: 'linear',
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'Số lượng',
+                            font: {
+                                family: 'Outfit',
+                                weight: 600,
+                                size: 12
+                            }
+                        },
+                        grid: {
+                            drawOnChartArea: false
+                        },
+                        ticks: {
+                            font: {
+                                family: 'Outfit',
+                                size: 11
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
