@@ -283,7 +283,7 @@
             </div>
             <div class="timestamp">
                 <i class="fa-regular fa-clock"></i>
-                Cập nhật tự động: 20/07/2026 14:48:45
+                Cập nhật tự động: 21/07/2026 08:00:06
             </div>
         </header>
 
@@ -293,8 +293,8 @@
             <div class="kpi-card">
                 <div class="kpi-details">
                     <p>Chi phí hôm qua</p>
-                    <h2>$568.20</h2>
-                    <span>Ngày 19/07/2026</span>
+                    <h2>$527.15</h2>
+                    <span>Ngày 20/07/2026</span>
                 </div>
                 <div class="kpi-icon">
                     <i class="fa-solid fa-hand-holding-dollar"></i>
@@ -304,8 +304,8 @@
             <div class="kpi-card">
                 <div class="kpi-details">
                     <p>Lượt tải app hôm qua</p>
-                    <h2>770</h2>
-                    <span>Ngày 19/07/2026</span>
+                    <h2>859</h2>
+                    <span>Ngày 20/07/2026</span>
                 </div>
                 <div class="kpi-icon">
                     <i class="fa-solid fa-mobile-screen-button"></i>
@@ -315,8 +315,8 @@
             <div class="kpi-card">
                 <div class="kpi-details">
                     <p>Lượt thích hôm qua</p>
-                    <h2>506</h2>
-                    <span>Ngày 19/07/2026</span>
+                    <h2>593</h2>
+                    <span>Ngày 20/07/2026</span>
                 </div>
                 <div class="kpi-icon">
                     <i class="fa-regular fa-thumbs-up"></i>
@@ -327,7 +327,7 @@
         <!-- CHART BLOCK -->
         <div class="dashboard-block">
             <div class="block-header">
-                <h2><i class="fa-solid fa-chart-line" style="color:var(--primary);"></i> Biểu Đồ Xu Hướng Hàng Ngày (2026-07-01 - 2026-07-19)</h2>
+                <h2><i class="fa-solid fa-chart-line" style="color:var(--primary);"></i> Biểu Đồ Xu Hướng Hàng Ngày (2026-07-01 - 2026-07-20)</h2>
             </div>
             <div class="chart-container">
                 <canvas id="dailyTrendChart"></canvas>
@@ -355,12 +355,22 @@
                     <tbody>
                         
         <tr>
+            <td style="font-weight:600; color:var(--text-main);">20/07/2026</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$527.15</td>
+            <td class="num-col">859</td>
+            <td class="num-col">593</td>
+            <td class="num-col">1,821,450</td>
+            <td class="num-col">753,871</td>
+            <td class="num-col">$0.04</td>
+        </tr>
+        
+        <tr>
             <td style="font-weight:600; color:var(--text-main);">19/07/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$568.20</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$569.99</td>
             <td class="num-col">770</td>
-            <td class="num-col">506</td>
-            <td class="num-col">1,811,529</td>
-            <td class="num-col">761,500</td>
+            <td class="num-col">507</td>
+            <td class="num-col">1,815,052</td>
+            <td class="num-col">763,072</td>
             <td class="num-col">$0.04</td>
         </tr>
         
@@ -369,7 +379,7 @@
             <td class="num-col" style="font-weight:600; color:var(--primary);">$518.24</td>
             <td class="num-col">766</td>
             <td class="num-col">485</td>
-            <td class="num-col">1,640,787</td>
+            <td class="num-col">1,640,800</td>
             <td class="num-col">713,510</td>
             <td class="num-col">$0.04</td>
         </tr>
@@ -554,10 +564,10 @@
     <script>
         const chartCtx = document.getElementById('dailyTrendChart').getContext('2d');
         
-        const chartDates = ["01/07", "02/07", "03/07", "04/07", "05/07", "06/07", "07/07", "08/07", "09/07", "10/07", "11/07", "12/07", "13/07", "14/07", "15/07", "16/07", "17/07", "18/07", "19/07"];
-        const chartSpends = [503.99, 497.82, 479.8, 475.17, 536.19, 557.43, 545.62, 512.31, 526.15, 501.6, 478.22, 539.75, 550.3, 536.13, 518.95, 525.08, 541.51, 518.24, 568.2];
-        const chartInstalls = [975, 957, 879, 684, 888, 950, 945, 895, 949, 856, 885, 781, 889, 940, 881, 846, 848, 766, 770];
-        const chartLikes = [668, 610, 518, 449, 622, 632, 619, 604, 606, 569, 535, 593, 601, 620, 472, 514, 537, 485, 506];
+        const chartDates = ["01/07", "02/07", "03/07", "04/07", "05/07", "06/07", "07/07", "08/07", "09/07", "10/07", "11/07", "12/07", "13/07", "14/07", "15/07", "16/07", "17/07", "18/07", "19/07", "20/07"];
+        const chartSpends = [503.99, 497.82, 479.8, 475.17, 536.19, 557.43, 545.62, 512.31, 526.15, 501.6, 478.22, 539.75, 550.3, 536.13, 518.95, 525.08, 541.51, 518.24, 569.99, 527.15];
+        const chartInstalls = [975, 957, 879, 684, 888, 950, 945, 895, 949, 856, 885, 781, 889, 940, 881, 846, 848, 766, 770, 859];
+        const chartLikes = [668, 610, 518, 449, 622, 632, 619, 604, 606, 569, 535, 593, 601, 620, 472, 514, 537, 485, 507, 593];
 
         new Chart(chartCtx, {
             type: 'bar',
