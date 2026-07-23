@@ -283,7 +283,7 @@
             </div>
             <div class="timestamp">
                 <i class="fa-regular fa-clock"></i>
-                Cập nhật tự động: 23/07/2026 08:00:09
+                Cập nhật tự động: 23/07/2026 10:03:48
             </div>
         </header>
 
@@ -293,7 +293,7 @@
             <div class="kpi-card">
                 <div class="kpi-details">
                     <p>Chi phí hôm qua</p>
-                    <h2>$488.94</h2>
+                    <h2>$490.00</h2>
                     <span>Ngày 22/07/2026</span>
                 </div>
                 <div class="kpi-icon">
@@ -315,7 +315,7 @@
             <div class="kpi-card">
                 <div class="kpi-details">
                     <p>Lượt thích hôm qua</p>
-                    <h2>474</h2>
+                    <h2>475</h2>
                     <span>Ngày 22/07/2026</span>
                 </div>
                 <div class="kpi-icon">
@@ -327,10 +327,21 @@
         <!-- CHART BLOCK -->
         <div class="dashboard-block">
             <div class="block-header">
-                <h2><i class="fa-solid fa-chart-line" style="color:var(--primary);"></i> Biểu Đồ Xu Hướng Hàng Ngày (2026-07-01 - 2026-07-22)</h2>
+                <h2><i class="fa-solid fa-chart-line" style="color:var(--primary);"></i> Biểu Đồ Xu Hướng Hàng Ngày (2026-07-18 - 2026-07-22)</h2>
             </div>
             <div class="chart-container">
                 <canvas id="dailyTrendChart"></canvas>
+            </div>
+        </div>
+
+        <!-- KYC CHART BLOCK -->
+        <div class="dashboard-block">
+            <div class="block-header">
+                <h2><i class="fa-solid fa-id-card" style="color:#8b5cf6;"></i> New KYC Online — Tháng 7 vs Tháng Trước</h2>
+                <span style="font-size:0.82rem;color:var(--text-muted);font-weight:500;">Nguồn: Google Sheets · Focus</span>
+            </div>
+            <div class="chart-container">
+                <canvas id="kycChart"></canvas>
             </div>
         </div>
 
@@ -356,20 +367,20 @@
                         
         <tr>
             <td style="font-weight:600; color:var(--text-main);">22/07/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$488.94</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$490.00</td>
             <td class="num-col">855</td>
-            <td class="num-col">474</td>
-            <td class="num-col">1,501,462</td>
-            <td class="num-col">641,405</td>
+            <td class="num-col">475</td>
+            <td class="num-col">1,504,688</td>
+            <td class="num-col">644,442</td>
             <td class="num-col">$0.04</td>
         </tr>
         
         <tr>
             <td style="font-weight:600; color:var(--text-main);">21/07/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$524.00</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$524.03</td>
             <td class="num-col">960</td>
             <td class="num-col">573</td>
-            <td class="num-col">1,706,900</td>
+            <td class="num-col">1,706,910</td>
             <td class="num-col">764,018</td>
             <td class="num-col">$0.04</td>
         </tr>
@@ -404,176 +415,6 @@
             <td class="num-col">$0.04</td>
         </tr>
         
-        <tr>
-            <td style="font-weight:600; color:var(--text-main);">17/07/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$541.51</td>
-            <td class="num-col">848</td>
-            <td class="num-col">539</td>
-            <td class="num-col">1,730,542</td>
-            <td class="num-col">724,236</td>
-            <td class="num-col">$0.04</td>
-        </tr>
-        
-        <tr>
-            <td style="font-weight:600; color:var(--text-main);">16/07/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$525.08</td>
-            <td class="num-col">846</td>
-            <td class="num-col">516</td>
-            <td class="num-col">1,675,282</td>
-            <td class="num-col">725,534</td>
-            <td class="num-col">$0.04</td>
-        </tr>
-        
-        <tr>
-            <td style="font-weight:600; color:var(--text-main);">15/07/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$518.95</td>
-            <td class="num-col">881</td>
-            <td class="num-col">472</td>
-            <td class="num-col">1,772,585</td>
-            <td class="num-col">782,262</td>
-            <td class="num-col">$0.04</td>
-        </tr>
-        
-        <tr>
-            <td style="font-weight:600; color:var(--text-main);">14/07/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$536.13</td>
-            <td class="num-col">940</td>
-            <td class="num-col">620</td>
-            <td class="num-col">1,813,635</td>
-            <td class="num-col">788,873</td>
-            <td class="num-col">$0.04</td>
-        </tr>
-        
-        <tr>
-            <td style="font-weight:600; color:var(--text-main);">13/07/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$550.30</td>
-            <td class="num-col">889</td>
-            <td class="num-col">601</td>
-            <td class="num-col">1,730,691</td>
-            <td class="num-col">757,407</td>
-            <td class="num-col">$0.04</td>
-        </tr>
-        
-        <tr>
-            <td style="font-weight:600; color:var(--text-main);">12/07/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$539.75</td>
-            <td class="num-col">781</td>
-            <td class="num-col">593</td>
-            <td class="num-col">1,638,471</td>
-            <td class="num-col">728,311</td>
-            <td class="num-col">$0.04</td>
-        </tr>
-        
-        <tr>
-            <td style="font-weight:600; color:var(--text-main);">11/07/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$478.22</td>
-            <td class="num-col">885</td>
-            <td class="num-col">535</td>
-            <td class="num-col">1,634,733</td>
-            <td class="num-col">723,029</td>
-            <td class="num-col">$0.04</td>
-        </tr>
-        
-        <tr>
-            <td style="font-weight:600; color:var(--text-main);">10/07/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$501.60</td>
-            <td class="num-col">856</td>
-            <td class="num-col">569</td>
-            <td class="num-col">1,602,502</td>
-            <td class="num-col">713,125</td>
-            <td class="num-col">$0.04</td>
-        </tr>
-        
-        <tr>
-            <td style="font-weight:600; color:var(--text-main);">09/07/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$526.15</td>
-            <td class="num-col">949</td>
-            <td class="num-col">606</td>
-            <td class="num-col">1,678,857</td>
-            <td class="num-col">755,807</td>
-            <td class="num-col">$0.04</td>
-        </tr>
-        
-        <tr>
-            <td style="font-weight:600; color:var(--text-main);">08/07/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$512.31</td>
-            <td class="num-col">895</td>
-            <td class="num-col">604</td>
-            <td class="num-col">1,641,241</td>
-            <td class="num-col">762,462</td>
-            <td class="num-col">$0.04</td>
-        </tr>
-        
-        <tr>
-            <td style="font-weight:600; color:var(--text-main);">07/07/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$545.62</td>
-            <td class="num-col">945</td>
-            <td class="num-col">619</td>
-            <td class="num-col">1,777,702</td>
-            <td class="num-col">782,663</td>
-            <td class="num-col">$0.04</td>
-        </tr>
-        
-        <tr>
-            <td style="font-weight:600; color:var(--text-main);">06/07/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$557.43</td>
-            <td class="num-col">950</td>
-            <td class="num-col">632</td>
-            <td class="num-col">1,815,259</td>
-            <td class="num-col">801,352</td>
-            <td class="num-col">$0.04</td>
-        </tr>
-        
-        <tr>
-            <td style="font-weight:600; color:var(--text-main);">05/07/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$536.19</td>
-            <td class="num-col">888</td>
-            <td class="num-col">622</td>
-            <td class="num-col">1,735,727</td>
-            <td class="num-col">780,817</td>
-            <td class="num-col">$0.04</td>
-        </tr>
-        
-        <tr>
-            <td style="font-weight:600; color:var(--text-main);">04/07/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$475.17</td>
-            <td class="num-col">684</td>
-            <td class="num-col">449</td>
-            <td class="num-col">1,500,235</td>
-            <td class="num-col">708,883</td>
-            <td class="num-col">$0.05</td>
-        </tr>
-        
-        <tr>
-            <td style="font-weight:600; color:var(--text-main);">03/07/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$479.80</td>
-            <td class="num-col">879</td>
-            <td class="num-col">518</td>
-            <td class="num-col">1,507,073</td>
-            <td class="num-col">732,233</td>
-            <td class="num-col">$0.05</td>
-        </tr>
-        
-        <tr>
-            <td style="font-weight:600; color:var(--text-main);">02/07/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$497.82</td>
-            <td class="num-col">957</td>
-            <td class="num-col">610</td>
-            <td class="num-col">1,596,557</td>
-            <td class="num-col">739,936</td>
-            <td class="num-col">$0.05</td>
-        </tr>
-        
-        <tr>
-            <td style="font-weight:600; color:var(--text-main);">01/07/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$503.99</td>
-            <td class="num-col">975</td>
-            <td class="num-col">668</td>
-            <td class="num-col">1,592,391</td>
-            <td class="num-col">700,527</td>
-            <td class="num-col">$0.05</td>
-        </tr>
-        
                     </tbody>
                 </table>
             </div>
@@ -584,10 +425,10 @@
     <script>
         const chartCtx = document.getElementById('dailyTrendChart').getContext('2d');
         
-        const chartDates = ["01/07", "02/07", "03/07", "04/07", "05/07", "06/07", "07/07", "08/07", "09/07", "10/07", "11/07", "12/07", "13/07", "14/07", "15/07", "16/07", "17/07", "18/07", "19/07", "20/07", "21/07", "22/07"];
-        const chartSpends = [503.99, 497.82, 479.8, 475.17, 536.19, 557.43, 545.62, 512.31, 526.15, 501.6, 478.22, 539.75, 550.3, 536.13, 518.95, 525.08, 541.51, 518.24, 570.09, 531.83, 524.0, 488.94];
-        const chartInstalls = [975, 957, 879, 684, 888, 950, 945, 895, 949, 856, 885, 781, 889, 940, 881, 846, 848, 766, 770, 859, 960, 855];
-        const chartLikes = [668, 610, 518, 449, 622, 632, 619, 604, 606, 569, 535, 593, 601, 620, 472, 516, 539, 486, 507, 599, 573, 474];
+        const chartDates = ["18/07", "19/07", "20/07", "21/07", "22/07"];
+        const chartSpends = [518.24, 570.09, 531.83, 524.03, 490.0];
+        const chartInstalls = [766, 770, 859, 960, 855];
+        const chartLikes = [486, 507, 599, 573, 475];
 
         new Chart(chartCtx, {
             type: 'bar',
@@ -729,6 +570,92 @@
                 }
             }
         });
+    </script>
+
+    <!-- KYC Chart Script -->
+    <script>
+        (function() {
+            const kycLabels   = ["01/07", "02/07", "03/07", "04/07", "05/07", "06/07", "07/07", "08/07", "09/07", "10/07", "11/07", "12/07", "13/07", "14/07", "15/07", "16/07", "17/07", "18/07", "19/07", "20/07", "21/07", "22/07", "23/07", "24/07", "25/07", "26/07", "27/07", "28/07", "29/07", "30/07", "31/07"];
+            const kycCurrent  = [127, 130, 109, 70, 38, 135, 123, 138, 76, 98, 28, 25, 60, 56, 62, 44, 51, 47, 44, 49, 67, null, null, null, null, null, null, null, null, null, null];
+            const kycPrev     = [33, 43, 54, 38, 71, 42, 30, 42, 49, 66, 39, 45, 40, 34, 52, 58, 77, 98, 120, 82, 62, 138, 112, 134, 150, 150, 64, 26, 137, 106, null];
+
+            if (!kycLabels.length) {
+                document.getElementById('kycChart').parentElement.innerHTML =
+                    '<p style="text-align:center;color:#94a3b8;padding:2rem;">Chưa có dữ liệu KYC.</p>';
+                return;
+            }
+
+            const kycCtx = document.getElementById('kycChart').getContext('2d');
+            new Chart(kycCtx, {
+                type: 'bar',
+                data: {
+                    labels: kycLabels,
+                    datasets: [
+                        {
+                            label: 'New KYC Tháng 7',
+                            data: kycCurrent,
+                            backgroundColor: 'rgba(139, 92, 246, 0.8)',
+                            hoverBackgroundColor: 'rgba(109, 40, 217, 0.9)',
+                            borderRadius: 6,
+                            borderSkipped: false,
+                            spanGaps: true
+                        },
+                        {
+                            label: 'New KYC Tháng Trước',
+                            data: kycPrev,
+                            backgroundColor: 'rgba(139, 92, 246, 0.2)',
+                            hoverBackgroundColor: 'rgba(139, 92, 246, 0.35)',
+                            borderRadius: 6,
+                            borderSkipped: false,
+                            borderColor: 'rgba(139, 92, 246, 0.6)',
+                            borderWidth: 1.5,
+                            spanGaps: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                boxWidth: 12,
+                                font: { family: 'Outfit', weight: 600, size: 12 }
+                            }
+                        },
+                        tooltip: {
+                            padding: 12,
+                            backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                            titleFont: { family: 'Outfit', weight: 700, size: 13 },
+                            bodyFont: { family: 'Outfit', size: 13 },
+                            callbacks: {
+                                label: function(context) {
+                                    const v = context.raw;
+                                    return (context.dataset.label || '') + ': ' + (v !== null ? v.toLocaleString() : 'N/A');
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { display: false },
+                            ticks: { font: { family: 'Outfit', weight: 500, size: 11 } }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Số New KYC',
+                                font: { family: 'Outfit', weight: 600, size: 12 }
+                            },
+                            grid: { color: '#e2e8f0' },
+                            ticks: { font: { family: 'Outfit', size: 11 } }
+                        }
+                    }
+                }
+            });
+        })();
     </script>
 </body>
 </html>
