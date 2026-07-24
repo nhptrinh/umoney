@@ -283,7 +283,7 @@
             </div>
             <div class="timestamp">
                 <i class="fa-regular fa-clock"></i>
-                Cập nhật tự động: 24/07/2026 08:00:10
+                Cập nhật tự động: 24/07/2026 13:46:59
             </div>
         </header>
 
@@ -293,7 +293,7 @@
             <div class="kpi-card">
                 <div class="kpi-details">
                     <p>Chi phí hôm qua</p>
-                    <h2>$496.92</h2>
+                    <h2>$499.83</h2>
                     <span>Ngày 23/07/2026</span>
                 </div>
                 <div class="kpi-icon">
@@ -315,7 +315,7 @@
             <div class="kpi-card">
                 <div class="kpi-details">
                     <p>Lượt thích hôm qua</p>
-                    <h2>466</h2>
+                    <h2>468</h2>
                     <span>Ngày 23/07/2026</span>
                 </div>
                 <div class="kpi-icon">
@@ -331,6 +331,17 @@
             </div>
             <div class="chart-container">
                 <canvas id="dailyTrendChart"></canvas>
+            </div>
+        </div>
+
+        <!-- KYC CHART BLOCK -->
+        <div class="dashboard-block">
+            <div class="block-header">
+                <h2><i class="fa-solid fa-id-card" style="color:#8b5cf6;"></i> New KYC Online — Tháng 7 vs Tháng Trước</h2>
+                <span style="font-size:0.82rem;color:var(--text-muted);font-weight:500;">Nguồn: Google Sheets · Focus</span>
+            </div>
+            <div class="chart-container">
+                <canvas id="kycChart"></canvas>
             </div>
         </div>
 
@@ -356,20 +367,20 @@
                         
         <tr>
             <td style="font-weight:600; color:var(--text-main);">23/07/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$496.92</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$499.83</td>
             <td class="num-col">940</td>
-            <td class="num-col">466</td>
-            <td class="num-col">1,494,763</td>
-            <td class="num-col">636,653</td>
+            <td class="num-col">468</td>
+            <td class="num-col">1,502,611</td>
+            <td class="num-col">640,431</td>
             <td class="num-col">$0.04</td>
         </tr>
         
         <tr>
             <td style="font-weight:600; color:var(--text-main);">22/07/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$493.37</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$493.43</td>
             <td class="num-col">855</td>
             <td class="num-col">477</td>
-            <td class="num-col">1,512,388</td>
+            <td class="num-col">1,512,407</td>
             <td class="num-col">647,559</td>
             <td class="num-col">$0.04</td>
         </tr>
@@ -398,7 +409,7 @@
             <td style="font-weight:600; color:var(--text-main);">19/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$570.09</td>
             <td class="num-col">770</td>
-            <td class="num-col">507</td>
+            <td class="num-col">508</td>
             <td class="num-col">1,815,082</td>
             <td class="num-col">763,072</td>
             <td class="num-col">$0.04</td>
@@ -595,9 +606,9 @@
         const chartCtx = document.getElementById('dailyTrendChart').getContext('2d');
         
         const chartDates = ["01/07", "02/07", "03/07", "04/07", "05/07", "06/07", "07/07", "08/07", "09/07", "10/07", "11/07", "12/07", "13/07", "14/07", "15/07", "16/07", "17/07", "18/07", "19/07", "20/07", "21/07", "22/07", "23/07"];
-        const chartSpends = [503.99, 497.82, 479.8, 475.17, 536.19, 557.43, 545.62, 512.31, 526.15, 501.6, 478.22, 539.75, 550.3, 536.13, 518.95, 525.08, 541.51, 518.24, 570.09, 531.83, 524.08, 493.37, 496.92];
+        const chartSpends = [503.99, 497.82, 479.8, 475.17, 536.19, 557.43, 545.62, 512.31, 526.15, 501.6, 478.22, 539.75, 550.3, 536.13, 518.95, 525.08, 541.51, 518.24, 570.09, 531.83, 524.08, 493.43, 499.83];
         const chartInstalls = [975, 957, 879, 684, 888, 950, 945, 895, 949, 856, 885, 781, 889, 940, 881, 846, 848, 766, 770, 859, 960, 855, 940];
-        const chartLikes = [668, 610, 518, 449, 622, 632, 619, 604, 606, 569, 535, 593, 601, 620, 472, 516, 539, 486, 507, 599, 573, 477, 466];
+        const chartLikes = [668, 610, 518, 449, 622, 632, 619, 604, 606, 569, 535, 593, 601, 620, 472, 516, 539, 486, 508, 599, 573, 477, 468];
 
         new Chart(chartCtx, {
             type: 'bar',
@@ -739,6 +750,104 @@
                 }
             }
         });
+    </script>
+
+    <!-- KYC Chart Script -->
+    <script>
+        (function() {
+            const kycLabels   = ["01/07", "02/07", "03/07", "04/07", "05/07", "06/07", "07/07", "08/07", "09/07", "10/07", "11/07", "12/07", "13/07", "14/07", "15/07", "16/07", "17/07", "18/07", "19/07", "20/07", "21/07", "22/07", "23/07", "24/07", "25/07", "26/07", "27/07", "28/07", "29/07", "30/07", "31/07"];
+            const kycCurrent  = [127, 130, 109, 70, 38, 135, 123, 138, 76, 98, 28, 25, 60, 56, 62, 44, 51, 47, 44, 49, 67, 150, null, null, null, null, null, null, null, null, null];
+            const kycPrev     = [33, 43, 54, 38, 71, 42, 30, 42, 49, 66, 39, 45, 40, 34, 52, 58, 77, 98, 120, 82, 62, 138, 112, 134, 150, 150, 64, 26, 137, 106, null];
+
+            if (!kycLabels.length) {
+                document.getElementById('kycChart').parentElement.innerHTML =
+                    '<p style="text-align:center;color:#94a3b8;padding:2rem;">Chưa có dữ liệu KYC.</p>';
+                return;
+            }
+
+            const kycCtx = document.getElementById('kycChart').getContext('2d');
+            new Chart(kycCtx, {
+                type: 'line',
+                data: {
+                    labels: kycLabels,
+                    datasets: [
+                        {
+                            label: 'New KYC Tháng 7',
+                            data: kycCurrent,
+                            borderColor: '#8b5cf6',
+                            backgroundColor: 'rgba(139, 92, 246, 0.12)',
+                            borderWidth: 3,
+                            pointBackgroundColor: '#8b5cf6',
+                            pointRadius: 4,
+                            pointHoverRadius: 7,
+                            tension: 0.4,
+                            fill: true,
+                            spanGaps: true
+                        },
+                        {
+                            label: 'New KYC Tháng Trước',
+                            data: kycPrev,
+                            borderColor: '#c4b5fd',
+                            backgroundColor: 'rgba(196, 181, 253, 0.08)',
+                            borderWidth: 2,
+                            borderDash: [6, 4],
+                            pointBackgroundColor: '#c4b5fd',
+                            pointRadius: 3,
+                            pointHoverRadius: 6,
+                            tension: 0.4,
+                            fill: true,
+                            spanGaps: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                boxWidth: 14,
+                                usePointStyle: true,
+                                font: { family: 'Outfit', weight: 600, size: 12 }
+                            }
+                        },
+                        tooltip: {
+                            padding: 12,
+                            backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                            titleFont: { family: 'Outfit', weight: 700, size: 13 },
+                            bodyFont: { family: 'Outfit', size: 13 },
+                            callbacks: {
+                                label: function(context) {
+                                    const v = context.raw;
+                                    return ' ' + (context.dataset.label || '') + ': ' + (v !== null ? v.toLocaleString() : 'N/A');
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { display: false },
+                            ticks: { font: { family: 'Outfit', weight: 500, size: 11 } }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Số New KYC',
+                                font: { family: 'Outfit', weight: 600, size: 12 }
+                            },
+                            grid: { color: '#e2e8f0' },
+                            ticks: { font: { family: 'Outfit', size: 11 } }
+                        }
+                    }
+                }
+            });
+        })();
     </script>
 </body>
 </html>
