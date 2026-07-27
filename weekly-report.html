@@ -79,7 +79,7 @@
                 <div class="kpi-card" style="display: flex; flex-direction: column; justify-content: space-between;">
                     <div>
                         <div class="kpi-title">Chi Phí Tuần Qua <i class="fa-solid fa-hand-holding-dollar"></i></div>
-                        <div class="kpi-value">$3,094.65</div>
+                        <div class="kpi-value">$3,094.67</div>
                         <div class="kpi-unit">USD</div>
                     </div>
                     <div><span class="trend-badge" style="font-size: 0.8rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; margin-top: 8px; display: inline-block; background-color: #fef2f2; color: #b91c1c;"><i class="fa-solid fa-arrow-trend-down"></i> -3.6% so với tuần trước</span></div>
@@ -194,12 +194,12 @@
                             
         <tr>
             <td style="font-weight:600;">26/07/2026</td>
-            <td>$555.94</td>
+            <td>$555.96</td>
             <td>761</td>
             <td>$0.73</td>
             <td>525</td>
             <td>$1.06</td>
-            <td>30,906</td>
+            <td>30,907</td>
             <td>755,388</td>
         </tr>
         
@@ -527,26 +527,26 @@
             <td>$1.99</td>
             <td>17</td>
             <td>$91.58</td>
-            <td>147,450</td>
+            <td>147,451</td>
             <td>182,308</td>
         </tr>
         
         <tr>
             <td style="font-weight:600; text-align:left;">Umoney_Followers_T5 Transfer No Fee_May</td>
             <td><span class="badge status-success">ACTIVE</span></td>
-            <td>$1,347.24</td>
+            <td>$1,347.25</td>
             <td>925</td>
             <td>$1.46</td>
             <td>10,034</td>
             <td>$0.13</td>
-            <td>165,425</td>
+            <td>165,426</td>
             <td>684,307</td>
         </tr>
         
         <tr>
             <td style="font-weight:600; text-align:left;">Umoney_App-Install-KYC_ Google Play Store 20k KIP  _June</td>
             <td><span class="badge status-success">ACTIVE</span></td>
-            <td>$1,296.80</td>
+            <td>$1,296.81</td>
             <td>3,622</td>
             <td>$0.36</td>
             <td>5</td>
@@ -587,8 +587,8 @@
             <td>$0.43</td>
             <td>4,193</td>
             <td>$0.11</td>
-            <td>250,485</td>
-            <td>391,087</td>
+            <td>250,486</td>
+            <td>391,780</td>
         </tr>
         
         <tr>
@@ -599,7 +599,7 @@
             <td>$1.21</td>
             <td>6</td>
             <td>$65.11</td>
-            <td>101,697</td>
+            <td>101,699</td>
             <td>232,076</td>
         </tr>
         
@@ -789,7 +789,7 @@
             evt.currentTarget.classList.add("active");
         }
 
-        // ── Chart 1: Xu hướng tích lũy tháng 07 (Spend + App Install + Register Online) ──
+        // ── Chart 1: Xu hướng tích lũy tháng 07 (Spend + App Install) ──
         const ctx = document.getElementById('weeklyChart').getContext('2d');
         new Chart(ctx, {
             type: 'line',
@@ -798,12 +798,13 @@
                 datasets: [
                     {
                         label: 'Chi phí (USD)',
-                        data: [503.99, 497.82, 479.8, 475.17, 536.19, 557.43, 545.62, 512.31, 526.15, 501.6, 478.22, 539.75, 550.3, 536.13, 518.95, 525.08, 541.51, 518.24, 570.09, 531.83, 524.08, 493.49, 501.67, 534.93, 484.54, 555.94, null, null, null, null, null],
+                        data: [503.99, 497.82, 479.8, 475.17, 536.19, 557.43, 545.62, 512.31, 526.15, 501.6, 478.22, 539.75, 550.3, 536.13, 518.95, 525.08, 541.51, 518.24, 570.09, 531.83, 524.08, 493.49, 501.67, 534.93, 484.54, 555.96, null, null, null, null, null],
                         borderColor: '#ff6600',
                         backgroundColor: 'rgba(255, 102, 0, 0.1)',
                         borderWidth: 2.5,
                         pointRadius: 3,
                         tension: 0.3,
+                        spanGaps: true,
                         yAxisID: 'y'
                     },
                     {
@@ -814,7 +815,9 @@
                         borderWidth: 2,
                         pointRadius: 3,
                         tension: 0.3,
+                        spanGaps: true,
                         yAxisID: 'y1'
+                    }
                 ]
             },
             options: {
@@ -825,9 +828,10 @@
                     tooltip: {
                         callbacks: {
                             label: function(ctx) {
+                                if (ctx.raw === null || ctx.raw === undefined) return null;
                                 let l = ctx.dataset.label + ': ';
                                 if (ctx.dataset.yAxisID === 'y') l += '$' + ctx.raw.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2});
-                                else l += ctx.raw != null ? ctx.raw.toLocaleString() : 'N/A';
+                                else l += ctx.raw.toLocaleString();
                                 return l;
                             }
                         }
@@ -838,11 +842,10 @@
                     y: {
                         type: 'linear', display: true, position: 'left',
                         title: { display: true, text: 'Chi phí (USD)', font: { family: 'Outfit', weight: '600' } },
-                        ticks: { callback: v => '$' + v.toLocaleString(), font: { family: 'Outfit', size: 11 } }
+                        ticks: { callback: v => v != null ? '$' + v.toLocaleString() : '', font: { family: 'Outfit', size: 11 } }
                     },
                     y1: {
                         type: 'linear', display: true, position: 'right',
-                        grid: { drawOnChartArea: false },
                         title: { display: true, text: 'Số lượng', font: { family: 'Outfit', weight: '600' } },
                         ticks: { font: { family: 'Outfit', size: 11 } }
                     }
