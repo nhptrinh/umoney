@@ -73,7 +73,7 @@
                 <div class="kpi-card" style="display: flex; flex-direction: column; justify-content: space-between;">
                     <div>
                         <div class="kpi-title">Chi Phí Tuần Qua <i class="fa-solid fa-hand-holding-dollar"></i></div>
-                        <div class="kpi-value">$3,094.25</div>
+                        <div class="kpi-value">$3,094.39</div>
                         <div class="kpi-unit">USD</div>
                     </div>
                     <div><span class="trend-badge" style="font-size: 0.8rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; margin-top: 8px; display: inline-block; background-color: #fef2f2; color: #b91c1c;"><i class="fa-solid fa-arrow-trend-down"></i> -3.6% so với tuần trước</span></div>
@@ -104,6 +104,28 @@
                     <canvas id="weeklyChart"></canvas>
                 </div>
             </div>
+
+            <!-- KYC Chart -->
+            <div class="dashboard-block" style="margin-top:2rem;">
+                <div class="block-header">
+                    <h2><i class="fa-solid fa-id-card" style="color:#8b5cf6;"></i> Xu Hướng New KYC Online — Trong Tháng vs Tháng Trước</h2>
+                    <span style="font-size:0.82rem;color:var(--text-muted);font-weight:500;">Nguồn: Google Sheets · Focus</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="kycChart"></canvas>
+                </div>
+            </div>
+
+            <!-- PSGD Chart -->
+            <div class="dashboard-block" style="margin-top:2rem;">
+                <div class="block-header">
+                    <h2><i class="fa-solid fa-users" style="color:#0284c7;"></i> Xu Hướng TB Mới PSGD — Trong Tháng vs Tháng Trước</h2>
+                    <span style="font-size:0.82rem;color:var(--text-muted);font-weight:500;">Nguồn: Google Sheets · Focus</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="psgdChart"></canvas>
+                </div>
+            </div>
             
             <div class="dashboard-block" style="margin-top:2rem;">
                 <div class="block-header">
@@ -127,12 +149,12 @@
                             
         <tr>
             <td style="font-weight:600;">26/07/2026</td>
-            <td>$555.54</td>
+            <td>$555.68</td>
             <td>761</td>
             <td>$0.73</td>
             <td>524</td>
             <td>$1.06</td>
-            <td>30,892</td>
+            <td>30,897</td>
             <td>755,388</td>
         </tr>
         
@@ -187,7 +209,7 @@
             <td>$0.55</td>
             <td>573</td>
             <td>$0.91</td>
-            <td>36,285</td>
+            <td>36,286</td>
             <td>764,018</td>
         </tr>
         
@@ -363,7 +385,7 @@
             <td>$0.60</td>
             <td>622</td>
             <td>$0.86</td>
-            <td>23,543</td>
+            <td>23,544</td>
             <td>780,817</td>
         </tr>
         
@@ -443,7 +465,7 @@
         <tr>
             <td style="font-weight:600; text-align:left;">Umoney_App-Install-KYC_Install_June</td>
             <td><span class="badge status-success">ACTIVE</span></td>
-            <td>$6,351.31</td>
+            <td>$6,351.34</td>
             <td>13,582</td>
             <td>$0.47</td>
             <td>26</td>
@@ -460,14 +482,14 @@
             <td>$1.99</td>
             <td>17</td>
             <td>$91.58</td>
-            <td>147,444</td>
+            <td>147,447</td>
             <td>182,308</td>
         </tr>
         
         <tr>
             <td style="font-weight:600; text-align:left;">Umoney_Followers_T5 Transfer No Fee_May</td>
             <td><span class="badge status-success">ACTIVE</span></td>
-            <td>$1,347.18</td>
+            <td>$1,347.20</td>
             <td>925</td>
             <td>$1.46</td>
             <td>10,034</td>
@@ -479,7 +501,7 @@
         <tr>
             <td style="font-weight:600; text-align:left;">Umoney_App-Install-KYC_ Google Play Store 20k KIP  _June</td>
             <td><span class="badge status-success">ACTIVE</span></td>
-            <td>$1,296.74</td>
+            <td>$1,296.76</td>
             <td>3,622</td>
             <td>$0.36</td>
             <td>5</td>
@@ -503,11 +525,11 @@
         <tr>
             <td style="font-weight:600; text-align:left;">Umoney_App-Install-KYC_ Google Play Store Free Transfer _June</td>
             <td><span class="badge status-success">ACTIVE</span></td>
-            <td>$680.02</td>
+            <td>$680.04</td>
             <td>1,393</td>
             <td>$0.49</td>
             <td>3</td>
-            <td>$226.67</td>
+            <td>$226.68</td>
             <td>2,343</td>
             <td>534,142</td>
         </tr>
@@ -515,19 +537,19 @@
         <tr>
             <td style="font-weight:600; text-align:left;">Umoney_Followers_T5 new post hinh_May</td>
             <td><span class="badge status-success">ACTIVE</span></td>
-            <td>$467.06</td>
+            <td>$467.09</td>
             <td>1,086</td>
             <td>$0.43</td>
             <td>4,192</td>
             <td>$0.11</td>
-            <td>250,478</td>
+            <td>250,480</td>
             <td>391,087</td>
         </tr>
         
         <tr>
             <td style="font-weight:600; text-align:left;">Umoney_App-Install-KYC_t5 video new click link app daymanh_May</td>
             <td><span class="badge status-success">ACTIVE</span></td>
-            <td>$390.68</td>
+            <td>$390.69</td>
             <td>322</td>
             <td>$1.21</td>
             <td>6</td>
@@ -539,7 +561,7 @@
         <tr>
             <td style="font-weight:600; text-align:left;">Umoney_App-Action_Buy-Data_June</td>
             <td><span class="badge status-success">ACTIVE</span></td>
-            <td>$389.03</td>
+            <td>$389.04</td>
             <td>276</td>
             <td>$1.41</td>
             <td>9</td>
@@ -722,7 +744,7 @@
             evt.currentTarget.classList.add("active");
         }
 
-        // Render Chart
+        // ── Chart 1: Xu hướng tích lũy tháng 07 (Spend + App Install + Register Online) ──
         const ctx = document.getElementById('weeklyChart').getContext('2d');
         new Chart(ctx, {
             type: 'line',
@@ -731,10 +753,11 @@
                 datasets: [
                     {
                         label: 'Chi phí (USD)',
-                        data: [503.99, 497.82, 479.8, 475.17, 536.19, 557.43, 545.62, 512.31, 526.15, 501.6, 478.22, 539.75, 550.3, 536.13, 518.95, 525.08, 541.51, 518.24, 570.09, 531.83, 524.08, 493.49, 501.67, 534.93, 484.54, 555.54],
+                        data: [503.99, 497.82, 479.8, 475.17, 536.19, 557.43, 545.62, 512.31, 526.15, 501.6, 478.22, 539.75, 550.3, 536.13, 518.95, 525.08, 541.51, 518.24, 570.09, 531.83, 524.08, 493.49, 501.67, 534.93, 484.54, 555.68],
                         borderColor: '#ff6600',
                         backgroundColor: 'rgba(255, 102, 0, 0.1)',
-                        borderWidth: 2,
+                        borderWidth: 2.5,
+                        pointRadius: 3,
                         tension: 0.3,
                         yAxisID: 'y'
                     },
@@ -742,9 +765,32 @@
                         label: 'Lượt tải App',
                         data: [975, 957, 879, 684, 888, 950, 945, 895, 949, 856, 885, 781, 889, 940, 881, 846, 848, 766, 770, 859, 960, 855, 940, 820, 735, 761],
                         borderColor: '#10b981',
-                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        backgroundColor: 'rgba(16, 185, 129, 0.08)',
                         borderWidth: 2,
+                        pointRadius: 3,
                         tension: 0.3,
+                        yAxisID: 'y1'
+                    },
+                    {
+                        label: 'Register Online (Tháng này)',
+                        data: [834, 850, 821, 669, 738, 854, 828, 845, 791, 790, 694, 686, 702, 723, 683, 713, 693, 642, 620, 633, 718, 680, 754, 720, 607, 604, null, null, null, null, null],
+                        borderColor: '#8b5cf6',
+                        backgroundColor: 'rgba(139, 92, 246, 0.08)',
+                        borderWidth: 2,
+                        pointRadius: 3,
+                        tension: 0.3,
+                        borderDash: [],
+                        yAxisID: 'y1'
+                    },
+                    {
+                        label: 'Register Online (Tháng trước)',
+                        data: [616, 652, 604, 554, 666, 557, 538, 554, 548, 583, 637, 734, 773, 686, 824, 831, 859, 905, 843, 778, 791, 953, null, 892, 859, 827, 696, 649, 903, 862, null],
+                        borderColor: '#c4b5fd',
+                        backgroundColor: 'rgba(196, 181, 253, 0.05)',
+                        borderWidth: 1.5,
+                        pointRadius: 2,
+                        tension: 0.3,
+                        borderDash: [5, 4],
                         yAxisID: 'y1'
                     }
                 ]
@@ -752,31 +798,149 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        type: 'linear',
-                        display: true,
-                        position: 'left',
-                        title: {
-                            display: true,
-                            text: 'Chi phí (USD)'
+                plugins: {
+                    legend: { position: 'top', labels: { font: { family: 'Outfit', size: 12 } } },
+                    tooltip: {
+                        callbacks: {
+                            label: function(ctx) {
+                                let l = ctx.dataset.label + ': ';
+                                if (ctx.dataset.yAxisID === 'y') l += '$' + ctx.raw.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2});
+                                else l += ctx.raw != null ? ctx.raw.toLocaleString() : 'N/A';
+                                return l;
+                            }
                         }
+                    }
+                },
+                scales: {
+                    x: { grid: { display: false }, ticks: { font: { family: 'Outfit', size: 11 } } },
+                    y: {
+                        type: 'linear', display: true, position: 'left',
+                        title: { display: true, text: 'Chi phí (USD)', font: { family: 'Outfit', weight: '600' } },
+                        ticks: { callback: v => '$' + v.toLocaleString(), font: { family: 'Outfit', size: 11 } }
                     },
                     y1: {
-                        type: 'linear',
-                        display: true,
-                        position: 'right',
-                        grid: {
-                            drawOnChartArea: false
-                        },
-                        title: {
-                            display: true,
-                            text: 'Lượt tải App'
-                        }
+                        type: 'linear', display: true, position: 'right',
+                        grid: { drawOnChartArea: false },
+                        title: { display: true, text: 'Số lượng', font: { family: 'Outfit', weight: '600' } },
+                        ticks: { font: { family: 'Outfit', size: 11 } }
                     }
                 }
             }
         });
+
+        // ── Chart 2: New KYC Online ──
+        (function() {
+            const kycLabels  = ["01/07", "02/07", "03/07", "04/07", "05/07", "06/07", "07/07", "08/07", "09/07", "10/07", "11/07", "12/07", "13/07", "14/07", "15/07", "16/07", "17/07", "18/07", "19/07", "20/07", "21/07", "22/07", "23/07", "24/07", "25/07", "26/07", "27/07", "28/07", "29/07", "30/07", "31/07"];
+            const kycCurr   = [127, 130, 109, 70, 38, 135, 123, 138, 76, 98, 28, 25, 60, 56, 62, 44, 51, 47, 44, 49, 67, 150, 126, 104, 94, 69, null, null, null, null, null];
+            const kycPrev   = [33, 43, 54, 38, 71, 42, 30, 42, 49, 66, 39, 45, 40, 34, 52, 58, 77, 98, 120, 82, 62, 138, 112, 134, 150, 150, 64, 26, 137, 106, null];
+            if (!kycLabels.length) {
+                document.getElementById('kycChart').parentElement.innerHTML =
+                    '<p style="text-align:center;color:#94a3b8;padding:2rem;">Chưa có dữ liệu KYC.</p>';
+                return;
+            }
+            new Chart(document.getElementById('kycChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: kycLabels,
+                    datasets: [
+                        {
+                            label: 'New KYC Tháng này',
+                            data: kycCurr,
+                            backgroundColor: 'rgba(139, 92, 246, 0.75)',
+                            borderColor: '#8b5cf6',
+                            borderWidth: 1,
+                            borderRadius: 5,
+                            order: 1
+                        },
+                        {
+                            label: 'New KYC Tháng trước',
+                            data: kycPrev,
+                            type: 'line',
+                            borderColor: '#c4b5fd',
+                            backgroundColor: 'rgba(196,181,253,0.1)',
+                            borderWidth: 2,
+                            pointRadius: 3,
+                            tension: 0.3,
+                            borderDash: [5, 4],
+                            order: 0
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top', labels: { font: { family: 'Outfit', size: 12 } } },
+                        tooltip: { padding: 10, bodyFont: { family: 'Outfit' }, titleFont: { family: 'Outfit', weight: '700' } }
+                    },
+                    scales: {
+                        x: { grid: { display: false }, ticks: { font: { family: 'Outfit', size: 11 } } },
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Số New KYC', font: { family: 'Outfit', weight: '600' } },
+                            ticks: { font: { family: 'Outfit', size: 11 } }
+                        }
+                    }
+                }
+            });
+        })();
+
+        // ── Chart 3: TB mới PSGD ──
+        (function() {
+            const psgdLabels = ["01/07", "02/07", "03/07", "04/07", "05/07", "06/07", "07/07", "08/07", "09/07", "10/07", "11/07", "12/07", "13/07", "14/07", "15/07", "16/07", "17/07", "18/07", "19/07", "20/07", "21/07", "22/07", "23/07", "24/07", "25/07", "26/07", "27/07", "28/07", "29/07", "30/07", "31/07"];
+            const psgdCurr  = [399, 553, 523, 226, 89, 581, 605, 644, 262, 537, 694, 686, 656, 723, 683, 713, 676, 397, 143, 569, 718, 92, null, null, null, null, null, null, null, null, null];
+            const psgdPrev  = [314, 532, 679, 579, 623, 275, 108, 730, 634, 659, 566, 580, 202, 125, 858, 692, 675, 771, 815, 370, 145, 883, 803, 542, 551, 501, 148, 69, 492, 414, null];
+            if (!psgdLabels.length) {
+                document.getElementById('psgdChart').parentElement.innerHTML =
+                    '<p style="text-align:center;color:#94a3b8;padding:2rem;">Chưa có dữ liệu PSGD.</p>';
+                return;
+            }
+            new Chart(document.getElementById('psgdChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: psgdLabels,
+                    datasets: [
+                        {
+                            label: 'TB Mới PSGD Tháng này',
+                            data: psgdCurr,
+                            backgroundColor: 'rgba(2, 132, 199, 0.75)',
+                            borderColor: '#0284c7',
+                            borderWidth: 1,
+                            borderRadius: 5,
+                            order: 1
+                        },
+                        {
+                            label: 'TB Mới PSGD Tháng trước',
+                            data: psgdPrev,
+                            type: 'line',
+                            borderColor: '#7dd3fc',
+                            backgroundColor: 'rgba(125,211,252,0.1)',
+                            borderWidth: 2,
+                            pointRadius: 3,
+                            tension: 0.3,
+                            borderDash: [5, 4],
+                            order: 0
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top', labels: { font: { family: 'Outfit', size: 12 } } },
+                        tooltip: { padding: 10, bodyFont: { family: 'Outfit' }, titleFont: { family: 'Outfit', weight: '700' } }
+                    },
+                    scales: {
+                        x: { grid: { display: false }, ticks: { font: { family: 'Outfit', size: 11 } } },
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'TB Mới PSGD', font: { family: 'Outfit', weight: '600' } },
+                            ticks: { font: { family: 'Outfit', size: 11 } }
+                        }
+                    }
+                }
+            });
+        })();
     </script>
 </body>
 </html>
