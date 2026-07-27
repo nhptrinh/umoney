@@ -79,7 +79,7 @@
                 <div class="kpi-card" style="display: flex; flex-direction: column; justify-content: space-between;">
                     <div>
                         <div class="kpi-title">Chi Phí Tuần Qua <i class="fa-solid fa-hand-holding-dollar"></i></div>
-                        <div class="kpi-value">$3,094.59</div>
+                        <div class="kpi-value">$3,094.65</div>
                         <div class="kpi-unit">USD</div>
                     </div>
                     <div><span class="trend-badge" style="font-size: 0.8rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; margin-top: 8px; display: inline-block; background-color: #fef2f2; color: #b91c1c;"><i class="fa-solid fa-arrow-trend-down"></i> -3.6% so với tuần trước</span></div>
@@ -139,6 +139,17 @@
                 </div>
             </div>
 
+            <!-- Register Online Chart -->
+            <div class="dashboard-block" style="margin-top:2rem;">
+                <div class="block-header">
+                    <h2><i class="fa-solid fa-user-plus" style="color:#f59e0b;"></i> Xu Hướng Register Online — Trong Tháng vs Tháng Trước</h2>
+                    <span style="font-size:0.82rem;color:var(--text-muted);font-weight:500;">Nguồn: Google Sheets · Focus</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="registerChart"></canvas>
+                </div>
+            </div>
+
             <!-- KYC Chart -->
             <div class="dashboard-block" style="margin-top:2rem;">
                 <div class="block-header">
@@ -183,12 +194,12 @@
                             
         <tr>
             <td style="font-weight:600;">26/07/2026</td>
-            <td>$555.88</td>
+            <td>$555.94</td>
             <td>761</td>
             <td>$0.73</td>
             <td>525</td>
             <td>$1.06</td>
-            <td>30,901</td>
+            <td>30,906</td>
             <td>755,388</td>
         </tr>
         
@@ -499,7 +510,7 @@
         <tr>
             <td style="font-weight:600; text-align:left;">Umoney_App-Install-KYC_Install_June</td>
             <td><span class="badge status-success">ACTIVE</span></td>
-            <td>$6,351.46</td>
+            <td>$6,351.49</td>
             <td>13,582</td>
             <td>$0.47</td>
             <td>26</td>
@@ -523,7 +534,7 @@
         <tr>
             <td style="font-weight:600; text-align:left;">Umoney_Followers_T5 Transfer No Fee_May</td>
             <td><span class="badge status-success">ACTIVE</span></td>
-            <td>$1,347.23</td>
+            <td>$1,347.24</td>
             <td>925</td>
             <td>$1.46</td>
             <td>10,034</td>
@@ -535,7 +546,7 @@
         <tr>
             <td style="font-weight:600; text-align:left;">Umoney_App-Install-KYC_ Google Play Store 20k KIP  _June</td>
             <td><span class="badge status-success">ACTIVE</span></td>
-            <td>$1,296.78</td>
+            <td>$1,296.80</td>
             <td>3,622</td>
             <td>$0.36</td>
             <td>5</td>
@@ -552,7 +563,7 @@
             <td>$1.62</td>
             <td>12</td>
             <td>$64.37</td>
-            <td>68,798</td>
+            <td>68,799</td>
             <td>398,940</td>
         </tr>
         
@@ -576,7 +587,7 @@
             <td>$0.43</td>
             <td>4,193</td>
             <td>$0.11</td>
-            <td>250,481</td>
+            <td>250,485</td>
             <td>391,087</td>
         </tr>
         
@@ -600,7 +611,7 @@
             <td>$1.41</td>
             <td>9</td>
             <td>$43.23</td>
-            <td>58,698</td>
+            <td>58,699</td>
             <td>148,586</td>
         </tr>
         
@@ -783,11 +794,11 @@
         new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ["01/07", "02/07", "03/07", "04/07", "05/07", "06/07", "07/07", "08/07", "09/07", "10/07", "11/07", "12/07", "13/07", "14/07", "15/07", "16/07", "17/07", "18/07", "19/07", "20/07", "21/07", "22/07", "23/07", "24/07", "25/07", "26/07"],
+                labels: ["01/07", "02/07", "03/07", "04/07", "05/07", "06/07", "07/07", "08/07", "09/07", "10/07", "11/07", "12/07", "13/07", "14/07", "15/07", "16/07", "17/07", "18/07", "19/07", "20/07", "21/07", "22/07", "23/07", "24/07", "25/07", "26/07", "27/07", "28/07", "29/07", "30/07", "31/07"],
                 datasets: [
                     {
                         label: 'Chi phí (USD)',
-                        data: [503.99, 497.82, 479.8, 475.17, 536.19, 557.43, 545.62, 512.31, 526.15, 501.6, 478.22, 539.75, 550.3, 536.13, 518.95, 525.08, 541.51, 518.24, 570.09, 531.83, 524.08, 493.49, 501.67, 534.93, 484.54, 555.88],
+                        data: [503.99, 497.82, 479.8, 475.17, 536.19, 557.43, 545.62, 512.31, 526.15, 501.6, 478.22, 539.75, 550.3, 536.13, 518.95, 525.08, 541.51, 518.24, 570.09, 531.83, 524.08, 493.49, 501.67, 534.93, 484.54, 555.94, null, null, null, null, null],
                         borderColor: '#ff6600',
                         backgroundColor: 'rgba(255, 102, 0, 0.1)',
                         borderWidth: 2.5,
@@ -797,36 +808,13 @@
                     },
                     {
                         label: 'Lượt tải App',
-                        data: [975, 957, 879, 684, 888, 950, 945, 895, 949, 856, 885, 781, 889, 940, 881, 846, 848, 766, 770, 859, 960, 855, 940, 820, 735, 761],
+                        data: [975, 957, 879, 684, 888, 950, 945, 895, 949, 856, 885, 781, 889, 940, 881, 846, 848, 766, 770, 859, 960, 855, 940, 820, 735, 761, null, null, null, null, null],
                         borderColor: '#10b981',
                         backgroundColor: 'rgba(16, 185, 129, 0.08)',
                         borderWidth: 2,
                         pointRadius: 3,
                         tension: 0.3,
                         yAxisID: 'y1'
-                    },
-                    {
-                        label: 'Register Online (Tháng này)',
-                        data: [834, 850, 821, 669, 738, 854, 828, 845, 791, 790, 694, 686, 702, 723, 683, 713, 693, 642, 620, 633, 718, 680, 754, 720, 607, 604, null, null, null, null, null],
-                        borderColor: '#8b5cf6',
-                        backgroundColor: 'rgba(139, 92, 246, 0.08)',
-                        borderWidth: 2,
-                        pointRadius: 3,
-                        tension: 0.3,
-                        borderDash: [],
-                        yAxisID: 'y1'
-                    },
-                    {
-                        label: 'Register Online (Tháng trước)',
-                        data: [616, 652, 604, 554, 666, 557, 538, 554, 548, 583, 637, 734, 773, 686, 824, 831, 859, 905, 843, 778, 791, 953, null, 892, 859, 827, 696, 649, 903, 862, null],
-                        borderColor: '#c4b5fd',
-                        backgroundColor: 'rgba(196, 181, 253, 0.05)',
-                        borderWidth: 1.5,
-                        pointRadius: 2,
-                        tension: 0.3,
-                        borderDash: [5, 4],
-                        yAxisID: 'y1'
-                    }
                 ]
             },
             options: {
@@ -862,7 +850,63 @@
             }
         });
 
-        // ── Chart 2: New KYC Online ──
+        // ── Chart 2: Register Online ──
+        (function() {
+            const regLabels = ["01/07", "02/07", "03/07", "04/07", "05/07", "06/07", "07/07", "08/07", "09/07", "10/07", "11/07", "12/07", "13/07", "14/07", "15/07", "16/07", "17/07", "18/07", "19/07", "20/07", "21/07", "22/07", "23/07", "24/07", "25/07", "26/07", "27/07", "28/07", "29/07", "30/07", "31/07"];
+            const regCurr  = [834, 850, 821, 669, 738, 854, 828, 845, 791, 790, 694, 686, 702, 723, 683, 713, 693, 642, 620, 633, 718, 680, 754, 720, 607, 604, null, null, null, null, null];
+            const regPrev  = [616, 652, 604, 554, 666, 557, 538, 554, 548, 583, 637, 734, 773, 686, 824, 831, 859, 905, 843, 778, 791, 953, null, 892, 859, 827, 696, 649, 903, 862, null];
+            if (!regLabels.length) {
+                document.getElementById('registerChart').parentElement.innerHTML =
+                    '<p style="text-align:center;color:#94a3b8;padding:2rem;">Không có dữ liệu Register Online.</p>';
+                return;
+            }
+            new Chart(document.getElementById('registerChart').getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: regLabels,
+                    datasets: [
+                        {
+                            label: 'Register Online Tháng này',
+                            data: regCurr,
+                            borderColor: '#f59e0b',
+                            backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                            borderWidth: 2.5,
+                            pointRadius: 3,
+                            tension: 0.3,
+                            fill: true
+                        },
+                        {
+                            label: 'Register Online Tháng trước',
+                            data: regPrev,
+                            borderColor: '#fcd34d',
+                            backgroundColor: 'rgba(252, 211, 77, 0.05)',
+                            borderWidth: 1.5,
+                            pointRadius: 2,
+                            tension: 0.3,
+                            borderDash: [5, 4]
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top', labels: { font: { family: 'Outfit', size: 12 } } },
+                        tooltip: { padding: 10, bodyFont: { family: 'Outfit' }, titleFont: { family: 'Outfit', weight: '700' } }
+                    },
+                    scales: {
+                        x: { grid: { display: false }, ticks: { font: { family: 'Outfit', size: 11 } } },
+                        y: {
+                            beginAtZero: false,
+                            title: { display: true, text: 'Số Register Online', font: { family: 'Outfit', weight: '600' } },
+                            ticks: { font: { family: 'Outfit', size: 11 } }
+                        }
+                    }
+                }
+            });
+        })();
+
+        // ── Chart 3: New KYC Online ──
         (function() {
             const kycLabels  = ["01/07", "02/07", "03/07", "04/07", "05/07", "06/07", "07/07", "08/07", "09/07", "10/07", "11/07", "12/07", "13/07", "14/07", "15/07", "16/07", "17/07", "18/07", "19/07", "20/07", "21/07", "22/07", "23/07", "24/07", "25/07", "26/07", "27/07", "28/07", "29/07", "30/07", "31/07"];
             const kycCurr   = [127, 130, 109, 70, 38, 135, 123, 138, 76, 98, 28, 25, 60, 56, 62, 44, 51, 47, 44, 49, 67, 150, 126, 104, 94, 69, null, null, null, null, null];
