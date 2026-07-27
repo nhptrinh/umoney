@@ -28,6 +28,11 @@
         .kpi-title i { color: var(--primary); margin-left: 8px; }
         th { text-align: center; }
         td { text-align: center; }
+        .chart-container { height: 800px !important; }
+        .kpi-card-focus { border-top: 3px solid #8b5cf6; }
+        .kpi-card-kyc { border-top: 3px solid #8b5cf6; }
+        .kpi-card-psgd { border-top: 3px solid #0284c7; }
+        .kpi-card-reg { border-top: 3px solid #f59e0b; }
     </style>
 </head>
 <body>
@@ -69,11 +74,12 @@
 
         <!-- TAB 1: KẾT QUẢ TRONG TUẦN -->
         <div id="tab1" class="tab-content active">
+            <!-- Row 1: Meta Ads KPIs -->
             <div class="kpi-grid">
                 <div class="kpi-card" style="display: flex; flex-direction: column; justify-content: space-between;">
                     <div>
                         <div class="kpi-title">Chi Phí Tuần Qua <i class="fa-solid fa-hand-holding-dollar"></i></div>
-                        <div class="kpi-value">$3,094.39</div>
+                        <div class="kpi-value">$3,094.59</div>
                         <div class="kpi-unit">USD</div>
                     </div>
                     <div><span class="trend-badge" style="font-size: 0.8rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; margin-top: 8px; display: inline-block; background-color: #fef2f2; color: #b91c1c;"><i class="fa-solid fa-arrow-trend-down"></i> -3.6% so với tuần trước</span></div>
@@ -89,10 +95,38 @@
                 <div class="kpi-card" style="display: flex; flex-direction: column; justify-content: space-between;">
                     <div>
                         <div class="kpi-title">Lượt Thích Tuần <i class="fa-solid fa-thumbs-up"></i></div>
-                        <div class="kpi-value">2,945</div>
+                        <div class="kpi-value">2,946</div>
                         <div class="kpi-unit">Facebook Likes (Cost/Like: $1.05)</div>
                     </div>
                     <div><span class="trend-badge" style="font-size: 0.8rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; margin-top: 8px; display: inline-block; background-color: #fef2f2; color: #b91c1c;"><i class="fa-solid fa-arrow-trend-down"></i> -6.2% so với tuần trước</span></div>
+                </div>
+            </div>
+
+            <!-- Row 2: Focus Sheet KPIs -->
+            <div class="kpi-grid" style="margin-top:1rem;">
+                <div class="kpi-card kpi-card-reg" style="display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div class="kpi-title" style="color:#d97706;">Register Online Tuần <i class="fa-solid fa-user-plus" style="color:#f59e0b;"></i></div>
+                        <div class="kpi-value" style="color:#d97706;">4,716</div>
+                        <div class="kpi-unit">Đăng ký online trong tuần</div>
+                    </div>
+                    <div><span class="trend-badge" style="font-size: 0.8rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; margin-top: 8px; display: inline-block; background-color: #fef2f2; color: #b91c1c;"><i class="fa-solid fa-arrow-trend-down"></i> -1.3% so với tuần trước</span></div>
+                </div>
+                <div class="kpi-card kpi-card-kyc" style="display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div class="kpi-title" style="color:#7c3aed;">New KYC Online Tuần <i class="fa-solid fa-id-card" style="color:#8b5cf6;"></i></div>
+                        <div class="kpi-value" style="color:#7c3aed;">659</div>
+                        <div class="kpi-unit">KYC online trong tuần</div>
+                    </div>
+                    <div><span class="trend-badge" style="font-size: 0.8rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; margin-top: 8px; display: inline-block; background-color: #ecfdf5; color: #047857;"><i class="fa-solid fa-arrow-trend-up"></i> +81.0% so với tuần trước</span></div>
+                </div>
+                <div class="kpi-card kpi-card-psgd" style="display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div class="kpi-title" style="color:#0369a1;">TB Mới PSGD Tuần <i class="fa-solid fa-users" style="color:#0284c7;"></i></div>
+                        <div class="kpi-value" style="color:#0369a1;">1,379</div>
+                        <div class="kpi-unit">TB mới phát sinh giao dịch tuần</div>
+                    </div>
+                    <div><span class="trend-badge" style="font-size: 0.8rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; margin-top: 8px; display: inline-block; background-color: #fef2f2; color: #b91c1c;"><i class="fa-solid fa-arrow-trend-down"></i> -65.4% so với tuần trước</span></div>
                 </div>
             </div>
             
@@ -149,12 +183,12 @@
                             
         <tr>
             <td style="font-weight:600;">26/07/2026</td>
-            <td>$555.68</td>
+            <td>$555.88</td>
             <td>761</td>
             <td>$0.73</td>
-            <td>524</td>
+            <td>525</td>
             <td>$1.06</td>
-            <td>30,897</td>
+            <td>30,901</td>
             <td>755,388</td>
         </tr>
         
@@ -165,7 +199,7 @@
             <td>$0.66</td>
             <td>411</td>
             <td>$1.18</td>
-            <td>29,691</td>
+            <td>29,693</td>
             <td>692,459</td>
         </tr>
         
@@ -465,11 +499,11 @@
         <tr>
             <td style="font-weight:600; text-align:left;">Umoney_App-Install-KYC_Install_June</td>
             <td><span class="badge status-success">ACTIVE</span></td>
-            <td>$6,351.34</td>
+            <td>$6,351.46</td>
             <td>13,582</td>
             <td>$0.47</td>
             <td>26</td>
-            <td>$244.28</td>
+            <td>$244.29</td>
             <td>20,424</td>
             <td>1,698,973</td>
         </tr>
@@ -477,35 +511,35 @@
         <tr>
             <td style="font-weight:600; text-align:left;">Umoney_App-Action_Buy-Data_Jul</td>
             <td><span class="badge status-success">ACTIVE</span></td>
-            <td>$1,556.83</td>
+            <td>$1,556.84</td>
             <td>784</td>
             <td>$1.99</td>
             <td>17</td>
             <td>$91.58</td>
-            <td>147,447</td>
+            <td>147,450</td>
             <td>182,308</td>
         </tr>
         
         <tr>
             <td style="font-weight:600; text-align:left;">Umoney_Followers_T5 Transfer No Fee_May</td>
             <td><span class="badge status-success">ACTIVE</span></td>
-            <td>$1,347.20</td>
+            <td>$1,347.23</td>
             <td>925</td>
             <td>$1.46</td>
             <td>10,034</td>
             <td>$0.13</td>
-            <td>165,424</td>
+            <td>165,425</td>
             <td>684,307</td>
         </tr>
         
         <tr>
             <td style="font-weight:600; text-align:left;">Umoney_App-Install-KYC_ Google Play Store 20k KIP  _June</td>
             <td><span class="badge status-success">ACTIVE</span></td>
-            <td>$1,296.76</td>
+            <td>$1,296.78</td>
             <td>3,622</td>
             <td>$0.36</td>
             <td>5</td>
-            <td>$259.35</td>
+            <td>$259.36</td>
             <td>5,533</td>
             <td>890,899</td>
         </tr>
@@ -513,12 +547,12 @@
         <tr>
             <td style="font-weight:600; text-align:left;">Umoney_App-Actions_Transfer t5 video new TT_May</td>
             <td><span class="badge status-success">ACTIVE</span></td>
-            <td>$772.47</td>
+            <td>$772.48</td>
             <td>477</td>
             <td>$1.62</td>
             <td>12</td>
             <td>$64.37</td>
-            <td>68,797</td>
+            <td>68,798</td>
             <td>398,940</td>
         </tr>
         
@@ -537,12 +571,12 @@
         <tr>
             <td style="font-weight:600; text-align:left;">Umoney_Followers_T5 new post hinh_May</td>
             <td><span class="badge status-success">ACTIVE</span></td>
-            <td>$467.09</td>
+            <td>$467.10</td>
             <td>1,086</td>
             <td>$0.43</td>
-            <td>4,192</td>
+            <td>4,193</td>
             <td>$0.11</td>
-            <td>250,480</td>
+            <td>250,481</td>
             <td>391,087</td>
         </tr>
         
@@ -622,13 +656,13 @@
                 </div>
                 <div class="kpi-card">
                     <div class="kpi-title">Đã Sử Dụng MTD <i class="fa-solid fa-receipt"></i></div>
-                    <div class="kpi-value">$10,180.85</div>
-                    <div class="kpi-unit">Chiếm 67.9% Ngân sách</div>
+                    <div class="kpi-value">$13,696.71</div>
+                    <div class="kpi-unit">Chiếm 91.3% Ngân sách</div>
                 </div>
                 <div class="kpi-card">
                     <div class="kpi-title">Ngân Sách Còn Lại <i class="fa-solid fa-vault"></i></div>
-                    <div class="kpi-value">$4,819.15</div>
-                    <div class="kpi-unit">Chiếm 32.1% Ngân sách</div>
+                    <div class="kpi-value">$1,303.29</div>
+                    <div class="kpi-unit">Chiếm 8.7% Ngân sách</div>
                 </div>
                 <div class="kpi-card">
                     <div class="kpi-title">Thời Gian Còn Lại <i class="fa-solid fa-hourglass-half"></i></div>
@@ -650,12 +684,12 @@
                             <span class="badge status-paused"><i class="fa-solid fa-triangle-exclamation"></i> Cần Đẩy Mạnh</span>
                         </div>
                         <div class="progress-container">
-                            <div class="progress-bar" style="width: 59.2%;"></div>
+                            <div class="progress-bar" style="width: 77.5%;"></div>
                         </div>
                         <div class="pacing-stats">
                             <div class="pacing-row"><span>Target cả tháng:</span><strong>18,630</strong></div>
-                            <div class="pacing-row"><span>Đạt đến hiện tại:</span><strong>11,025</strong></div>
-                            <div class="pacing-row"><span>Tỷ lệ hoàn thành:</span><strong style="color: var(--primary);">59.18%</strong></div>
+                            <div class="pacing-row"><span>Đạt đến hiện tại:</span><strong>14,431</strong></div>
+                            <div class="pacing-row"><span>Tỷ lệ hoàn thành:</span><strong style="color: var(--primary);">77.46%</strong></div>
                         </div>
                     </div>
                     
@@ -663,15 +697,15 @@
                     <div class="pacing-card">
                         <div class="pacing-header">
                             <span class="pacing-title">App Install & KYC</span>
-                            <span class="badge status-paused"><i class="fa-solid fa-triangle-exclamation"></i> Cần Đẩy Mạnh</span>
+                            <span class="badge status-success"><i class="fa-solid fa-circle-check"></i> Đạt Tiến Độ</span>
                         </div>
                         <div class="progress-container">
-                            <div class="progress-bar" style="width: 75.4%;"></div>
+                            <div class="progress-bar" style="width: 100.6%;"></div>
                         </div>
                         <div class="pacing-stats">
                             <div class="pacing-row"><span>Target cả tháng:</span><strong>22,600</strong></div>
-                            <div class="pacing-row"><span>Đạt đến hiện tại:</span><strong>17,045</strong></div>
-                            <div class="pacing-row"><span>Tỷ lệ hoàn thành:</span><strong style="color: var(--primary);">75.42%</strong></div>
+                            <div class="pacing-row"><span>Đạt đến hiện tại:</span><strong>22,735</strong></div>
+                            <div class="pacing-row"><span>Tỷ lệ hoàn thành:</span><strong style="color: var(--primary);">100.60%</strong></div>
                         </div>
                     </div>
                     
@@ -686,8 +720,8 @@
                         </div>
                         <div class="pacing-stats">
                             <div class="pacing-row"><span>Target cả tháng:</span><strong>101,128</strong></div>
-                            <div class="pacing-row"><span>Đạt đến hiện tại:</span><strong>171,278</strong></div>
-                            <div class="pacing-row"><span>Tỷ lệ hoàn thành:</span><strong style="color: var(--primary);">169.37%</strong></div>
+                            <div class="pacing-row"><span>Đạt đến hiện tại:</span><strong>239,968</strong></div>
+                            <div class="pacing-row"><span>Tỷ lệ hoàn thành:</span><strong style="color: var(--primary);">237.29%</strong></div>
                         </div>
                     </div>
                 </div>
@@ -753,7 +787,7 @@
                 datasets: [
                     {
                         label: 'Chi phí (USD)',
-                        data: [503.99, 497.82, 479.8, 475.17, 536.19, 557.43, 545.62, 512.31, 526.15, 501.6, 478.22, 539.75, 550.3, 536.13, 518.95, 525.08, 541.51, 518.24, 570.09, 531.83, 524.08, 493.49, 501.67, 534.93, 484.54, 555.68],
+                        data: [503.99, 497.82, 479.8, 475.17, 536.19, 557.43, 545.62, 512.31, 526.15, 501.6, 478.22, 539.75, 550.3, 536.13, 518.95, 525.08, 541.51, 518.24, 570.09, 531.83, 524.08, 493.49, 501.67, 534.93, 484.54, 555.88],
                         borderColor: '#ff6600',
                         backgroundColor: 'rgba(255, 102, 0, 0.1)',
                         borderWidth: 2.5,
