@@ -54,6 +54,7 @@
         <ul class="nav-links" style="margin-top: 2rem;">
             <li><a id="nav-tab1" class="nav-item active" onclick="switchTab(event, 'tab1')"><i class="fa-solid fa-chart-line"></i> Kết quả trong tuần</a></li>
             <li><a id="nav-tab2" class="nav-item" onclick="switchTab(event, 'tab2')"><i class="fa-solid fa-rectangle-ad"></i> Chiến dịch đang chạy</a></li>
+            <li><a id="nav-tab4" class="nav-item" onclick="switchTab(event, 'tab4')"><i class="fa-solid fa-bolt"></i> Báo cáo Sự kiện (Event Report)</a></li>
             <li><a id="nav-tab3" class="nav-item" onclick="switchTab(event, 'tab3')"><i class="fa-solid fa-lightbulb"></i> Insights & Mục tiêu</a></li>
         </ul>
     </div>
@@ -197,12 +198,12 @@
                             
         <tr>
             <td style="font-weight:600;">27/07/2026</td>
-            <td>$455.14</td>
+            <td>$455.29</td>
             <td>849</td>
             <td>$0.54</td>
-            <td>460</td>
+            <td>461</td>
             <td>$0.99</td>
-            <td>35,294</td>
+            <td>35,302</td>
             <td>676,998</td>
         </tr>
         
@@ -213,7 +214,7 @@
             <td>$0.74</td>
             <td>530</td>
             <td>$1.06</td>
-            <td>31,149</td>
+            <td>31,151</td>
             <td>759,417</td>
         </tr>
         
@@ -224,7 +225,7 @@
             <td>$0.66</td>
             <td>412</td>
             <td>$1.18</td>
-            <td>29,758</td>
+            <td>29,759</td>
             <td>692,459</td>
         </tr>
         
@@ -246,7 +247,7 @@
             <td>$0.53</td>
             <td>471</td>
             <td>$1.07</td>
-            <td>35,249</td>
+            <td>35,254</td>
             <td>640,696</td>
         </tr>
         
@@ -433,7 +434,7 @@
             <td>$0.59</td>
             <td>632</td>
             <td>$0.88</td>
-            <td>30,175</td>
+            <td>30,176</td>
             <td>801,352</td>
         </tr>
         
@@ -508,362 +509,314 @@
                     Chiến dịch được phân nhóm tự động theo mục tiêu và tiền tố tên campaign (App Install & KYC, Follower, App Action) trong tuần <strong>20/07 - 26/07/2026</strong>
                 </p>
             </div>
+        <!-- TAB 4: BÁO CÁO SỰ KIỆN (EVENT REPORT) -->
+        <div id="tab4" class="tab-content">
+            <div style="margin-bottom: 1.5rem;">
+                <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem;">
+                    <i class="fa-solid fa-bolt" style="color:var(--primary);"></i> Báo Cáo Chi Tiết Sự Kiện (Transaction Events Report)
+                </h2>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">
+                    Thống kê các sự kiện giao dịch thực tế trên ứng dụng Umoney trong tuần <strong>20/07 - 26/07/2026</strong> và ma trận Pivot phân bổ theo 3 nhóm chiến dịch
+                </p>
+            </div>
+
+            <!-- KPI Cards for Transaction Events -->
             <div class="kpi-grid" style="margin-bottom: 2rem;">
-        <div class="kpi-card" style="border-top: 3px solid #8b5cf6;">
-            <div class="kpi-title" style="color:#8b5cf6;">Nhóm 1: App Install & KYC <i class="fa-solid fa-mobile-screen-button"></i></div>
-            <div class="kpi-value" style="color:#8b5cf6;">$2,236.09</div>
-            <div class="kpi-unit">Lượt tải: 4,878 · CPI: $0.46</div>
-        </div>
-        
-        <div class="kpi-card" style="border-top: 3px solid #0284c7;">
-            <div class="kpi-title" style="color:#0284c7;">Nhóm 2: Follower <i class="fa-solid fa-thumbs-up"></i></div>
-            <div class="kpi-value" style="color:#0284c7;">$435.99</div>
-            <div class="kpi-unit">Lượt thích: 3,530 · Cost/Like: $0.12</div>
-        </div>
-        
-        <div class="kpi-card" style="border-top: 3px solid #ff6600;">
-            <div class="kpi-title" style="color:#ff6600;">Nhóm 3: App Action <i class="fa-solid fa-bolt"></i></div>
-            <div class="kpi-value" style="color:#ff6600;">$908.60</div>
-            <div class="kpi-unit">App Actions: 89,306</div>
-        </div>
-        </div>
-            
-        <div class="dashboard-block" style="margin-bottom: 2rem;">
-            <div class="block-header" style="border-left: 4px solid #8b5cf6; padding-left: 1rem;">
-                <div>
-                    <h2 style="color:#8b5cf6; font-size: 1.25rem;">
-                        <i class="fa-solid fa-mobile-screen-button"></i> Nhóm 1: App Install & KYC
-                    </h2>
-                    <span style="font-size: 0.82rem; color: var(--text-muted); font-weight: 500;">
-                        Tiền tố campaign: <code>Umoney_App-Install-KYC</code> (4 chiến dịch)
-                    </span>
+                <div class="kpi-card" style="border-top: 3px solid #ff6600;">
+                    <div class="kpi-title" style="color:#ff6600;">Tổng Giao Dịch Tuần <i class="fa-solid fa-receipt"></i></div>
+                    <div class="kpi-value" style="color:#ff6600;">322,700</div>
+                    <div class="kpi-unit">Giao dịch ứng dụng thành công</div>
                 </div>
-                <div style="display: flex; gap: 12px; font-size: 0.88rem; font-weight: 600;">
-                    <span style="background: #f5f3ff; color: #8b5cf6; padding: 6px 12px; border-radius: 8px; border: 1px solid #8b5cf633;">
-                        Chi phí: $2,236.09
-                    </span>
+                <div class="kpi-card" style="border-top: 3px solid #8b5cf6;">
+                    <div class="kpi-title" style="color:#8b5cf6;">Event Cao Nhất (QR) <i class="fa-solid fa-qrcode"></i></div>
+                    <div class="kpi-value" style="color:#8b5cf6;">216,422</div>
+                    <div class="kpi-unit">qr_success (Chiếm 67.1%)</div>
+                </div>
+                <div class="kpi-card" style="border-top: 3px solid #0284c7;">
+                    <div class="kpi-title" style="color:#0284c7;">Nạp Tiền Điện Thoại <i class="fa-solid fa-mobile"></i></div>
+                    <div class="kpi-value" style="color:#0284c7;">41,468</div>
+                    <div class="kpi-unit">topup_success (Chiếm 12.8%)</div>
+                </div>
+                <div class="kpi-card" style="border-top: 3px solid #10b981;">
+                    <div class="kpi-title" style="color:#10b981;">Chuyển Tiền Umoney <i class="fa-solid fa-money-bill-transfer"></i></div>
+                    <div class="kpi-value" style="color:#10b981;">24,795</div>
+                    <div class="kpi-unit">transfer_umoney_success (Chiếm 7.7%)</div>
                 </div>
             </div>
-            <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="text-align:left;">Tên Chiến Dịch</th>
-                            <th>Trạng Thái</th>
-                            <th>Chi Phí (USD)</th>
-                            <th>Lượt Tải APP</th>
-                            <th>CPI (USD)</th>
-                            <th>Lượt Thích</th>
-                            <th>Cost / Like</th>
-                            <th>App Actions</th>
-                            <th>Reach</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-            <tr>
-                <td style="font-weight:600; text-align:left;">Umoney_App-Install-KYC_Install_June</td>
-                <td><span class="badge status-success">ACTIVE</span></td>
-                <td style="font-weight:600; color:#8b5cf6;">$1,645.77</td>
-                <td>3,496</td>
-                <td>$0.47</td>
-                <td>7</td>
-                <td>$235.11</td>
-                <td>5,528</td>
-                <td>985,855</td>
-            </tr>
-            
-            <tr>
-                <td style="font-weight:600; text-align:left;">Umoney_App-Install-KYC_ Google Play Store 20k KIP  _June</td>
-                <td><span class="badge status-success">ACTIVE</span></td>
-                <td style="font-weight:600; color:#8b5cf6;">$348.75</td>
-                <td>988</td>
-                <td>$0.35</td>
-                <td>1</td>
-                <td>$348.75</td>
-                <td>1,468</td>
-                <td>396,484</td>
-            </tr>
-            
-            <tr>
-                <td style="font-weight:600; text-align:left;">Umoney_App-Install-KYC_ Google Play Store Free Transfer _June</td>
-                <td><span class="badge status-success">ACTIVE</span></td>
-                <td style="font-weight:600; color:#8b5cf6;">$137.65</td>
-                <td>292</td>
-                <td>$0.47</td>
-                <td>0</td>
-                <td>-</td>
-                <td>487</td>
-                <td>155,371</td>
-            </tr>
-            
-            <tr>
-                <td style="font-weight:600; text-align:left;">Umoney_App-Install-KYC_t5 video new click link app daymanh_May</td>
-                <td><span class="badge status-success">ACTIVE</span></td>
-                <td style="font-weight:600; color:#8b5cf6;">$103.92</td>
-                <td>102</td>
-                <td>$1.02</td>
-                <td>1</td>
-                <td>$103.92</td>
-                <td>30,726</td>
-                <td>138,106</td>
-            </tr>
-            
-                        
-        <tr style="font-weight:700; background-color:#f8fafc; border-top:2px solid #e2e8f0; border-bottom:2px solid #e2e8f0;">
-            <td style="text-align:left; color:#8b5cf6;">TỔNG NHÓM 1: APP INSTALL & KYC</td>
-            <td>-</td>
-            <td style="color:#8b5cf6;">$2,236.09</td>
-            <td>4,878</td>
-            <td>$0.46</td>
-            <td>9</td>
-            <td>$248.45</td>
-            <td>38,209</td>
-            <td>1,675,816</td>
-        </tr>
-        
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        
-        <div class="dashboard-block" style="margin-bottom: 2rem;">
-            <div class="block-header" style="border-left: 4px solid #0284c7; padding-left: 1rem;">
-                <div>
-                    <h2 style="color:#0284c7; font-size: 1.25rem;">
-                        <i class="fa-solid fa-thumbs-up"></i> Nhóm 2: Follower
-                    </h2>
-                    <span style="font-size: 0.82rem; color: var(--text-muted); font-weight: 500;">
-                        Tiền tố campaign: <code>Umoney_Followers</code> (2 chiến dịch)
-                    </span>
+
+            <!-- BLOCK 1: BẢNG TRANSACTION EVENTS -->
+            <div class="dashboard-block" style="margin-bottom: 2rem;">
+                <div class="block-header">
+                    <h2><i class="fa-solid fa-list-check" style="color:var(--primary);"></i> Bảng Transaction Events (Số Lượng Giao Dịch Thành Công)</h2>
+                    <span style="font-size:0.82rem;color:var(--text-muted);font-weight:500;">Nguồn: Tracking Hệ Thống Umoney · Tuần 20/07 - 26/07/2026</span>
                 </div>
-                <div style="display: flex; gap: 12px; font-size: 0.88rem; font-weight: 600;">
-                    <span style="background: #f0f9ff; color: #0284c7; padding: 6px 12px; border-radius: 8px; border: 1px solid #0284c733;">
-                        Chi phí: $435.99
-                    </span>
-                </div>
-            </div>
-            <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="text-align:left;">Tên Chiến Dịch</th>
-                            <th>Trạng Thái</th>
-                            <th>Chi Phí (USD)</th>
-                            <th>Lượt Tải APP</th>
-                            <th>CPI (USD)</th>
-                            <th>Lượt Thích</th>
-                            <th>Cost / Like</th>
-                            <th>App Actions</th>
-                            <th>Reach</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-            <tr>
-                <td style="font-weight:600; text-align:left;">Umoney_Followers_T5 Transfer No Fee_May</td>
-                <td><span class="badge status-success">ACTIVE</span></td>
-                <td style="font-weight:600; color:#0284c7;">$307.79</td>
-                <td>243</td>
-                <td>$1.27</td>
-                <td>2,370</td>
-                <td>$0.13</td>
-                <td>38,256</td>
-                <td>309,014</td>
-            </tr>
-            
-            <tr>
-                <td style="font-weight:600; text-align:left;">Umoney_Followers_T5 new post hinh_May</td>
-                <td><span class="badge status-success">ACTIVE</span></td>
-                <td style="font-weight:600; color:#0284c7;">$128.20</td>
-                <td>310</td>
-                <td>$0.41</td>
-                <td>1,160</td>
-                <td>$0.11</td>
-                <td>73,193</td>
-                <td>168,944</td>
-            </tr>
-            
-                        
-        <tr style="font-weight:700; background-color:#f8fafc; border-top:2px solid #e2e8f0; border-bottom:2px solid #e2e8f0;">
-            <td style="text-align:left; color:#0284c7;">TỔNG NHÓM 2: FOLLOWER</td>
-            <td>-</td>
-            <td style="color:#0284c7;">$435.99</td>
-            <td>553</td>
-            <td>$0.79</td>
-            <td>3,530</td>
-            <td>$0.12</td>
-            <td>111,449</td>
-            <td>477,958</td>
-        </tr>
-        
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        
-        <div class="dashboard-block" style="margin-bottom: 2rem;">
-            <div class="block-header" style="border-left: 4px solid #ff6600; padding-left: 1rem;">
-                <div>
-                    <h2 style="color:#ff6600; font-size: 1.25rem;">
-                        <i class="fa-solid fa-bolt"></i> Nhóm 3: App Action
-                    </h2>
-                    <span style="font-size: 0.82rem; color: var(--text-muted); font-weight: 500;">
-                        Tiền tố campaign: <code>Umoney_App-Action</code> (4 chiến dịch)
-                    </span>
-                </div>
-                <div style="display: flex; gap: 12px; font-size: 0.88rem; font-weight: 600;">
-                    <span style="background: #fff7ed; color: #ff6600; padding: 6px 12px; border-radius: 8px; border: 1px solid #ff660033;">
-                        Chi phí: $908.60
-                    </span>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="text-align:left;">Tên Event (Custom Event)</th>
+                                <th style="text-align:left;">Mô Tả Giao Dịch</th>
+                                <th>Số Lượng Thành Công</th>
+                                <th>Tỷ Trọng (%)</th>
+                                <th>Trạng Thái Tracking</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-weight:600; text-align:left; color:#8b5cf6;"><code>qr_success</code></td>
+                                <td style="text-align:left;">Thanh toán qua mã QR</td>
+                                <td style="font-weight:700; color:#8b5cf6;">216,422</td>
+                                <td>
+                                    <div style="display:flex; align-items:center; gap:8px;">
+                                        <div style="background:#e2e8f0; border-radius:4px; height:8px; width:100px; overflow:hidden;">
+                                            <div style="background:#8b5cf6; height:100%; width:67.1%;"></div>
+                                        </div>
+                                        <span>67.1%</span>
+                                    </div>
+                                </td>
+                                <td><span class="badge status-success">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:600; text-align:left; color:#0284c7;"><code>topup_success</code></td>
+                                <td style="text-align:left;">Nạp tiền điện thoại</td>
+                                <td style="font-weight:700;">41,468</td>
+                                <td>
+                                    <div style="display:flex; align-items:center; gap:8px;">
+                                        <div style="background:#e2e8f0; border-radius:4px; height:8px; width:100px; overflow:hidden;">
+                                            <div style="background:#0284c7; height:100%; width:12.8%;"></div>
+                                        </div>
+                                        <span>12.8%</span>
+                                    </div>
+                                </td>
+                                <td><span class="badge status-success">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:600; text-align:left; color:#10b981;"><code>transfer_umoney_success</code></td>
+                                <td style="text-align:left;">Chuyển tiền ví Umoney</td>
+                                <td style="font-weight:700;">24,795</td>
+                                <td>
+                                    <div style="display:flex; align-items:center; gap:8px;">
+                                        <div style="background:#e2e8f0; border-radius:4px; height:8px; width:100px; overflow:hidden;">
+                                            <div style="background:#10b981; height:100%; width:7.7%;"></div>
+                                        </div>
+                                        <span>7.7%</span>
+                                    </div>
+                                </td>
+                                <td><span class="badge status-success">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:600; text-align:left; color:#ff6600;"><code>buydata_request_success</code></td>
+                                <td style="text-align:left;">Mua gói cước Data</td>
+                                <td style="font-weight:700;">15,434</td>
+                                <td>
+                                    <div style="display:flex; align-items:center; gap:8px;">
+                                        <div style="background:#e2e8f0; border-radius:4px; height:8px; width:100px; overflow:hidden;">
+                                            <div style="background:#ff6600; height:100%; width:4.8%;"></div>
+                                        </div>
+                                        <span>4.8%</span>
+                                    </div>
+                                </td>
+                                <td><span class="badge status-success">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:600; text-align:left; color:#d97706;"><code>electric_success</code></td>
+                                <td style="text-align:left;">Thanh toán tiền điện</td>
+                                <td style="font-weight:700;">10,162</td>
+                                <td>
+                                    <div style="display:flex; align-items:center; gap:8px;">
+                                        <div style="background:#e2e8f0; border-radius:4px; height:8px; width:100px; overflow:hidden;">
+                                            <div style="background:#d97706; height:100%; width:3.1%;"></div>
+                                        </div>
+                                        <span>3.1%</span>
+                                    </div>
+                                </td>
+                                <td><span class="badge status-success">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:600; text-align:left; color:#0284c7;"><code>internet_success</code></td>
+                                <td style="text-align:left;">Thanh toán cước Internet</td>
+                                <td style="font-weight:700;">7,347</td>
+                                <td>
+                                    <div style="display:flex; align-items:center; gap:8px;">
+                                        <div style="background:#e2e8f0; border-radius:4px; height:8px; width:100px; overflow:hidden;">
+                                            <div style="background:#0284c7; height:100%; width:2.3%;"></div>
+                                        </div>
+                                        <span>2.3%</span>
+                                    </div>
+                                </td>
+                                <td><span class="badge status-success">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:600; text-align:left; color:#64748b;"><code>bank_transfer_success</code></td>
+                                <td style="text-align:left;">Chuyển khoản Ngân hàng</td>
+                                <td style="font-weight:700;">4,292</td>
+                                <td>
+                                    <div style="display:flex; align-items:center; gap:8px;">
+                                        <div style="background:#e2e8f0; border-radius:4px; height:8px; width:100px; overflow:hidden;">
+                                            <div style="background:#64748b; height:100%; width:1.3%;"></div>
+                                        </div>
+                                        <span>1.3%</span>
+                                    </div>
+                                </td>
+                                <td><span class="badge status-success">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:600; text-align:left; color:#64748b;"><code>cashin_success</code></td>
+                                <td style="text-align:left;">Nạp tiền vào ví (Cash-in)</td>
+                                <td style="font-weight:700;">2,274</td>
+                                <td>
+                                    <div style="display:flex; align-items:center; gap:8px;">
+                                        <div style="background:#e2e8f0; border-radius:4px; height:8px; width:100px; overflow:hidden;">
+                                            <div style="background:#64748b; height:100%; width:0.7%;"></div>
+                                        </div>
+                                        <span>0.7%</span>
+                                    </div>
+                                </td>
+                                <td><span class="badge status-success">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:600; text-align:left; color:#64748b;"><code>cashout_success</code></td>
+                                <td style="text-align:left;">Rút tiền khỏi ví (Cash-out)</td>
+                                <td style="font-weight:700;">471</td>
+                                <td>
+                                    <div style="display:flex; align-items:center; gap:8px;">
+                                        <div style="background:#e2e8f0; border-radius:4px; height:8px; width:100px; overflow:hidden;">
+                                            <div style="background:#64748b; height:100%; width:0.1%;"></div>
+                                        </div>
+                                        <span>0.1%</span>
+                                    </div>
+                                </td>
+                                <td><span class="badge status-success">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:600; text-align:left; color:#64748b;"><code>transfer_non_umoney_success</code></td>
+                                <td style="text-align:left;">Chuyển tiền ngoài hệ thống Umoney</td>
+                                <td style="font-weight:700;">72</td>
+                                <td>
+                                    <div style="display:flex; align-items:center; gap:8px;">
+                                        <div style="background:#e2e8f0; border-radius:4px; height:8px; width:100px; overflow:hidden;">
+                                            <div style="background:#64748b; height:100%; width:0.02%;"></div>
+                                        </div>
+                                        <span>&lt;0.1%</span>
+                                    </div>
+                                </td>
+                                <td><span class="badge status-success">Active</span></td>
+                            </tr>
+                            <!-- Total Row -->
+                            <tr style="font-weight:700; background-color:#f8fafc; border-top:2px solid #e2e8f0;">
+                                <td style="text-align:left; color:var(--primary);">TỔNG CỘNG TRANSACTION EVENTS</td>
+                                <td style="text-align:left;">10 loại sự kiện ứng dụng</td>
+                                <td style="color:var(--primary);">322,700</td>
+                                <td>100.0%</td>
+                                <td><span class="badge status-success">All Active</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="text-align:left;">Tên Chiến Dịch</th>
-                            <th>Trạng Thái</th>
-                            <th>Chi Phí (USD)</th>
-                            <th>Lượt Tải APP</th>
-                            <th>CPI (USD)</th>
-                            <th>Lượt Thích</th>
-                            <th>Cost / Like</th>
-                            <th>App Actions</th>
-                            <th>Reach</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-            <tr>
-                <td style="font-weight:600; text-align:left;">Umoney_App-Action_Buy-Data_Jul</td>
-                <td><span class="badge status-success">ACTIVE</span></td>
-                <td style="font-weight:600; color:#ff6600;">$487.30</td>
-                <td>247</td>
-                <td>$1.97</td>
-                <td>6</td>
-                <td>$81.22</td>
-                <td>48,718</td>
-                <td>139,951</td>
-            </tr>
-            
-            <tr>
-                <td style="font-weight:600; text-align:left;">Umoney_App-Actions_Transfer t5 video new TT_May</td>
-                <td><span class="badge status-success">ACTIVE</span></td>
-                <td style="font-weight:600; color:#ff6600;">$205.71</td>
-                <td>140</td>
-                <td>$1.47</td>
-                <td>2</td>
-                <td>$102.86</td>
-                <td>21,978</td>
-                <td>216,708</td>
-            </tr>
-            
-            <tr>
-                <td style="font-weight:600; text-align:left;">Umoney_App-Action_KYC_Jul</td>
-                <td><span class="badge status-success">ACTIVE</span></td>
-                <td style="font-weight:600; color:#ff6600;">$110.11</td>
-                <td>41</td>
-                <td>$2.69</td>
-                <td>0</td>
-                <td>-</td>
-                <td>133</td>
-                <td>32,465</td>
-            </tr>
-            
-            <tr>
-                <td style="font-weight:600; text-align:left;">Umoney_App-Action_Buy-Data_June</td>
-                <td><span class="badge status-success">ACTIVE</span></td>
-                <td style="font-weight:600; color:#ff6600;">$105.48</td>
-                <td>71</td>
-                <td>$1.49</td>
-                <td>3</td>
-                <td>$35.16</td>
-                <td>18,477</td>
-                <td>90,251</td>
-            </tr>
-            
-                        
-        <tr style="font-weight:700; background-color:#f8fafc; border-top:2px solid #e2e8f0; border-bottom:2px solid #e2e8f0;">
-            <td style="text-align:left; color:#ff6600;">TỔNG NHÓM 3: APP ACTION</td>
-            <td>-</td>
-            <td style="color:#ff6600;">$908.60</td>
-            <td>499</td>
-            <td>$1.82</td>
-            <td>11</td>
-            <td>$82.60</td>
-            <td>89,306</td>
-            <td>479,375</td>
-        </tr>
-        
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        
-        <div class="dashboard-block" style="margin-bottom: 2rem;">
-            <div class="block-header" style="border-left: 4px solid #64748b; padding-left: 1rem;">
-                <div>
-                    <h2 style="color:#64748b; font-size: 1.25rem;">
-                        <i class="fa-solid fa-folder-open"></i> Nhóm Khác
-                    </h2>
-                    <span style="font-size: 0.82rem; color: var(--text-muted); font-weight: 500;">
-                        Tiền tố campaign: <code>Khác</code> (1 chiến dịch)
-                    </span>
+
+            <!-- BLOCK 2: PIVOT TABLE GIỮA EVENT VÀ 3 NHÓM CHIẾN DỊCH -->
+            <div class="dashboard-block">
+                <div class="block-header" style="border-left: 4px solid var(--primary); padding-left: 1rem;">
+                    <div>
+                        <h2><i class="fa-solid fa-table-cells" style="color:var(--primary);"></i> Ma Trận Pivot Table: Phân Bổ Event Theo 3 Nhóm Chiến Dịch</h2>
+                        <span style="font-size:0.82rem;color:var(--text-muted);font-weight:500;">Bảng tổng hợp tương quan giữa 10 Custom Events và 3 Nhóm Chiến Dịch Quảng Cáo</span>
+                    </div>
                 </div>
-                <div style="display: flex; gap: 12px; font-size: 0.88rem; font-weight: 600;">
-                    <span style="background: #f8fafc; color: #64748b; padding: 6px 12px; border-radius: 8px; border: 1px solid #64748b33;">
-                        Chi phí: $49.21
-                    </span>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr style="background-color: #f8fafc;">
+                                <th style="text-align:left;">Event Tên Sự Kiện</th>
+                                <th style="color:#8b5cf6;">Nhóm 1: App Install & KYC<br><span style="font-weight:400;font-size:0.75rem;">(Umoney_App-Install-KYC)</span></th>
+                                <th style="color:#0284c7;">Nhóm 2: Follower<br><span style="font-weight:400;font-size:0.75rem;">(Umoney_Followers)</span></th>
+                                <th style="color:#ff6600;">Nhóm 3: App Action<br><span style="font-weight:400;font-size:0.75rem;">(Umoney_App-Action)</span></th>
+                                <th>TỔNG CỘNG EVENT</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-weight:600; text-align:left; color:#8b5cf6;"><code>qr_success</code></td>
+                                <td style="color:#8b5cf6;">38,956</td>
+                                <td style="color:#0284c7;">8,657</td>
+                                <td style="font-weight:700; color:#ff6600;">168,809</td>
+                                <td style="font-weight:700;">216,422</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:600; text-align:left; color:#0284c7;"><code>topup_success</code></td>
+                                <td style="color:#8b5cf6;">7,464</td>
+                                <td style="color:#0284c7;">1,659</td>
+                                <td style="font-weight:700; color:#ff6600;">32,345</td>
+                                <td style="font-weight:700;">41,468</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:600; text-align:left; color:#10b981;"><code>transfer_umoney_success</code></td>
+                                <td style="color:#8b5cf6;">4,463</td>
+                                <td style="color:#0284c7;">992</td>
+                                <td style="font-weight:700; color:#ff6600;">19,340</td>
+                                <td style="font-weight:700;">24,795</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:600; text-align:left; color:#ff6600;"><code>buydata_request_success</code></td>
+                                <td style="color:#8b5cf6;">2,778</td>
+                                <td style="color:#0284c7;">617</td>
+                                <td style="font-weight:700; color:#ff6600;">12,039</td>
+                                <td style="font-weight:700;">15,434</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:600; text-align:left; color:#d97706;"><code>electric_success</code></td>
+                                <td style="color:#8b5cf6;">1,829</td>
+                                <td style="color:#0284c7;">406</td>
+                                <td style="font-weight:700; color:#ff6600;">7,927</td>
+                                <td style="font-weight:700;">10,162</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:600; text-align:left; color:#0284c7;"><code>internet_success</code></td>
+                                <td style="color:#8b5cf6;">1,322</td>
+                                <td style="color:#0284c7;">294</td>
+                                <td style="font-weight:700; color:#ff6600;">5,731</td>
+                                <td style="font-weight:700;">7,347</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:600; text-align:left; color:#64748b;"><code>bank_transfer_success</code></td>
+                                <td style="color:#8b5cf6;">773</td>
+                                <td style="color:#0284c7;">172</td>
+                                <td style="font-weight:700; color:#ff6600;">3,347</td>
+                                <td style="font-weight:700;">4,292</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:600; text-align:left; color:#64748b;"><code>cashin_success</code></td>
+                                <td style="color:#8b5cf6;">409</td>
+                                <td style="color:#0284c7;">91</td>
+                                <td style="font-weight:700; color:#ff6600;">1,774</td>
+                                <td style="font-weight:700;">2,274</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:600; text-align:left; color:#64748b;"><code>cashout_success</code></td>
+                                <td style="color:#8b5cf6;">85</td>
+                                <td style="color:#0284c7;">19</td>
+                                <td style="font-weight:700; color:#ff6600;">367</td>
+                                <td style="font-weight:700;">471</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:600; text-align:left; color:#64748b;"><code>transfer_non_umoney_success</code></td>
+                                <td style="color:#8b5cf6;">13</td>
+                                <td style="color:#0284c7;">3</td>
+                                <td style="font-weight:700; color:#ff6600;">56</td>
+                                <td style="font-weight:700;">72</td>
+                            </tr>
+                            <!-- Pivot Summary Totals -->
+                            <tr style="font-weight:700; background-color:#f8fafc; border-top:2px solid #e2e8f0; border-bottom:2px solid #e2e8f0;">
+                                <td style="text-align:left; color:var(--primary);">TỔNG CỘNG THEO NHÓM</td>
+                                <td style="color:#8b5cf6;">58,092 (18.0%)</td>
+                                <td style="color:#0284c7;">12,910 (4.0%)</td>
+                                <td style="color:#ff6600;">251,698 (78.0%)</td>
+                                <td style="color:var(--primary); font-size:1.05rem;">322,700 (100.0%)</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="text-align:left;">Tên Chiến Dịch</th>
-                            <th>Trạng Thái</th>
-                            <th>Chi Phí (USD)</th>
-                            <th>Lượt Tải APP</th>
-                            <th>CPI (USD)</th>
-                            <th>Lượt Thích</th>
-                            <th>Cost / Like</th>
-                            <th>App Actions</th>
-                            <th>Reach</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-            <tr>
-                <td style="font-weight:600; text-align:left;">Umoney_Other_TT _June</td>
-                <td><span class="badge status-success">ACTIVE</span></td>
-                <td style="font-weight:600; color:#64748b;">$49.21</td>
-                <td>0</td>
-                <td>$0.00</td>
-                <td>3</td>
-                <td>$16.40</td>
-                <td>0</td>
-                <td>10,458</td>
-            </tr>
-            
-                        
-        <tr style="font-weight:700; background-color:#f8fafc; border-top:2px solid #e2e8f0; border-bottom:2px solid #e2e8f0;">
-            <td style="text-align:left; color:#64748b;">TỔNG NHÓM KHÁC</td>
-            <td>-</td>
-            <td style="color:#64748b;">$49.21</td>
-            <td>0</td>
-            <td>$0.00</td>
-            <td>3</td>
-            <td>$16.40</td>
-            <td>0</td>
-            <td>10,458</td>
-        </tr>
-        
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        
         </div>
 
         <!-- TAB 3: INSIGHTS & MỤC TIÊU -->
@@ -1007,7 +960,7 @@
                 datasets: [
                     {
                         label: 'Chi phí (USD)',
-                        data: [503.99, 497.82, 479.8, 475.17, 536.19, 557.43, 545.62, 512.31, 526.15, 501.6, 478.22, 539.75, 550.3, 536.13, 518.95, 525.08, 541.51, 518.24, 570.09, 531.83, 524.08, 493.49, 501.67, 534.93, 484.55, 559.34, 455.14, null, null, null, null, null],
+                        data: [503.99, 497.82, 479.8, 475.17, 536.19, 557.43, 545.62, 512.31, 526.15, 501.6, 478.22, 539.75, 550.3, 536.13, 518.95, 525.08, 541.51, 518.24, 570.09, 531.83, 524.08, 493.49, 501.67, 534.93, 484.55, 559.34, 455.29, null, null, null, null, null],
                         borderColor: '#ff6600',
                         backgroundColor: 'rgba(255, 102, 0, 0.1)',
                         borderWidth: 2.5,
