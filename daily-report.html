@@ -283,7 +283,7 @@
             </div>
             <div class="timestamp">
                 <i class="fa-regular fa-clock"></i>
-                Cập nhật tự động: 28/07/2026 08:00:11
+                Cập nhật tự động: 28/07/2026 15:04:04
             </div>
         </header>
 
@@ -293,7 +293,7 @@
             <div class="kpi-card">
                 <div class="kpi-details">
                     <p>Chi phí hôm qua</p>
-                    <h2>$452.78</h2>
+                    <h2>$455.06</h2>
                     <span>Ngày 27/07/2026</span>
                 </div>
                 <div class="kpi-icon">
@@ -315,7 +315,7 @@
             <div class="kpi-card">
                 <div class="kpi-details">
                     <p>Lượt thích hôm qua</p>
-                    <h2>458</h2>
+                    <h2>459</h2>
                     <span>Ngày 27/07/2026</span>
                 </div>
                 <div class="kpi-icon">
@@ -367,20 +367,20 @@
                         
         <tr>
             <td style="font-weight:600; color:var(--text-main);">27/07/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$452.78</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$455.06</td>
             <td class="num-col">849</td>
-            <td class="num-col">458</td>
-            <td class="num-col">1,532,403</td>
-            <td class="num-col">674,905</td>
+            <td class="num-col">459</td>
+            <td class="num-col">1,539,649</td>
+            <td class="num-col">676,998</td>
             <td class="num-col">$0.04</td>
         </tr>
         
         <tr>
             <td style="font-weight:600; color:var(--text-main);">26/07/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$559.23</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$559.33</td>
             <td class="num-col">761</td>
-            <td class="num-col">529</td>
-            <td class="num-col">1,820,532</td>
+            <td class="num-col">530</td>
+            <td class="num-col">1,820,568</td>
             <td class="num-col">759,417</td>
             <td class="num-col">$0.04</td>
         </tr>
@@ -389,7 +389,7 @@
             <td style="font-weight:600; color:var(--text-main);">25/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$484.55</td>
             <td class="num-col">735</td>
-            <td class="num-col">411</td>
+            <td class="num-col">412</td>
             <td class="num-col">1,568,831</td>
             <td class="num-col">692,459</td>
             <td class="num-col">$0.04</td>
@@ -409,7 +409,7 @@
             <td style="font-weight:600; color:var(--text-main);">23/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$501.67</td>
             <td class="num-col">940</td>
-            <td class="num-col">470</td>
+            <td class="num-col">471</td>
             <td class="num-col">1,506,659</td>
             <td class="num-col">640,696</td>
             <td class="num-col">$0.04</td>
@@ -646,9 +646,9 @@
         const chartCtx = document.getElementById('dailyTrendChart').getContext('2d');
         
         const chartDates = ["01/07", "02/07", "03/07", "04/07", "05/07", "06/07", "07/07", "08/07", "09/07", "10/07", "11/07", "12/07", "13/07", "14/07", "15/07", "16/07", "17/07", "18/07", "19/07", "20/07", "21/07", "22/07", "23/07", "24/07", "25/07", "26/07", "27/07"];
-        const chartSpends = [503.99, 497.82, 479.8, 475.17, 536.19, 557.43, 545.62, 512.31, 526.15, 501.6, 478.22, 539.75, 550.3, 536.13, 518.95, 525.08, 541.51, 518.24, 570.09, 531.83, 524.08, 493.49, 501.67, 534.93, 484.55, 559.23, 452.78];
+        const chartSpends = [503.99, 497.82, 479.8, 475.17, 536.19, 557.43, 545.62, 512.31, 526.15, 501.6, 478.22, 539.75, 550.3, 536.13, 518.95, 525.08, 541.51, 518.24, 570.09, 531.83, 524.08, 493.49, 501.67, 534.93, 484.55, 559.33, 455.06];
         const chartInstalls = [975, 957, 879, 684, 888, 950, 945, 895, 949, 856, 885, 781, 889, 940, 881, 846, 848, 766, 770, 859, 960, 855, 940, 820, 735, 761, 849];
-        const chartLikes = [668, 610, 518, 449, 622, 632, 619, 604, 606, 569, 535, 593, 601, 620, 472, 516, 539, 486, 508, 599, 573, 479, 470, 489, 411, 529, 458];
+        const chartLikes = [668, 610, 518, 449, 622, 632, 619, 604, 606, 569, 535, 593, 601, 620, 472, 516, 539, 486, 508, 599, 573, 479, 471, 489, 412, 530, 459];
 
         new Chart(chartCtx, {
             type: 'bar',
@@ -796,8 +796,8 @@
     <script>
         (function() {
             const kycLabels   = ["01/07", "02/07", "03/07", "04/07", "05/07", "06/07", "07/07", "08/07", "09/07", "10/07", "11/07", "12/07", "13/07", "14/07", "15/07", "16/07", "17/07", "18/07", "19/07", "20/07", "21/07", "22/07", "23/07", "24/07", "25/07", "26/07", "27/07", "28/07", "29/07", "30/07", "31/07"];
-            const kycCurrent  = [834, 850, 821, 669, 738, 854, 828, 845, 791, 790, 694, 686, 702, 723, 683, 713, 693, 642, 620, 633, 718, 680, 754, 720, 607, 604, null, null, null, null, null];
-            const kycPrev     = [616, 652, 604, 554, 666, 557, 538, 554, 548, 583, 637, 734, 773, 686, 824, 831, 859, 905, 843, 778, 791, 953, null, 892, 859, 827, 696, 649, 903, 862, null];
+            const kycCurrent  = [127, 130, 109, 70, 38, 135, 123, 138, 76, 98, 28, 25, 60, 56, 62, 44, 51, 47, 44, 49, 67, 150, 126, 104, 94, 69, null, null, null, null, null];
+            const kycPrev     = [33, 43, 54, 38, 71, 42, 30, 42, 49, 66, 39, 45, 40, 34, 52, 58, 77, 98, 120, 82, 62, 138, 112, 134, 150, 150, 64, 26, 137, 106, null];
 
             if (!kycLabels.length) {
                 document.getElementById('kycChart').parentElement.innerHTML =
