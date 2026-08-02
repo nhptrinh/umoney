@@ -46,7 +46,7 @@
             flex-direction: column;
         }
 
-        /* Header Header Bar (NO COVER) */
+        /* Top Navbar (NO COVER) */
         .top-navbar {
             background-color: #ffffff;
             border-bottom: 1px solid var(--border);
@@ -153,7 +153,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Scorecards Grid (2 rows x 4 cols) */
+        /* Scorecards Grid */
         .scorecards-section {
             margin-bottom: 2rem;
         }
@@ -163,6 +163,13 @@
             grid-template-columns: repeat(4, 1fr);
             gap: 1.25rem;
             margin-bottom: 1.25rem;
+        }
+
+        .scorecards-row-5 {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.1rem;
+            margin-bottom: 1.5rem;
         }
 
         .card {
@@ -187,7 +194,7 @@
         }
 
         .card-title {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 600;
             color: var(--text-muted);
             text-transform: uppercase;
@@ -306,6 +313,17 @@
             white-space: nowrap;
         }
 
+        th.sortable-col {
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.15s;
+        }
+
+        th.sortable-col:hover {
+            background-color: #f1f5f9;
+            color: var(--primary);
+        }
+
         td {
             padding: 0.75rem 1rem;
             border-bottom: 1px solid var(--border);
@@ -331,12 +349,6 @@
         .badge.active { background-color: #ecfdf5; color: #047857; }
         .badge.paused { background-color: #fef2f2; color: #b91c1c; }
 
-        .badge.obj-badge { background-color: #f1f5f9; color: #475569; }
-        .badge.followers { background-color: #ecfdf5; color: #047857; }
-        .badge.kyc-app-install { background-color: #eff6ff; color: #1d4ed8; }
-        .badge.app-action { background-color: #fff7ed; color: #c2410c; }
-
-        /* Media Print & Responsive */
         @media print {
             html, body {
                 display: block !important;
@@ -347,6 +359,10 @@
             .top-navbar, .nav-tabs { display: none !important; }
             .tab-content { display: block !important; opacity: 1 !important; }
             .card, .chart-card, .table-container { break-inside: avoid; }
+        }
+
+        @media (max-width: 1200px) {
+            .scorecards-row-5 { grid-template-columns: repeat(3, 1fr); }
         }
 
         @media (max-width: 1024px) {
@@ -385,6 +401,9 @@
             </button>
             <button class="tab-btn" onclick="switchTab('tab-ads', this)">
                 <i class="fa-solid fa-rectangle-ad"></i> Tab 3. Hiệu Suất Nội Dung & Quảng Cáo
+            </button>
+            <button class="tab-btn" onclick="switchTab('tab-mom', this)">
+                <i class="fa-solid fa-code-compare"></i> Tab 4. Month over Month
             </button>
         </nav>
 
@@ -1283,26 +1302,21 @@
             <div class="table-container">
                 <div class="table-header-area">
                     <h3>Tab 3: Hiệu Suất Nội Dung & Quảng Cáo (Post/Ads Performance)</h3>
+                    <span style="font-size:0.8rem; color:var(--text-muted);"><i class="fa-solid fa-arrow-down-up-across-line"></i> Nhấp vào tiêu đề cột để sắp xếp</span>
                 </div>
                 <div style="overflow-x: auto;">
-                    <table>
+                    <table id="ads-perf-table">
                         <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Mã Ads Code</th>
+                                <th class="sortable-col" onclick="sortAdsTable(1, 'text')">Mã Ads Code <i class="fa-solid fa-sort"></i></th>
                                 <th style="text-align: center;">Thumbnail</th>
-                                <th class="num-col">Chi Phí (USD)</th>
-                                <th>Ads Objective</th>
-                                <th class="num-col">Like & Follow</th>
-                                <th class="num-col">App Installs</th>
-                                <th class="num-col">CPI</th>
-                                <th class="num-col">Cost/Like</th>
+                                <th class="num-col sortable-col" onclick="sortAdsTable(3, 'num')">Chi Phí (USD) <i class="fa-solid fa-sort"></i></th>
+                                <th class="num-col sortable-col" onclick="sortAdsTable(4, 'num')">App Installs <i class="fa-solid fa-sort"></i></th>
+                                <th class="num-col sortable-col" onclick="sortAdsTable(5, 'num')">CPI (USD) <i class="fa-solid fa-sort"></i></th>
+                                <th class="num-col sortable-col" onclick="sortAdsTable(6, 'num')">Like & Follow <i class="fa-solid fa-sort"></i></th>
+                                <th class="num-col">Cost/Like (USD)</th>
                                 <th class="num-col">App Activations</th>
-                                <th class="num-col">topup_success</th>
-                                <th class="num-col">buydata_success</th>
-                                <th class="num-col">Key Action</th>
-                                <th class="num-col">CPA</th>
-                                <th class="num-col">login_success</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -1312,16 +1326,10 @@
                         <td data-value="JuneA18"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">JuneA18</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120249157458790695.jpg" class="ad-thumbnail" alt="JuneA18 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120249157458790695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="22.71">$22.71</td>
-                        <td data-value="Call Green SM taxi and pay via QR Umoney"><span class="badge obj-badge call green sm taxi and pay via qr umoney">Call Green SM taxi and pay via QR Umoney</span></td>
                         <td class="num-col" data-value="0">0</td>
+                        <td class="num-col" data-value="0" style="font-weight:600; color:var(--primary);">-</td>
                         <td class="num-col" data-value="0">0</td>
                         <td class="num-col" data-value="0">-</td>
-                        <td class="num-col" data-value="0">-</td>
-                        <td class="num-col" data-value="0">0</td>
-                        <td class="num-col" data-value="0">0</td>
-                        <td class="num-col" data-value="0">0</td>
-                        <td class="num-col" data-value="0" style="font-weight:700;">-</td>
-                        <td class="num-col" data-value="0" style="font-weight:700; color:var(--primary);">-</td>
                         <td class="num-col" data-value="0">0</td>
                     </tr>
                 
@@ -1330,16 +1338,10 @@
                         <td data-value="JuneA17"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">JuneA17</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120249157810440695.jpg" class="ad-thumbnail" alt="JuneA17 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120249157810440695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="0.76">$0.76</td>
-                        <td data-value="Book a Lao Airlines flight today"><span class="badge obj-badge book a lao airlines flight today">Book a Lao Airlines flight today</span></td>
                         <td class="num-col" data-value="0">0</td>
+                        <td class="num-col" data-value="0" style="font-weight:600; color:var(--primary);">-</td>
                         <td class="num-col" data-value="0">0</td>
                         <td class="num-col" data-value="0">-</td>
-                        <td class="num-col" data-value="0">-</td>
-                        <td class="num-col" data-value="0">0</td>
-                        <td class="num-col" data-value="0">0</td>
-                        <td class="num-col" data-value="0">0</td>
-                        <td class="num-col" data-value="0" style="font-weight:700;">-</td>
-                        <td class="num-col" data-value="0" style="font-weight:700; color:var(--primary);">-</td>
                         <td class="num-col" data-value="0">0</td>
                     </tr>
                 
@@ -1348,17 +1350,11 @@
                         <td data-value="MayA05"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">MayA05</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120246937177680695.jpg" class="ad-thumbnail" alt="MayA05 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120246937177680695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="555.54">$555.54</td>
-                        <td data-value="Followers"><span class="badge obj-badge followers">Followers</span></td>
-                        <td class="num-col" data-value="5167">5,167</td>
                         <td class="num-col" data-value="1274">1,274</td>
-                        <td class="num-col" data-value="0.44">$0.44</td>
+                        <td class="num-col" data-value="0.44" style="font-weight:600; color:var(--primary);">$0.44</td>
+                        <td class="num-col" data-value="5167">5,167</td>
                         <td class="num-col" data-value="0.108">$0.108</td>
                         <td class="num-col" data-value="274893">274,893</td>
-                        <td class="num-col" data-value="2223">2,223</td>
-                        <td class="num-col" data-value="1227">1,227</td>
-                        <td class="num-col" data-value="3450" style="font-weight:700;">3,450</td>
-                        <td class="num-col" data-value="0.16" style="font-weight:700; color:var(--primary);">$0.16</td>
-                        <td class="num-col" data-value="75983">75,983</td>
                     </tr>
                 
                     <tr>
@@ -1366,17 +1362,11 @@
                         <td data-value="MayA08"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">MayA08</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120247285465780695.jpg" class="ad-thumbnail" alt="MayA08 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120247285465780695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="630.31">$630.31</td>
-                        <td data-value="App-Action"><span class="badge obj-badge app-action">App-Action</span></td>
-                        <td class="num-col" data-value="9">9</td>
                         <td class="num-col" data-value="405">405</td>
-                        <td class="num-col" data-value="1.56">$1.56</td>
+                        <td class="num-col" data-value="1.56" style="font-weight:600; color:var(--primary);">$1.56</td>
+                        <td class="num-col" data-value="9">9</td>
                         <td class="num-col" data-value="70.034">$70.034</td>
                         <td class="num-col" data-value="53678">53,678</td>
-                        <td class="num-col" data-value="638">638</td>
-                        <td class="num-col" data-value="311">311</td>
-                        <td class="num-col" data-value="949" style="font-weight:700;">949</td>
-                        <td class="num-col" data-value="0.66" style="font-weight:700; color:var(--primary);">$0.66</td>
-                        <td class="num-col" data-value="12696">12,696</td>
                     </tr>
                 
                     <tr>
@@ -1384,17 +1374,11 @@
                         <td data-value="MayA18"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">MayA18</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120247428328470695.jpg" class="ad-thumbnail" alt="MayA18 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120247428328470695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="1.67">$1.67</td>
-                        <td data-value="App-Action"><span class="badge obj-badge app-action">App-Action</span></td>
-                        <td class="num-col" data-value="1">1</td>
                         <td class="num-col" data-value="9">9</td>
-                        <td class="num-col" data-value="0.19">$0.19</td>
+                        <td class="num-col" data-value="0.19" style="font-weight:600; color:var(--primary);">$0.19</td>
+                        <td class="num-col" data-value="1">1</td>
                         <td class="num-col" data-value="1.67">$1.670</td>
                         <td class="num-col" data-value="3938">3,938</td>
-                        <td class="num-col" data-value="23">23</td>
-                        <td class="num-col" data-value="13">13</td>
-                        <td class="num-col" data-value="36" style="font-weight:700;">36</td>
-                        <td class="num-col" data-value="0.05" style="font-weight:700; color:var(--primary);">$0.05</td>
-                        <td class="num-col" data-value="1290">1,290</td>
                     </tr>
                 
                     <tr>
@@ -1402,17 +1386,11 @@
                         <td data-value="MayA07"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">MayA07</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120247428378750695.jpg" class="ad-thumbnail" alt="MayA07 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120247428378750695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="876.15">$876.15</td>
-                        <td data-value="App-Action"><span class="badge obj-badge app-action">App-Action</span></td>
-                        <td class="num-col" data-value="3195">3,195</td>
                         <td class="num-col" data-value="573">573</td>
-                        <td class="num-col" data-value="1.53">$1.53</td>
+                        <td class="num-col" data-value="1.53" style="font-weight:600; color:var(--primary);">$1.53</td>
+                        <td class="num-col" data-value="3195">3,195</td>
                         <td class="num-col" data-value="0.274">$0.274</td>
                         <td class="num-col" data-value="122115">122,115</td>
-                        <td class="num-col" data-value="1370">1,370</td>
-                        <td class="num-col" data-value="653">653</td>
-                        <td class="num-col" data-value="2023" style="font-weight:700;">2,023</td>
-                        <td class="num-col" data-value="0.43" style="font-weight:700; color:var(--primary);">$0.43</td>
-                        <td class="num-col" data-value="29420">29,420</td>
                     </tr>
                 
                     <tr>
@@ -1420,17 +1398,11 @@
                         <td data-value="MayA09"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">MayA09</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120247428451530695.jpg" class="ad-thumbnail" alt="MayA09 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120247428451530695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="539.63">$539.63</td>
-                        <td data-value="Followers"><span class="badge obj-badge followers">Followers</span></td>
-                        <td class="num-col" data-value="4359">4,359</td>
                         <td class="num-col" data-value="285">285</td>
-                        <td class="num-col" data-value="1.89">$1.89</td>
+                        <td class="num-col" data-value="1.89" style="font-weight:600; color:var(--primary);">$1.89</td>
+                        <td class="num-col" data-value="4359">4,359</td>
                         <td class="num-col" data-value="0.124">$0.124</td>
                         <td class="num-col" data-value="26476">26,476</td>
-                        <td class="num-col" data-value="345">345</td>
-                        <td class="num-col" data-value="155">155</td>
-                        <td class="num-col" data-value="500" style="font-weight:700;">500</td>
-                        <td class="num-col" data-value="1.08" style="font-weight:700; color:var(--primary);">$1.08</td>
-                        <td class="num-col" data-value="7009">7,009</td>
                     </tr>
                 
                     <tr>
@@ -1438,17 +1410,11 @@
                         <td data-value="MayA06"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">MayA06</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120248549632630695.jpg" class="ad-thumbnail" alt="MayA06 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120248549632630695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="1390.57">$1,390.57</td>
-                        <td data-value="Followers"><span class="badge obj-badge followers">Followers</span></td>
-                        <td class="num-col" data-value="3887">3,887</td>
                         <td class="num-col" data-value="2391">2,391</td>
-                        <td class="num-col" data-value="0.58">$0.58</td>
+                        <td class="num-col" data-value="0.58" style="font-weight:600; color:var(--primary);">$0.58</td>
+                        <td class="num-col" data-value="3887">3,887</td>
                         <td class="num-col" data-value="0.358">$0.358</td>
                         <td class="num-col" data-value="139522">139,522</td>
-                        <td class="num-col" data-value="2739">2,739</td>
-                        <td class="num-col" data-value="909">909</td>
-                        <td class="num-col" data-value="3648" style="font-weight:700;">3,648</td>
-                        <td class="num-col" data-value="0.38" style="font-weight:700; color:var(--primary);">$0.38</td>
-                        <td class="num-col" data-value="46033">46,033</td>
                     </tr>
                 
                     <tr>
@@ -1456,17 +1422,11 @@
                         <td data-value="MayA03"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">MayA03</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120248305096620695.jpg" class="ad-thumbnail" alt="MayA03 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120248305096620695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="463.83">$463.83</td>
-                        <td data-value="60K"><span class="badge obj-badge 60k">60K</span></td>
-                        <td class="num-col" data-value="12">12</td>
                         <td class="num-col" data-value="331">331</td>
-                        <td class="num-col" data-value="1.4">$1.40</td>
+                        <td class="num-col" data-value="1.4" style="font-weight:600; color:var(--primary);">$1.40</td>
+                        <td class="num-col" data-value="12">12</td>
                         <td class="num-col" data-value="38.652">$38.652</td>
                         <td class="num-col" data-value="67051">67,051</td>
-                        <td class="num-col" data-value="1356">1,356</td>
-                        <td class="num-col" data-value="418">418</td>
-                        <td class="num-col" data-value="1774" style="font-weight:700;">1,774</td>
-                        <td class="num-col" data-value="0.26" style="font-weight:700; color:var(--primary);">$0.26</td>
-                        <td class="num-col" data-value="17528">17,528</td>
                     </tr>
                 
                     <tr>
@@ -1474,17 +1434,11 @@
                         <td data-value="JunA11"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">JunA11</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120248307099310695.jpg" class="ad-thumbnail" alt="JunA11 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120248307099310695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="3636.68">$3,636.68</td>
-                        <td data-value="LAPNet"><span class="badge obj-badge lapnet">LAPNet</span></td>
-                        <td class="num-col" data-value="14">14</td>
                         <td class="num-col" data-value="7464">7,464</td>
-                        <td class="num-col" data-value="0.49">$0.49</td>
+                        <td class="num-col" data-value="0.49" style="font-weight:600; color:var(--primary);">$0.49</td>
+                        <td class="num-col" data-value="14">14</td>
                         <td class="num-col" data-value="259.763">$259.763</td>
                         <td class="num-col" data-value="9969">9,969</td>
-                        <td class="num-col" data-value="116">116</td>
-                        <td class="num-col" data-value="46">46</td>
-                        <td class="num-col" data-value="162" style="font-weight:700;">162</td>
-                        <td class="num-col" data-value="22.45" style="font-weight:700; color:var(--primary);">$22.45</td>
-                        <td class="num-col" data-value="3964">3,964</td>
                     </tr>
                 
                     <tr>
@@ -1492,17 +1446,11 @@
                         <td data-value="MayA01"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">MayA01</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120248549116440695.jpg" class="ad-thumbnail" alt="MayA01 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120248549116440695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="1434.4">$1,434.40</td>
-                        <td data-value="KYC-App-Install"><span class="badge obj-badge kyc-app-install">KYC-App-Install</span></td>
-                        <td class="num-col" data-value="8">8</td>
                         <td class="num-col" data-value="4107">4,107</td>
-                        <td class="num-col" data-value="0.35">$0.35</td>
+                        <td class="num-col" data-value="0.35" style="font-weight:600; color:var(--primary);">$0.35</td>
+                        <td class="num-col" data-value="8">8</td>
                         <td class="num-col" data-value="179.3">$179.300</td>
                         <td class="num-col" data-value="6893">6,893</td>
-                        <td class="num-col" data-value="33">33</td>
-                        <td class="num-col" data-value="17">17</td>
-                        <td class="num-col" data-value="50" style="font-weight:700;">50</td>
-                        <td class="num-col" data-value="28.69" style="font-weight:700; color:var(--primary);">$28.69</td>
-                        <td class="num-col" data-value="2393">2,393</td>
                     </tr>
                 
                     <tr>
@@ -1510,17 +1458,11 @@
                         <td data-value="JunA05"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">JunA05</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120248553067390695.jpg" class="ad-thumbnail" alt="JunA05 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120248553067390695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="42.78">$42.78</td>
-                        <td data-value="KYC-App-Install"><span class="badge obj-badge kyc-app-install">KYC-App-Install</span></td>
-                        <td class="num-col" data-value="0">0</td>
                         <td class="num-col" data-value="94">94</td>
-                        <td class="num-col" data-value="0.46">$0.46</td>
+                        <td class="num-col" data-value="0.46" style="font-weight:600; color:var(--primary);">$0.46</td>
+                        <td class="num-col" data-value="0">0</td>
                         <td class="num-col" data-value="0">-</td>
                         <td class="num-col" data-value="112">112</td>
-                        <td class="num-col" data-value="1">1</td>
-                        <td class="num-col" data-value="1">1</td>
-                        <td class="num-col" data-value="2" style="font-weight:700;">2</td>
-                        <td class="num-col" data-value="21.39" style="font-weight:700; color:var(--primary);">$21.39</td>
-                        <td class="num-col" data-value="48">48</td>
                     </tr>
                 
                     <tr>
@@ -1528,16 +1470,10 @@
                         <td data-value="JunA15"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">JunA15</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120248553459760695.jpg" class="ad-thumbnail" alt="JunA15 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120248553459760695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="3.17">$3.17</td>
-                        <td data-value="Book your Lao Airlines"><span class="badge obj-badge book your lao airlines">Book your Lao Airlines</span></td>
+                        <td class="num-col" data-value="0">0</td>
+                        <td class="num-col" data-value="0" style="font-weight:600; color:var(--primary);">-</td>
                         <td class="num-col" data-value="1">1</td>
-                        <td class="num-col" data-value="0">0</td>
-                        <td class="num-col" data-value="0">-</td>
                         <td class="num-col" data-value="3.17">$3.170</td>
-                        <td class="num-col" data-value="0">0</td>
-                        <td class="num-col" data-value="0">0</td>
-                        <td class="num-col" data-value="0">0</td>
-                        <td class="num-col" data-value="0" style="font-weight:700;">-</td>
-                        <td class="num-col" data-value="0" style="font-weight:700; color:var(--primary);">-</td>
                         <td class="num-col" data-value="0">0</td>
                     </tr>
                 
@@ -1546,17 +1482,11 @@
                         <td data-value="JunA16"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">JunA16</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120248553528740695.jpg" class="ad-thumbnail" alt="JunA16 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120248553528740695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="1971.09">$1,971.09</td>
-                        <td data-value="Change your water-electricity bill to data net for free"><span class="badge obj-badge change your water-electricity bill to data net for free">Change your water-electricity bill to data net for free</span></td>
-                        <td class="num-col" data-value="15">15</td>
                         <td class="num-col" data-value="3717">3,717</td>
-                        <td class="num-col" data-value="0.53">$0.53</td>
+                        <td class="num-col" data-value="0.53" style="font-weight:600; color:var(--primary);">$0.53</td>
+                        <td class="num-col" data-value="15">15</td>
                         <td class="num-col" data-value="131.406">$131.406</td>
                         <td class="num-col" data-value="6810">6,810</td>
-                        <td class="num-col" data-value="45">45</td>
-                        <td class="num-col" data-value="24">24</td>
-                        <td class="num-col" data-value="69" style="font-weight:700;">69</td>
-                        <td class="num-col" data-value="28.57" style="font-weight:700; color:var(--primary);">$28.57</td>
-                        <td class="num-col" data-value="2699">2,699</td>
                     </tr>
                 
                     <tr>
@@ -1564,17 +1494,11 @@
                         <td data-value="JunA21"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">JunA21</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120249428884950695.jpg" class="ad-thumbnail" alt="JunA21 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120249428884950695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="386.7">$386.70</td>
-                        <td data-value="KYC-App-Install"><span class="badge obj-badge kyc-app-install">KYC-App-Install</span></td>
-                        <td class="num-col" data-value="2">2</td>
                         <td class="num-col" data-value="894">894</td>
-                        <td class="num-col" data-value="0.43">$0.43</td>
+                        <td class="num-col" data-value="0.43" style="font-weight:600; color:var(--primary);">$0.43</td>
+                        <td class="num-col" data-value="2">2</td>
                         <td class="num-col" data-value="193.35">$193.350</td>
                         <td class="num-col" data-value="1197">1,197</td>
-                        <td class="num-col" data-value="9">9</td>
-                        <td class="num-col" data-value="2">2</td>
-                        <td class="num-col" data-value="11" style="font-weight:700;">11</td>
-                        <td class="num-col" data-value="35.15" style="font-weight:700; color:var(--primary);">$35.15</td>
-                        <td class="num-col" data-value="355">355</td>
                     </tr>
                 
                     <tr>
@@ -1582,17 +1506,11 @@
                         <td data-value="JunA23"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">JunA23</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120249910127940695.jpg" class="ad-thumbnail" alt="JunA23 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120249910127940695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="307.56">$307.56</td>
-                        <td data-value="Just confirm your identity and earn free money"><span class="badge obj-badge just confirm your identity and earn free money">Just confirm your identity and earn free money</span></td>
-                        <td class="num-col" data-value="0">0</td>
                         <td class="num-col" data-value="716">716</td>
-                        <td class="num-col" data-value="0.43">$0.43</td>
+                        <td class="num-col" data-value="0.43" style="font-weight:600; color:var(--primary);">$0.43</td>
+                        <td class="num-col" data-value="0">0</td>
                         <td class="num-col" data-value="0">-</td>
                         <td class="num-col" data-value="1297">1,297</td>
-                        <td class="num-col" data-value="2">2</td>
-                        <td class="num-col" data-value="4">4</td>
-                        <td class="num-col" data-value="6" style="font-weight:700;">6</td>
-                        <td class="num-col" data-value="51.26" style="font-weight:700; color:var(--primary);">$51.26</td>
-                        <td class="num-col" data-value="490">490</td>
                     </tr>
                 
                     <tr>
@@ -1600,17 +1518,11 @@
                         <td data-value="JunA24"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">JunA24</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120249910291150695.jpg" class="ad-thumbnail" alt="JunA24 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120249910291150695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="382.27">$382.27</td>
-                        <td data-value="Who is a transfer line must have Umoney"><span class="badge obj-badge who is a transfer line must have umoney">Who is a transfer line must have Umoney</span></td>
-                        <td class="num-col" data-value="0">0</td>
                         <td class="num-col" data-value="1020">1,020</td>
-                        <td class="num-col" data-value="0.37">$0.37</td>
+                        <td class="num-col" data-value="0.37" style="font-weight:600; color:var(--primary);">$0.37</td>
+                        <td class="num-col" data-value="0">0</td>
                         <td class="num-col" data-value="0">-</td>
                         <td class="num-col" data-value="953">953</td>
-                        <td class="num-col" data-value="23">23</td>
-                        <td class="num-col" data-value="9">9</td>
-                        <td class="num-col" data-value="32" style="font-weight:700;">32</td>
-                        <td class="num-col" data-value="11.95" style="font-weight:700; color:var(--primary);">$11.95</td>
-                        <td class="num-col" data-value="286">286</td>
                     </tr>
                 
                     <tr>
@@ -1618,17 +1530,11 @@
                         <td data-value="JulA01"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">JulA01</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120250096096260695.jpg" class="ad-thumbnail" alt="JulA01 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120250096096260695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="794.52">$794.52</td>
-                        <td data-value="X2 internet or get 10%"><span class="badge obj-badge x2 internet or get 10%">X2 internet or get 10%</span></td>
-                        <td class="num-col" data-value="8">8</td>
                         <td class="num-col" data-value="521">521</td>
-                        <td class="num-col" data-value="1.52">$1.52</td>
+                        <td class="num-col" data-value="1.52" style="font-weight:600; color:var(--primary);">$1.52</td>
+                        <td class="num-col" data-value="8">8</td>
                         <td class="num-col" data-value="99.315">$99.315</td>
                         <td class="num-col" data-value="87651">87,651</td>
-                        <td class="num-col" data-value="2088">2,088</td>
-                        <td class="num-col" data-value="546">546</td>
-                        <td class="num-col" data-value="2634" style="font-weight:700;">2,634</td>
-                        <td class="num-col" data-value="0.3" style="font-weight:700; color:var(--primary);">$0.30</td>
-                        <td class="num-col" data-value="23972">23,972</td>
                     </tr>
                 
                     <tr>
@@ -1636,17 +1542,11 @@
                         <td data-value="JulA02"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">JulA02</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120250097448570695.jpg" class="ad-thumbnail" alt="JulA02 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120250097448570695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="295.12">$295.12</td>
-                        <td data-value="App-Action"><span class="badge obj-badge app-action">App-Action</span></td>
-                        <td class="num-col" data-value="4">4</td>
                         <td class="num-col" data-value="197">197</td>
-                        <td class="num-col" data-value="1.5">$1.50</td>
+                        <td class="num-col" data-value="1.5" style="font-weight:600; color:var(--primary);">$1.50</td>
+                        <td class="num-col" data-value="4">4</td>
                         <td class="num-col" data-value="73.78">$73.780</td>
                         <td class="num-col" data-value="26843">26,843</td>
-                        <td class="num-col" data-value="326">326</td>
-                        <td class="num-col" data-value="127">127</td>
-                        <td class="num-col" data-value="453" style="font-weight:700;">453</td>
-                        <td class="num-col" data-value="0.65" style="font-weight:700; color:var(--primary);">$0.65</td>
-                        <td class="num-col" data-value="6116">6,116</td>
                     </tr>
                 
                     <tr>
@@ -1654,17 +1554,11 @@
                         <td data-value="JulA03"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">JulA03</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120250155034410695.jpg" class="ad-thumbnail" alt="JulA03 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120250155034410695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="566.95">$566.95</td>
-                        <td data-value="KYC-App-Install"><span class="badge obj-badge kyc-app-install">KYC-App-Install</span></td>
-                        <td class="num-col" data-value="1">1</td>
                         <td class="num-col" data-value="1501">1,501</td>
-                        <td class="num-col" data-value="0.38">$0.38</td>
+                        <td class="num-col" data-value="0.38" style="font-weight:600; color:var(--primary);">$0.38</td>
+                        <td class="num-col" data-value="1">1</td>
                         <td class="num-col" data-value="566.95">$566.950</td>
                         <td class="num-col" data-value="2998">2,998</td>
-                        <td class="num-col" data-value="14">14</td>
-                        <td class="num-col" data-value="10">10</td>
-                        <td class="num-col" data-value="24" style="font-weight:700;">24</td>
-                        <td class="num-col" data-value="23.62" style="font-weight:700; color:var(--primary);">$23.62</td>
-                        <td class="num-col" data-value="975">975</td>
                     </tr>
                 
                     <tr>
@@ -1672,17 +1566,11 @@
                         <td data-value="JulA04"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">JulA04</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120250242914120695.jpg" class="ad-thumbnail" alt="JulA04 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120250242914120695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="629.6">$629.60</td>
-                        <td data-value="Paying off is always worth it"><span class="badge obj-badge paying off is always worth it">Paying off is always worth it</span></td>
-                        <td class="num-col" data-value="4">4</td>
                         <td class="num-col" data-value="212">212</td>
-                        <td class="num-col" data-value="2.97">$2.97</td>
+                        <td class="num-col" data-value="2.97" style="font-weight:600; color:var(--primary);">$2.97</td>
+                        <td class="num-col" data-value="4">4</td>
                         <td class="num-col" data-value="157.4">$157.400</td>
                         <td class="num-col" data-value="32070">32,070</td>
-                        <td class="num-col" data-value="450">450</td>
-                        <td class="num-col" data-value="142">142</td>
-                        <td class="num-col" data-value="592" style="font-weight:700;">592</td>
-                        <td class="num-col" data-value="1.06" style="font-weight:700; color:var(--primary);">$1.06</td>
-                        <td class="num-col" data-value="5997">5,997</td>
                     </tr>
                 
                     <tr>
@@ -1690,17 +1578,11 @@
                         <td data-value="JulA05"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">JulA05</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120250242936010695.jpg" class="ad-thumbnail" alt="JulA05 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120250242936010695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="113.97">$113.97</td>
-                        <td data-value="Free 2.5 gb of hot net"><span class="badge obj-badge free 2.5 gb of hot net">Free 2.5 gb of hot net</span></td>
-                        <td class="num-col" data-value="0">0</td>
                         <td class="num-col" data-value="66">66</td>
-                        <td class="num-col" data-value="1.73">$1.73</td>
+                        <td class="num-col" data-value="1.73" style="font-weight:600; color:var(--primary);">$1.73</td>
+                        <td class="num-col" data-value="0">0</td>
                         <td class="num-col" data-value="0">-</td>
                         <td class="num-col" data-value="15315">15,315</td>
-                        <td class="num-col" data-value="478">478</td>
-                        <td class="num-col" data-value="128">128</td>
-                        <td class="num-col" data-value="606" style="font-weight:700;">606</td>
-                        <td class="num-col" data-value="0.19" style="font-weight:700; color:var(--primary);">$0.19</td>
-                        <td class="num-col" data-value="6707">6,707</td>
                     </tr>
                 
                     <tr>
@@ -1708,17 +1590,11 @@
                         <td data-value="JulA06"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">JulA06</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120250537623980695.jpg" class="ad-thumbnail" alt="JulA06 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120250537623980695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="3.52">$3.52</td>
-                        <td data-value="Call Green SM today"><span class="badge obj-badge call green sm today">Call Green SM today</span></td>
                         <td class="num-col" data-value="0">0</td>
-                        <td class="num-col" data-value="0">0</td>
-                        <td class="num-col" data-value="0">-</td>
-                        <td class="num-col" data-value="0">-</td>
+                        <td class="num-col" data-value="0" style="font-weight:600; color:var(--primary);">-</td>
                         <td class="num-col" data-value="0">0</td>
                         <td class="num-col" data-value="0">-</td>
-                        <td class="num-col" data-value="0">-</td>
-                        <td class="num-col" data-value="0" style="font-weight:700;">-</td>
-                        <td class="num-col" data-value="0" style="font-weight:700; color:var(--primary);">-</td>
-                        <td class="num-col" data-value="0">-</td>
+                        <td class="num-col" data-value="0">0</td>
                     </tr>
                 
                     <tr>
@@ -1726,16 +1602,10 @@
                         <td data-value="JulA07"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">JulA07</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120250537647450695.jpg" class="ad-thumbnail" alt="JulA07 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120250537647450695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="34.66">$34.66</td>
-                        <td data-value="Pay the bill and get free internet 2.5 GB immediately"><span class="badge obj-badge pay the bill and get free internet 2.5 gb immediately">Pay the bill and get free internet 2.5 GB immediately</span></td>
+                        <td class="num-col" data-value="0">0</td>
+                        <td class="num-col" data-value="0" style="font-weight:600; color:var(--primary);">-</td>
                         <td class="num-col" data-value="1">1</td>
-                        <td class="num-col" data-value="0">0</td>
-                        <td class="num-col" data-value="0">-</td>
                         <td class="num-col" data-value="34.66">$34.660</td>
-                        <td class="num-col" data-value="0">0</td>
-                        <td class="num-col" data-value="0">0</td>
-                        <td class="num-col" data-value="0">0</td>
-                        <td class="num-col" data-value="0" style="font-weight:700;">-</td>
-                        <td class="num-col" data-value="0" style="font-weight:700; color:var(--primary);">-</td>
                         <td class="num-col" data-value="0">0</td>
                     </tr>
                 
@@ -1744,17 +1614,11 @@
                         <td data-value="JulA08"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">JulA08</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120250537766230695.jpg" class="ad-thumbnail" alt="JulA08 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120250537766230695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="34.35">$34.35</td>
-                        <td data-value="Buy Data via Umoney today, get more data X2"><span class="badge obj-badge buy data via umoney today, get more data x2">Buy Data via Umoney today, get more data X2</span></td>
-                        <td class="num-col" data-value="1">1</td>
                         <td class="num-col" data-value="37">37</td>
-                        <td class="num-col" data-value="0.93">$0.93</td>
+                        <td class="num-col" data-value="0.93" style="font-weight:600; color:var(--primary);">$0.93</td>
+                        <td class="num-col" data-value="1">1</td>
                         <td class="num-col" data-value="34.35">$34.350</td>
                         <td class="num-col" data-value="7501">7,501</td>
-                        <td class="num-col" data-value="0">-</td>
-                        <td class="num-col" data-value="0">-</td>
-                        <td class="num-col" data-value="0" style="font-weight:700;">-</td>
-                        <td class="num-col" data-value="0" style="font-weight:700; color:var(--primary);">-</td>
-                        <td class="num-col" data-value="0">-</td>
                     </tr>
                 
                     <tr>
@@ -1762,17 +1626,11 @@
                         <td data-value="JulA010"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">JulA010</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120250537785940695.jpg" class="ad-thumbnail" alt="JulA010 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120250537785940695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="19.22">$19.22</td>
-                        <td data-value="Transfer now, free 0 kip and get instant prize"><span class="badge obj-badge transfer now, free 0 kip and get instant prize">Transfer now, free 0 kip and get instant prize</span></td>
-                        <td class="num-col" data-value="1">1</td>
                         <td class="num-col" data-value="12">12</td>
-                        <td class="num-col" data-value="1.6">$1.60</td>
+                        <td class="num-col" data-value="1.6" style="font-weight:600; color:var(--primary);">$1.60</td>
+                        <td class="num-col" data-value="1">1</td>
                         <td class="num-col" data-value="19.22">$19.220</td>
                         <td class="num-col" data-value="3372">3,372</td>
-                        <td class="num-col" data-value="0">-</td>
-                        <td class="num-col" data-value="0">-</td>
-                        <td class="num-col" data-value="0" style="font-weight:700;">-</td>
-                        <td class="num-col" data-value="0" style="font-weight:700; color:var(--primary);">-</td>
-                        <td class="num-col" data-value="0">-</td>
                     </tr>
                 
                     <tr>
@@ -1780,17 +1638,11 @@
                         <td data-value="JulA09"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">JulA09</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120250537820100695.jpg" class="ad-thumbnail" alt="JulA09 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120250537820100695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="485.29">$485.29</td>
-                        <td data-value="Get 20,000 kip immediately"><span class="badge obj-badge get 20,000 kip immediately">Get 20,000 kip immediately</span></td>
-                        <td class="num-col" data-value="2">2</td>
                         <td class="num-col" data-value="797">797</td>
-                        <td class="num-col" data-value="0.61">$0.61</td>
+                        <td class="num-col" data-value="0.61" style="font-weight:600; color:var(--primary);">$0.61</td>
+                        <td class="num-col" data-value="2">2</td>
                         <td class="num-col" data-value="242.645">$242.645</td>
                         <td class="num-col" data-value="1389">1,389</td>
-                        <td class="num-col" data-value="0">-</td>
-                        <td class="num-col" data-value="0">-</td>
-                        <td class="num-col" data-value="0" style="font-weight:700;">-</td>
-                        <td class="num-col" data-value="0" style="font-weight:700; color:var(--primary);">-</td>
-                        <td class="num-col" data-value="0">-</td>
                     </tr>
                 
                     <tr>
@@ -1798,17 +1650,11 @@
                         <td data-value="JulA10"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">JulA10</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120250678563660695.jpg" class="ad-thumbnail" alt="JulA10 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120250678563660695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="106.79">$106.79</td>
-                        <td data-value="Buy Data via Umoney today"><span class="badge obj-badge buy data via umoney today">Buy Data via Umoney today</span></td>
-                        <td class="num-col" data-value="4">4</td>
                         <td class="num-col" data-value="58">58</td>
-                        <td class="num-col" data-value="1.84">$1.84</td>
+                        <td class="num-col" data-value="1.84" style="font-weight:600; color:var(--primary);">$1.84</td>
+                        <td class="num-col" data-value="4">4</td>
                         <td class="num-col" data-value="26.698">$26.698</td>
                         <td class="num-col" data-value="16671">16,671</td>
-                        <td class="num-col" data-value="0">-</td>
-                        <td class="num-col" data-value="0">-</td>
-                        <td class="num-col" data-value="0" style="font-weight:700;">-</td>
-                        <td class="num-col" data-value="0" style="font-weight:700; color:var(--primary);">-</td>
-                        <td class="num-col" data-value="0">-</td>
                     </tr>
                 
                     <tr>
@@ -1816,21 +1662,165 @@
                         <td data-value="JulA011"><span class="code-badge" style="background:#fff3eb; color:#ff6600; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid #ffe0cc;">JulA011</span></td>
                         <td style="text-align: center;"><img src="https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120250678587310695.jpg" class="ad-thumbnail" alt="JulA011 Thumbnail" onclick="openLightbox('https://storage.googleapis.com/umoney-ads-dashboard-491202/thumbnails/120250678587310695.jpg')" style="width:48px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer;"></td>
                         <td class="num-col" style="font-weight:700;" data-value="21.03">$21.03</td>
-                        <td data-value="Transfer now, free now"><span class="badge obj-badge transfer now, free now">Transfer now, free now</span></td>
-                        <td class="num-col" data-value="1">1</td>
                         <td class="num-col" data-value="11">11</td>
-                        <td class="num-col" data-value="1.91">$1.91</td>
+                        <td class="num-col" data-value="1.91" style="font-weight:600; color:var(--primary);">$1.91</td>
+                        <td class="num-col" data-value="1">1</td>
                         <td class="num-col" data-value="21.03">$21.030</td>
                         <td class="num-col" data-value="4664">4,664</td>
-                        <td class="num-col" data-value="0">-</td>
-                        <td class="num-col" data-value="0">-</td>
-                        <td class="num-col" data-value="0" style="font-weight:700;">-</td>
-                        <td class="num-col" data-value="0" style="font-weight:700; color:var(--primary);">-</td>
-                        <td class="num-col" data-value="0">-</td>
                     </tr>
                 
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: MONTH OVER MONTH (MoM) -->
+        <section id="tab-mom" class="tab-content">
+            <div class="section-title" style="margin-bottom:1.25rem;">
+                <i class="fa-solid fa-calendar-check" style="color:var(--primary);"></i>
+                <span>So Sánh Hiệu Suất Month-over-Month (Tháng 07/2026 vs Tháng 06/2026)</span>
+            </div>
+
+            <!-- 5 MoM SCORECARDS -->
+            <div class="scorecards-row-5">
+                
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">Chi Phí Trong Tháng (USD)</span>
+                <div class="card-icon icon-orange"><i class="fa-solid fa-dollar-sign"></i></div>
+            </div>
+            <div class="card-value">$15,750.84</div>
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-top:0.25rem;">
+                <span style="font-size:0.8rem; color:var(--text-muted);">Tháng 6: $14,788.91</span>
+                <span class="trend-badge" style="background:#fef2f2; color:#ef4444; font-weight:600; padding:2px 8px; border-radius:10px; font-size:0.75rem;"><i class="fa-solid fa-arrow-trend-up"></i> +6.5%</span>
+            </div>
+        </div>
+    
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">App Install (Lượt tải)</span>
+                <div class="card-icon icon-blue"><i class="fa-solid fa-download"></i></div>
+            </div>
+            <div class="card-value">26,698</div>
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-top:0.25rem;">
+                <span style="font-size:0.8rem; color:var(--text-muted);">Tháng 6: 24,960</span>
+                <span class="trend-badge" style="background:#ecfdf5; color:#10b981; font-weight:600; padding:2px 8px; border-radius:10px; font-size:0.75rem;"><i class="fa-solid fa-arrow-trend-up"></i> +7.0%</span>
+            </div>
+        </div>
+    
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">Facebook Like</span>
+                <div class="card-icon icon-green"><i class="fa-solid fa-thumbs-up"></i></div>
+            </div>
+            <div class="card-value">16,697</div>
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-top:0.25rem;">
+                <span style="font-size:0.8rem; color:var(--text-muted);">Tháng 6: 18,384</span>
+                <span class="trend-badge" style="background:#fef2f2; color:#ef4444; font-weight:600; padding:2px 8px; border-radius:10px; font-size:0.75rem;"><i class="fa-solid fa-arrow-trend-down"></i> -9.2%</span>
+            </div>
+        </div>
+    
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">Register Online</span>
+                <div class="card-icon icon-orange"><i class="fa-solid fa-user-plus"></i></div>
+            </div>
+            <div class="card-value">22,411</div>
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-top:0.25rem;">
+                <span style="font-size:0.8rem; color:var(--text-muted);">Tháng 6: 22,228</span>
+                <span class="trend-badge" style="background:#ecfdf5; color:#10b981; font-weight:600; padding:2px 8px; border-radius:10px; font-size:0.75rem;"><i class="fa-solid fa-arrow-trend-up"></i> +0.8%</span>
+            </div>
+        </div>
+    
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">New KYC Online</span>
+                <div class="card-icon icon-purple"><i class="fa-solid fa-id-card"></i></div>
+            </div>
+            <div class="card-value">2,561</div>
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-top:0.25rem;">
+                <span style="font-size:0.8rem; color:var(--text-muted);">Tháng 6: 2,192</span>
+                <span class="trend-badge" style="background:#ecfdf5; color:#10b981; font-weight:600; padding:2px 8px; border-radius:10px; font-size:0.75rem;"><i class="fa-solid fa-arrow-trend-up"></i> +16.8%</span>
+            </div>
+        </div>
+    
+            </div>
+
+            <!-- MOM COMPARISON TABLE -->
+            <div class="table-container" style="margin-top:1.5rem;">
+                <div class="table-header-area">
+                    <h3>Bảng Tổng Hợp Chi Tiết So Sánh Month-over-Month</h3>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Chỉ Số KPI Key</th>
+                                <th class="num-col">Tháng 06/2026 (Kỳ Trước)</th>
+                                <th class="num-col">Tháng 07/2026 (Kỳ Này)</th>
+                                <th class="num-col">Chênh Lệch (+/-)</th>
+                                <th class="num-col">% Thay Đổi</th>
+                                <th>Đánh Giá Hiệu Suất</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+        <tr>
+            <td><strong>Chi Phí Trong Tháng (USD)</strong></td>
+            <td class="num-col">$14,788.91</td>
+            <td class="num-col" style="font-weight:700;">$15,750.84</td>
+            <td class="num-col" style="font-weight:600; color:#ef4444;">$+961.93</td>
+            <td class="num-col"><span class="trend-badge" style="background:#fef2f2; color:#ef4444; font-weight:600; padding:2px 8px; border-radius:10px; font-size:0.75rem;"><i class="fa-solid fa-arrow-trend-up"></i> +6.5%</span></td>
+            <td><span class="badge" style="background:#fef2f2; color:#ef4444;">Chi phí tăng</span></td>
+        </tr>
+    
+        <tr>
+            <td><strong>App Install (Lượt tải)</strong></td>
+            <td class="num-col">24,960</td>
+            <td class="num-col" style="font-weight:700;">26,698</td>
+            <td class="num-col" style="font-weight:600; color:#10b981;">+1,738</td>
+            <td class="num-col"><span class="trend-badge" style="background:#ecfdf5; color:#10b981; font-weight:600; padding:2px 8px; border-radius:10px; font-size:0.75rem;"><i class="fa-solid fa-arrow-trend-up"></i> +7.0%</span></td>
+            <td><span class="badge" style="background:#ecfdf5; color:#10b981;">Tăng trưởng tốt</span></td>
+        </tr>
+    
+        <tr>
+            <td><strong>Facebook Like</strong></td>
+            <td class="num-col">18,384</td>
+            <td class="num-col" style="font-weight:700;">16,697</td>
+            <td class="num-col" style="font-weight:600; color:#ef4444;">-1,687</td>
+            <td class="num-col"><span class="trend-badge" style="background:#fef2f2; color:#ef4444; font-weight:600; padding:2px 8px; border-radius:10px; font-size:0.75rem;"><i class="fa-solid fa-arrow-trend-down"></i> -9.2%</span></td>
+            <td><span class="badge" style="background:#fef2f2; color:#ef4444;">Sụt giảm</span></td>
+        </tr>
+    
+        <tr>
+            <td><strong>Register Online</strong></td>
+            <td class="num-col">22,228</td>
+            <td class="num-col" style="font-weight:700;">22,411</td>
+            <td class="num-col" style="font-weight:600; color:#10b981;">+183</td>
+            <td class="num-col"><span class="trend-badge" style="background:#ecfdf5; color:#10b981; font-weight:600; padding:2px 8px; border-radius:10px; font-size:0.75rem;"><i class="fa-solid fa-arrow-trend-up"></i> +0.8%</span></td>
+            <td><span class="badge" style="background:#ecfdf5; color:#10b981;">Tăng trưởng tốt</span></td>
+        </tr>
+    
+        <tr>
+            <td><strong>New KYC Online</strong></td>
+            <td class="num-col">2,192</td>
+            <td class="num-col" style="font-weight:700;">2,561</td>
+            <td class="num-col" style="font-weight:600; color:#10b981;">+369</td>
+            <td class="num-col"><span class="trend-badge" style="background:#ecfdf5; color:#10b981; font-weight:600; padding:2px 8px; border-radius:10px; font-size:0.75rem;"><i class="fa-solid fa-arrow-trend-up"></i> +16.8%</span></td>
+            <td><span class="badge" style="background:#ecfdf5; color:#10b981;">Tăng trưởng tốt</span></td>
+        </tr>
+    
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- MOM COMPARISON CHART -->
+            <div class="chart-card" style="margin-top:1.5rem;">
+                <h3>Biểu Đồ Trực Quan So Sánh Month-over-Month (Tháng 07 vs Tháng 06)</h3>
+                <div class="chart-container" style="height:360px;">
+                    <canvas id="chart_mom_bar"></canvas>
                 </div>
             </div>
         </section>
@@ -1854,6 +1844,39 @@
         function openLightbox(url) {
             document.getElementById('lightbox-img').src = url;
             document.getElementById('lightbox').style.display = 'flex';
+        }
+
+        // Sorting for Tab 3 Ads Performance Table
+        let sortAsc = {};
+        function sortAdsTable(colIdx, type) {
+            const table = document.getElementById('ads-perf-table');
+            const tbody = table.querySelector('tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            
+            sortAsc[colIdx] = !sortAsc[colIdx];
+            const isAsc = sortAsc[colIdx];
+
+            rows.sort((a, b) => {
+                let aCell = a.children[colIdx];
+                let bCell = b.children[colIdx];
+                if (!aCell || !bCell) return 0;
+
+                let aVal = aCell.getAttribute('data-value') !== null ? aCell.getAttribute('data-value') : aCell.innerText.trim();
+                let bVal = bCell.getAttribute('data-value') !== null ? bCell.getAttribute('data-value') : bCell.innerText.trim();
+
+                if (type === 'num') {
+                    aVal = parseFloat(aVal) || 0;
+                    bVal = parseFloat(bVal) || 0;
+                    return isAsc ? aVal - bVal : bVal - aVal;
+                } else {
+                    return isAsc ? String(aVal).localeCompare(String(bVal)) : String(bVal).localeCompare(String(aVal));
+                }
+            });
+
+            rows.forEach((row, idx) => {
+                row.children[0].innerText = idx + 1;
+                tbody.appendChild(row);
+            });
         }
 
         // Data arrays from Python
@@ -2024,6 +2047,35 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false
+                }
+            });
+
+            // --- Biểu đồ Cột Month over Month (Tab 4) ---
+            new Chart(document.getElementById('chart_mom_bar'), {
+                type: 'bar',
+                data: {
+                    labels: ['Chi Phí ($)', 'App Installs', 'Facebook Likes', 'Register Online', 'New KYC Online'],
+                    datasets: [
+                        {
+                            label: 'Tháng 06/2026 (Kỳ trước)',
+                            data: [14788.91, 24960, 18384, 22228, 2192],
+                            backgroundColor: '#cbd5e1',
+                            borderRadius: 6
+                        },
+                        {
+                            label: 'Tháng 07/2026 (Kỳ này)',
+                            data: [15750.84, 26698, 16697, 22411, 2561],
+                            backgroundColor: '#ff6600',
+                            borderRadius: 6
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
                 }
             });
 
