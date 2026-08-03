@@ -283,7 +283,7 @@
             </div>
             <div class="timestamp">
                 <i class="fa-regular fa-clock"></i>
-                Cập nhật tự động: 03/08/2026 12:19:31
+                Cập nhật tự động: 03/08/2026 13:24:22
             </div>
         </header>
 
@@ -293,7 +293,7 @@
             <div class="kpi-card">
                 <div class="kpi-details">
                     <p>Chi phí hôm qua</p>
-                    <h2>$539.11</h2>
+                    <h2>$539.58</h2>
                     <span>Ngày 02/08/2026</span>
                 </div>
                 <div class="kpi-icon">
@@ -315,7 +315,7 @@
             <div class="kpi-card">
                 <div class="kpi-details">
                     <p>Lượt thích hôm qua</p>
-                    <h2>500</h2>
+                    <h2>501</h2>
                     <span>Ngày 02/08/2026</span>
                 </div>
                 <div class="kpi-icon">
@@ -334,14 +334,25 @@
             </div>
         </div>
 
-        <!-- KYC CHART BLOCK -->
+        <!-- REGISTER ONLINE 30D CHART BLOCK -->
         <div class="dashboard-block">
             <div class="block-header">
-                <h2><i class="fa-solid fa-id-card" style="color:#8b5cf6;"></i> New KYC Online — Tháng 7 vs Tháng Trước</h2>
-                <span style="font-size:0.82rem;color:var(--text-muted);font-weight:500;">Nguồn: Google Sheets · Focus</span>
+                <h2><i class="fa-solid fa-user-plus" style="color:#0284c7;"></i> Register Online — Last 30D (Hiện tại vs Kỳ trước)</h2>
+                <span style="font-size:0.82rem;color:var(--text-muted);font-weight:500;">Nguồn: Google Sheets · Index</span>
             </div>
             <div class="chart-container">
-                <canvas id="kycChart"></canvas>
+                <canvas id="reg30dChart"></canvas>
+            </div>
+        </div>
+
+        <!-- NEW KYC ONLINE 30D CHART BLOCK -->
+        <div class="dashboard-block">
+            <div class="block-header">
+                <h2><i class="fa-solid fa-id-card" style="color:#8b5cf6;"></i> New KYC Online — Last 30D (Hiện tại vs Kỳ trước)</h2>
+                <span style="font-size:0.82rem;color:var(--text-muted);font-weight:500;">Nguồn: Google Sheets · Index</span>
+            </div>
+            <div class="chart-container">
+                <canvas id="kyc30dChart"></canvas>
             </div>
         </div>
 
@@ -367,20 +378,20 @@
                         
         <tr>
             <td style="font-weight:600; color:var(--text-main);">02/08/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$539.11</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$539.58</td>
             <td class="num-col">870</td>
-            <td class="num-col">500</td>
-            <td class="num-col">1,885,130</td>
+            <td class="num-col">501</td>
+            <td class="num-col">1,886,793</td>
             <td class="num-col">804,986</td>
             <td class="num-col">$0.04</td>
         </tr>
         
         <tr>
             <td style="font-weight:600; color:var(--text-main);">01/08/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$633.66</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$633.67</td>
             <td class="num-col">989</td>
-            <td class="num-col">525</td>
-            <td class="num-col">2,211,676</td>
+            <td class="num-col">526</td>
+            <td class="num-col">2,211,679</td>
             <td class="num-col">966,486</td>
             <td class="num-col">$0.04</td>
         </tr>
@@ -676,9 +687,9 @@
         const chartCtx = document.getElementById('dailyTrendChart').getContext('2d');
         
         const chartDates = ["04/07", "05/07", "06/07", "07/07", "08/07", "09/07", "10/07", "11/07", "12/07", "13/07", "14/07", "15/07", "16/07", "17/07", "18/07", "19/07", "20/07", "21/07", "22/07", "23/07", "24/07", "25/07", "26/07", "27/07", "28/07", "29/07", "30/07", "31/07", "01/08", "02/08"];
-        const chartSpends = [475.17, 536.19, 557.43, 545.62, 512.31, 526.15, 501.6, 478.22, 539.75, 550.3, 536.13, 518.95, 525.08, 541.51, 518.24, 570.09, 531.83, 524.08, 493.49, 501.67, 534.93, 484.55, 559.38, 456.17, 328.69, 320.33, 520.8, 580.57, 633.66, 539.11];
+        const chartSpends = [475.17, 536.19, 557.43, 545.62, 512.31, 526.15, 501.6, 478.22, 539.75, 550.3, 536.13, 518.95, 525.08, 541.51, 518.24, 570.09, 531.83, 524.08, 493.49, 501.67, 534.93, 484.55, 559.38, 456.17, 328.69, 320.33, 520.8, 580.57, 633.67, 539.58];
         const chartInstalls = [684, 888, 950, 945, 895, 949, 856, 885, 781, 889, 940, 881, 846, 848, 766, 770, 859, 960, 855, 940, 820, 735, 761, 849, 635, 726, 924, 1050, 989, 870];
-        const chartLikes = [449, 622, 632, 619, 604, 606, 569, 535, 593, 601, 620, 472, 516, 539, 486, 508, 599, 573, 479, 472, 491, 417, 536, 471, 441, 549, 436, 471, 525, 500];
+        const chartLikes = [449, 622, 632, 619, 604, 606, 569, 535, 593, 601, 620, 472, 516, 539, 486, 508, 599, 573, 479, 472, 491, 417, 536, 471, 441, 549, 436, 471, 526, 501];
 
         new Chart(chartCtx, {
             type: 'bar',
@@ -822,27 +833,125 @@
         });
     </script>
 
-    <!-- KYC Chart Script -->
+    <!-- Register Online 30D Chart Script -->
     <script>
         (function() {
-            const kycLabels   = ["01/07", "02/07", "03/07", "04/07", "05/07", "06/07", "07/07", "08/07", "09/07", "10/07", "11/07", "12/07", "13/07", "14/07", "15/07", "16/07", "17/07", "18/07", "19/07", "20/07", "21/07", "22/07", "23/07", "24/07", "25/07", "26/07", "27/07", "28/07", "29/07", "30/07", "31/07", "", ""];
-            const kycCurrent  = [127, 130, 109, 70, 38, 135, 123, 138, 76, 98, 28, 25, 60, 56, 62, 44, 51, 47, 44, 49, 67, 150, 126, 104, 94, 69, 61, 75, 95, 87, 123, 2561, null];
-            const kycPrev     = [33, 43, 54, 38, 71, 42, 30, 42, 49, 66, 39, 45, 40, 34, 52, 58, 77, 98, 120, 82, 62, 138, 112, 134, 150, 150, 64, 26, 137, 106, null, 2192, 1168339416];
+            const labels = ["04/07", "05/07", "06/07", "07/07", "08/07", "09/07", "10/07", "11/07", "12/07", "13/07", "14/07", "15/07", "16/07", "17/07", "18/07", "19/07", "20/07", "21/07", "22/07", "23/07", "24/07", "25/07", "26/07", "27/07", "28/07", "29/07", "30/07", "31/07", "01/08", "02/08"];
+            const regCurrent = [669, 738, 854, 828, 845, 791, 790, 694, 686, 702, 723, 683, 713, 693, 642, 620, 633, 718, 680, 754, 720, 607, 604, 693, 670, 678, 722, 756, 724, 657];
+            const regPrev = [554, 666, 557, 538, 554, 548, 583, 637, 734, 773, 686, 824, 831, 859, 905, 843, 778, 791, 953, 1054, 892, 859, 827, 696, 649, 903, 862, null, 834, 850];
 
-            if (!kycLabels.length) {
-                document.getElementById('kycChart').parentElement.innerHTML =
+            if (!labels.length) {
+                document.getElementById('reg30dChart').parentElement.innerHTML =
+                    '<p style="text-align:center;color:#94a3b8;padding:2rem;">Chưa có dữ liệu Register Online.</p>';
+                return;
+            }
+
+            const ctx = document.getElementById('reg30dChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Register Online (30 ngày gần đây)',
+                            data: regCurrent,
+                            borderColor: '#0284c7',
+                            backgroundColor: 'rgba(2, 132, 199, 0.12)',
+                            borderWidth: 3,
+                            pointBackgroundColor: '#0284c7',
+                            pointRadius: 4,
+                            pointHoverRadius: 7,
+                            tension: 0.4,
+                            fill: true,
+                            spanGaps: true
+                        },
+                        {
+                            label: 'Register Online (Kỳ trước)',
+                            data: regPrev,
+                            borderColor: '#38bdf8',
+                            backgroundColor: 'rgba(56, 189, 248, 0.08)',
+                            borderWidth: 2,
+                            borderDash: [6, 4],
+                            pointBackgroundColor: '#38bdf8',
+                            pointRadius: 3,
+                            pointHoverRadius: 6,
+                            tension: 0.4,
+                            fill: true,
+                            spanGaps: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                boxWidth: 14,
+                                usePointStyle: true,
+                                font: { family: 'Outfit', weight: 600, size: 12 }
+                            }
+                        },
+                        tooltip: {
+                            padding: 12,
+                            backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                            titleFont: { family: 'Outfit', weight: 700, size: 13 },
+                            bodyFont: { family: 'Outfit', size: 13 },
+                            callbacks: {
+                                label: function(context) {
+                                    const v = context.raw;
+                                    return ' ' + (context.dataset.label || '') + ': ' + (v !== null ? v.toLocaleString() : 'N/A');
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { display: false },
+                            ticks: { font: { family: 'Outfit', weight: 500, size: 11 } }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Số Register Online',
+                                font: { family: 'Outfit', weight: 600, size: 12 }
+                            },
+                            grid: { color: '#e2e8f0' },
+                            ticks: { font: { family: 'Outfit', size: 11 } }
+                        }
+                    }
+                }
+            });
+        })();
+    </script>
+
+    <!-- New KYC Online 30D Chart Script -->
+    <script>
+        (function() {
+            const labels = ["04/07", "05/07", "06/07", "07/07", "08/07", "09/07", "10/07", "11/07", "12/07", "13/07", "14/07", "15/07", "16/07", "17/07", "18/07", "19/07", "20/07", "21/07", "22/07", "23/07", "24/07", "25/07", "26/07", "27/07", "28/07", "29/07", "30/07", "31/07", "01/08", "02/08"];
+            const kycCurrent = [70, 38, 135, 123, 138, 76, 98, 28, 25, 60, 56, 62, 44, 51, 47, 44, 49, 67, 150, 126, 104, 94, 69, 61, 75, 95, 87, 123, 112, 103];
+            const kycPrev = [38, 71, 42, 30, 42, 49, 66, 39, 45, 40, 34, 52, 58, 77, 98, 120, 82, 62, 138, 112, 134, 150, 150, 64, 26, 137, 106, null, 127, 130];
+
+            if (!labels.length) {
+                document.getElementById('kyc30dChart').parentElement.innerHTML =
                     '<p style="text-align:center;color:#94a3b8;padding:2rem;">Chưa có dữ liệu KYC.</p>';
                 return;
             }
 
-            const kycCtx = document.getElementById('kycChart').getContext('2d');
-            new Chart(kycCtx, {
+            const ctx = document.getElementById('kyc30dChart').getContext('2d');
+            new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: kycLabels,
+                    labels: labels,
                     datasets: [
                         {
-                            label: 'New KYC Tháng 7',
+                            label: 'New KYC Online (30 ngày gần đây)',
                             data: kycCurrent,
                             borderColor: '#8b5cf6',
                             backgroundColor: 'rgba(139, 92, 246, 0.12)',
@@ -855,7 +964,7 @@
                             spanGaps: true
                         },
                         {
-                            label: 'New KYC Tháng Trước',
+                            label: 'New KYC Online (Kỳ trước)',
                             data: kycPrev,
                             borderColor: '#c4b5fd',
                             backgroundColor: 'rgba(196, 181, 253, 0.08)',
@@ -908,7 +1017,7 @@
                             beginAtZero: true,
                             title: {
                                 display: true,
-                                text: 'Số New KYC',
+                                text: 'Số New KYC Online',
                                 font: { family: 'Outfit', weight: 600, size: 12 }
                             },
                             grid: { color: '#e2e8f0' },
