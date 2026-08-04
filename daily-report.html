@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Báo cáo Quảng cáo Daily - Umoney</title>
+    <title>Báo cáo Quảng cáo Daily - Umoney Performance Dashboard</title>
     <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -22,6 +25,8 @@
             --border: #e2e8f0;
             --success: #10b981;
             --info: #0284c7;
+            --purple: #8b5cf6;
+            --amber: #f59e0b;
         }
 
         * {
@@ -35,22 +40,98 @@
             background-color: var(--bg-dark);
             color: var(--text-main);
             min-height: 100vh;
-            padding: 2rem;
             display: flex;
             flex-direction: column;
-            align-items: center;
         }
 
-        .container {
+        /* Navbar & Header */
+        .top-navbar {
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .brand-logos {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo-umoney {
+            height: 32px;
+        }
+
+        .divider-line {
+            height: 20px;
+            width: 1px;
+            background-color: var(--border);
+        }
+
+        .brand-subtitle {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .report-select {
+            padding: 6px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background-color: #ffffff;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-main);
+            cursor: pointer;
+            outline: none;
+        }
+
+        .report-select:hover {
+            border-color: var(--primary);
+        }
+
+        .download-pdf-btn {
+            background-color: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.2s ease;
+        }
+
+        .download-pdf-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .main-container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 2rem;
             display: flex;
             flex-direction: column;
             gap: 2rem;
         }
 
-        /* Header block */
-        header {
+        .header-banner {
             background: linear-gradient(135deg, #ff6600, #ff8533);
             color: white;
             padding: 2rem 2.5rem;
@@ -61,20 +142,6 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 1.5rem;
-        }
-
-        .logo-title {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .logo-title img {
-            height: 50px;
-            background: white;
-            padding: 6px;
-            border-radius: 12px;
-            object-fit: contain;
         }
 
         .title-area h1 {
@@ -89,116 +156,146 @@
             margin-top: 4px;
         }
 
-        .timestamp {
+        .date-badge {
             background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
             padding: 0.6rem 1.2rem;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            backdrop-filter: blur(4px);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
             border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* KPI Scorecards Grid */
+        .kpi-section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.75rem;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        /* KPI Grid */
         .kpi-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
         }
 
         .kpi-card {
-            background-color: var(--bg-card);
+            background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 1.75rem;
+            border-radius: 14px;
+            padding: 1.25rem;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: space-between;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .kpi-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.06);
         }
 
-        .kpi-details p {
-            font-size: 0.9rem;
+        .kpi-card-spend { border-top: 4px solid var(--primary); }
+        .kpi-card-installs { border-top: 4px solid var(--success); }
+        .kpi-card-likes { border-top: 4px solid var(--info); }
+        .kpi-card-yesterday { border-top: 4px solid #6366f1; }
+        .kpi-card-reg { border-top: 4px solid var(--amber); }
+        .kpi-card-kyc { border-top: 4px solid var(--purple); }
+        .kpi-card-psgd { border-top: 4px solid var(--info); }
+        .kpi-card-actions { border-top: 4px solid #ec4899; }
+
+        .kpi-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .kpi-title {
+            font-size: 0.85rem;
+            font-weight: 600;
             color: var(--text-muted);
-            font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        .kpi-details h2 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-top: 6px;
-            color: var(--text-main);
-            letter-spacing: -0.5px;
-        }
-
-        .kpi-details span {
-            font-size: 0.8rem;
-            color: var(--primary);
-            background: var(--primary-light);
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-weight: 600;
-            margin-top: 8px;
-            display: inline-block;
-        }
-
         .kpi-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 14px;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.6rem;
+            font-size: 1.1rem;
         }
 
-        .kpi-card:nth-child(1) .kpi-icon {
-            background-color: #fff7ed;
-            color: var(--primary);
+        .kpi-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin: 0.5rem 0 0.25rem 0;
+            letter-spacing: -0.5px;
         }
 
-        .kpi-card:nth-child(2) .kpi-icon {
+        .kpi-subtitle {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        .trend-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 20px;
+            margin-top: 8px;
+        }
+
+        .trend-badge.positive {
             background-color: #ecfdf5;
-            color: var(--success);
+            color: #047857;
         }
 
-        .kpi-card:nth-child(3) .kpi-icon {
-            background-color: #f0f9ff;
-            color: var(--info);
+        .trend-badge.negative {
+            background-color: #fef2f2;
+            color: #b91c1c;
+        }
+
+        .trend-badge.neutral {
+            background-color: #f1f5f9;
+            color: #64748b;
         }
 
         /* Dashboard Block */
         .dashboard-block {
-            background-color: var(--bg-card);
+            background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+            width: 100%;
         }
 
         .block-header {
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
         .block-header h2 {
-            font-size: 1.3rem;
-            font-weight: 600;
+            font-size: 1.15rem;
+            font-weight: 700;
             color: var(--text-main);
             display: flex;
             align-items: center;
@@ -207,39 +304,37 @@
 
         .chart-container {
             position: relative;
-            height: 400px;
+            height: 400px !important;
             width: 100%;
         }
 
-        /* Table formatting */
+        /* Table */
         .table-wrapper {
             overflow-x: auto;
-            margin-top: 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             text-align: left;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         th {
             background-color: #f8fafc;
             color: var(--text-muted);
             font-weight: 600;
-            padding: 1rem 1.25rem;
-            border-bottom: 2px solid var(--border);
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 0.5px;
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
         }
 
         td {
-            padding: 1rem 1.25rem;
+            padding: 0.85rem 1rem;
             border-bottom: 1px solid var(--border);
-            color: #334155;
-            vertical-align: middle;
+            white-space: nowrap;
         }
 
         tr:last-child td {
@@ -247,97 +342,184 @@
         }
 
         tr:hover td {
-            background-color: #fafafa;
+            background-color: #f8fafc;
         }
 
         .num-col {
             text-align: right;
+            font-feature-settings: "tnum";
         }
 
-        @media (max-width: 768px) {
-            body {
-                padding: 1rem;
-            }
-            header {
-                padding: 1.5rem;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .timestamp {
-                align-self: stretch;
-                justify-content: center;
-            }
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            padding: 1.5rem;
+            border-top: 1px solid var(--border);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- HEADER -->
-        <header>
-            <div class="logo-title">
-                <img src="logo-umoney.png" alt="Umoney Logo">
-                <div class="title-area">
-                    <h1>Báo cáo Quảng cáo Daily</h1>
-                    <p>Chiến dịch tiếp thị số kênh Meta Ads - Thương hiệu Umoney</p>
-                </div>
-            </div>
-            <div class="timestamp">
-                <i class="fa-regular fa-clock"></i>
-                Cập nhật tự động: 04/08/2026 08:59:32
-            </div>
-        </header>
 
-        <!-- KPI CARD CAROUSEL/GRID -->
-        <div class="kpi-grid">
-            <!-- CARD 1 -->
-            <div class="kpi-card">
-                <div class="kpi-details">
-                    <p>Chi phí hôm qua</p>
-                    <h2>$466.69</h2>
-                    <span>Ngày 03/08/2026</span>
-                </div>
-                <div class="kpi-icon">
-                    <i class="fa-solid fa-hand-holding-dollar"></i>
-                </div>
+    <!-- Top Navigation Bar -->
+    <div class="top-navbar">
+        <div class="brand-logos">
+            <img src="logo-umoney.png" class="brand-logo-umoney" alt="Umoney Logo">
+            <span class="divider-line"></span>
+            <span class="brand-subtitle">Daily Performance Dashboard</span>
+        </div>
+
+        <div class="nav-controls">
+            <select class="report-select" onchange="if(this.value) window.location.href=this.value;">
+                <option value="daily-report.html" selected>⚡ Báo Cáo Daily</option>
+                <option value="weekly-report.html">📊 Báo Cáo Tuần</option>
+                <option value="jul-report-v2.html">📅 Báo Cáo Tháng 7</option>
+                <option value="jun-report.html">📅 Báo Cáo Tháng 6</option>
+                <option value="h1-report/index.html">📈 Báo Cáo H1 (6 Tháng)</option>
+                <option value="30d/index.html">🔄 Báo Cáo 30D (Dynamic)</option>
+                <option value="logs.html">📋 Nhật Ký Hệ Thống</option>
+            </select>
+            <button onclick="window.print()" class="download-pdf-btn">
+                <i class="fa-solid fa-file-pdf"></i> Tải PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Header Banner -->
+        <div class="header-banner">
+            <div class="title-area">
+                <h1>Báo Cáo Quảng Cáo Daily Umoney</h1>
+                <p>Khách hàng: <strong>Umoney (Unitel - Laos)</strong> | Cập nhật tự động hàng ngày</p>
             </div>
-            <!-- CARD 2 -->
-            <div class="kpi-card">
-                <div class="kpi-details">
-                    <p>Lượt tải app hôm qua</p>
-                    <h2>985</h2>
-                    <span>Ngày 03/08/2026</span>
-                </div>
-                <div class="kpi-icon">
-                    <i class="fa-solid fa-mobile-screen-button"></i>
-                </div>
+            <div class="date-badge">
+                <i class="fa-solid fa-calendar-days"></i> Khoảng thời gian (30D): <strong>2026-07-05 — 2026-08-03</strong>
             </div>
-            <!-- CARD 3 -->
-            <div class="kpi-card">
-                <div class="kpi-details">
-                    <p>Lượt thích hôm qua</p>
-                    <h2>428</h2>
-                    <span>Ngày 03/08/2026</span>
+        </div>
+
+        <!-- Section 1: 8 Score Cards Grid -->
+        <div>
+            <div class="kpi-section-title">
+                <i class="fa-solid fa-gauge-high" style="color:var(--primary);"></i> Chỉ Số Tổng Quan 30 Ngày Gần Nhất
+            </div>
+            <div class="kpi-grid">
+                <!-- Card 1: Total Spend -->
+                <div class="kpi-card kpi-card-spend">
+                    <div class="kpi-header">
+                        <span class="kpi-title">Tổng Chi Phí (30D)</span>
+                        <div class="kpi-icon" style="background-color:var(--primary-light); color:var(--primary);">
+                            <i class="fa-solid fa-hand-holding-dollar"></i>
+                        </div>
+                    </div>
+                    <div class="kpi-value">$15,435.98</div>
+                    <div class="kpi-subtitle">Chi tiêu Meta Ads 30 ngày</div>
                 </div>
-                <div class="kpi-icon">
-                    <i class="fa-regular fa-thumbs-up"></i>
+
+                <!-- Card 2: App Installs -->
+                <div class="kpi-card kpi-card-installs">
+                    <div class="kpi-header">
+                        <span class="kpi-title">Lượt Tải App (30D)</span>
+                        <div class="kpi-icon" style="background-color:#ecfdf5; color:var(--success);">
+                            <i class="fa-solid fa-download"></i>
+                        </div>
+                    </div>
+                    <div class="kpi-value">26,047</div>
+                    <div class="kpi-subtitle">CPI trung bình: <strong>$0.59</strong></div>
+                </div>
+
+                <!-- Card 3: FB Likes -->
+                <div class="kpi-card kpi-card-likes">
+                    <div class="kpi-header">
+                        <span class="kpi-title">Lượt Thích FB (30D)</span>
+                        <div class="kpi-icon" style="background-color:#e0f2fe; color:var(--info);">
+                            <i class="fa-solid fa-thumbs-up"></i>
+                        </div>
+                    </div>
+                    <div class="kpi-value">15,918</div>
+                    <div class="kpi-subtitle">Cost/Like trung bình: <strong>$0.97</strong></div>
+                </div>
+
+                <!-- Card 4: Yesterday Summary -->
+                <div class="kpi-card kpi-card-yesterday">
+                    <div class="kpi-header">
+                        <span class="kpi-title">Hôm Qua (03/08/2026)</span>
+                        <div class="kpi-icon" style="background-color:#e0e7ff; color:#6366f1;">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                        </div>
+                    </div>
+                    <div class="kpi-value">$466.74</div>
+                    <div class="kpi-subtitle">985 Installs · 428 Likes</div>
+                </div>
+
+                <!-- Card 5: Register Online -->
+                <div class="kpi-card kpi-card-reg">
+                    <div class="kpi-header">
+                        <span class="kpi-title" style="color:#d97706;">Register Online (30D)</span>
+                        <div class="kpi-icon" style="background-color:#fef3c7; color:var(--amber);">
+                            <i class="fa-solid fa-user-plus"></i>
+                        </div>
+                    </div>
+                    <div class="kpi-value" style="color:#d97706;">20,618</div>
+                    <div><span class="trend-badge negative"><i class="fa-solid fa-arrow-trend-down"></i> -7.6% so với kỳ trước</span></div>
+                </div>
+
+                <!-- Card 6: New KYC Online -->
+                <div class="kpi-card kpi-card-kyc">
+                    <div class="kpi-header">
+                        <span class="kpi-title" style="color:#7c3aed;">New KYC Online (30D)</span>
+                        <div class="kpi-icon" style="background-color:#f3e8ff; color:var(--purple);">
+                            <i class="fa-solid fa-id-card"></i>
+                        </div>
+                    </div>
+                    <div class="kpi-value" style="color:#7c3aed;">2,340</div>
+                    <div><span class="trend-badge negative"><i class="fa-solid fa-arrow-trend-down"></i> -2.1% so với kỳ trước</span></div>
+                </div>
+
+                <!-- Card 7: TB Mới PSGD -->
+                <div class="kpi-card kpi-card-psgd">
+                    <div class="kpi-header">
+                        <span class="kpi-title" style="color:#0369a1;">TB Mới PSGD (30D)</span>
+                        <div class="kpi-icon" style="background-color:#e0f2fe; color:#0284c7;">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                    </div>
+                    <div class="kpi-value" style="color:#0369a1;">2,525</div>
+                    <div><span class="trend-badge negative"><i class="fa-solid fa-arrow-trend-down"></i> -10.0% so với kỳ trước</span></div>
+                </div>
+
+                <!-- Card 8: Overall Status -->
+                <div class="kpi-card kpi-card-actions">
+                    <div class="kpi-header">
+                        <span class="kpi-title">Trạng Thái Hệ Thống</span>
+                        <div class="kpi-icon" style="background-color:#fce7f3; color:#ec4899;">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                    </div>
+                    <div class="kpi-value" style="font-size:1.3rem; color:#047857;">Tự Động Active</div>
+                    <div class="kpi-subtitle">Nguồn: Meta Ads API & Google Sheets</div>
                 </div>
             </div>
         </div>
 
-        <!-- CHART BLOCK -->
+        <!-- Section 2: 4 Main 30D Trend Charts -->
+        
+        <!-- Chart 1: Daily Spend & Installs -->
         <div class="dashboard-block">
             <div class="block-header">
-                <h2><i class="fa-solid fa-chart-line" style="color:var(--primary);"></i> Biểu Đồ Xu Hướng Hàng Ngày (2026-07-05 - 2026-08-03)</h2>
+                <h2><i class="fa-solid fa-chart-line" style="color:var(--primary);"></i> 1. Chi Phí & Lượt Tải App Hàng Ngày (30D)</h2>
+                <span style="font-size:0.82rem;color:var(--text-muted);font-weight:500;">Nguồn: Meta Ads API</span>
             </div>
             <div class="chart-container">
-                <canvas id="dailyTrendChart"></canvas>
+                <canvas id="spendInstallsChart"></canvas>
             </div>
         </div>
 
-        <!-- REGISTER ONLINE 30D CHART BLOCK -->
+        <!-- Chart 2: Register Online 30D -->
         <div class="dashboard-block">
             <div class="block-header">
-                <h2><i class="fa-solid fa-user-plus" style="color:#0284c7;"></i> Register Online — Last 30D (Hiện tại vs Kỳ trước)</h2>
+                <h2><i class="fa-solid fa-user-plus" style="color:var(--amber);"></i> 2. Register Online — 30D (Hiện tại vs Kỳ trước)</h2>
                 <span style="font-size:0.82rem;color:var(--text-muted);font-weight:500;">Nguồn: Google Sheets · Index</span>
             </div>
             <div class="chart-container">
@@ -345,10 +527,10 @@
             </div>
         </div>
 
-        <!-- NEW KYC ONLINE 30D CHART BLOCK -->
+        <!-- Chart 3: New KYC Online 30D -->
         <div class="dashboard-block">
             <div class="block-header">
-                <h2><i class="fa-solid fa-id-card" style="color:#8b5cf6;"></i> New KYC Online — Last 30D (Hiện tại vs Kỳ trước)</h2>
+                <h2><i class="fa-solid fa-id-card" style="color:var(--purple);"></i> 3. New KYC Online — 30D (Hiện tại vs Kỳ trước)</h2>
                 <span style="font-size:0.82rem;color:var(--text-muted);font-weight:500;">Nguồn: Google Sheets · Index</span>
             </div>
             <div class="chart-container">
@@ -356,38 +538,50 @@
             </div>
         </div>
 
-        <!-- TABLE BLOCK -->
+        <!-- Chart 4: TB Mới PSGD 30D -->
         <div class="dashboard-block">
             <div class="block-header">
-                <h2><i class="fa-solid fa-table" style="color:var(--primary);"></i> Bảng Số Liệu Chi Tiết Hàng Ngày</h2>
+                <h2><i class="fa-solid fa-users" style="color:#0284c7;"></i> 4. TB Mới PSGD — 30D (Hiện tại vs Kỳ trước)</h2>
+                <span style="font-size:0.82rem;color:var(--text-muted);font-weight:500;">Nguồn: Google Sheets · Index</span>
+            </div>
+            <div class="chart-container">
+                <canvas id="psgd30dChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Section 3: Daily Table Block -->
+        <div class="dashboard-block">
+            <div class="block-header">
+                <h2><i class="fa-solid fa-table" style="color:var(--primary);"></i> Bảng Số Liệu Chi Tiết Hàng Ngày (2026-07-05 - 2026-08-03)</h2>
+                <span style="font-size:0.82rem;color:var(--text-muted);font-weight:500;">Sắp xếp: Mới nhất đến cũ nhất</span>
             </div>
             <div class="table-wrapper">
                 <table>
                     <thead>
                         <tr>
-                            <th>Ngày</th>
-                            <th class="num-col">Chi phí (USD)</th>
-                            <th class="num-col">Lượt tải App</th>
-                            <th class="num-col">Lượt thích FB</th>
-                            <th class="num-col">Lượt hiển thị</th>
-                            <th class="num-col">Tiếp cận</th>
+                            <th style="text-align:left;">Ngày</th>
+                            <th class="num-col">Chi Phí (USD)</th>
+                            <th class="num-col">Lượt Tải App</th>
+                            <th class="num-col">Lượt Thích FB</th>
+                            <th class="num-col">Lượt Hiển Thị</th>
+                            <th class="num-col">Tiếp Cận</th>
                             <th class="num-col">CPC (USD)</th>
                         </tr>
                     </thead>
                     <tbody>
                         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">03/08/2026</td>
-            <td class="num-col" style="font-weight:600; color:var(--primary);">$466.69</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">03/08/2026</td>
+            <td class="num-col" style="font-weight:600; color:var(--primary);">$466.74</td>
             <td class="num-col">985</td>
             <td class="num-col">428</td>
-            <td class="num-col">1,710,882</td>
+            <td class="num-col">1,711,036</td>
             <td class="num-col">786,967</td>
             <td class="num-col">$0.05</td>
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">02/08/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">02/08/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$541.49</td>
             <td class="num-col">870</td>
             <td class="num-col">506</td>
@@ -397,7 +591,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">01/08/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">01/08/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$633.69</td>
             <td class="num-col">989</td>
             <td class="num-col">526</td>
@@ -407,7 +601,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">31/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">31/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$580.57</td>
             <td class="num-col">1,050</td>
             <td class="num-col">471</td>
@@ -417,7 +611,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">30/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">30/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$520.80</td>
             <td class="num-col">924</td>
             <td class="num-col">436</td>
@@ -427,7 +621,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">29/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">29/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$320.33</td>
             <td class="num-col">726</td>
             <td class="num-col">550</td>
@@ -437,7 +631,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">28/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">28/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$328.69</td>
             <td class="num-col">635</td>
             <td class="num-col">441</td>
@@ -447,7 +641,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">27/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">27/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$456.17</td>
             <td class="num-col">849</td>
             <td class="num-col">471</td>
@@ -457,7 +651,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">26/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">26/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$559.38</td>
             <td class="num-col">761</td>
             <td class="num-col">536</td>
@@ -467,7 +661,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">25/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">25/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$484.55</td>
             <td class="num-col">735</td>
             <td class="num-col">417</td>
@@ -477,7 +671,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">24/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">24/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$534.93</td>
             <td class="num-col">820</td>
             <td class="num-col">491</td>
@@ -487,7 +681,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">23/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">23/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$501.67</td>
             <td class="num-col">940</td>
             <td class="num-col">472</td>
@@ -497,7 +691,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">22/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">22/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$493.49</td>
             <td class="num-col">855</td>
             <td class="num-col">479</td>
@@ -507,7 +701,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">21/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">21/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$524.08</td>
             <td class="num-col">960</td>
             <td class="num-col">573</td>
@@ -517,7 +711,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">20/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">20/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$531.83</td>
             <td class="num-col">859</td>
             <td class="num-col">599</td>
@@ -527,7 +721,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">19/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">19/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$570.09</td>
             <td class="num-col">770</td>
             <td class="num-col">508</td>
@@ -537,7 +731,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">18/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">18/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$518.24</td>
             <td class="num-col">766</td>
             <td class="num-col">486</td>
@@ -547,7 +741,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">17/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">17/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$541.51</td>
             <td class="num-col">848</td>
             <td class="num-col">539</td>
@@ -557,7 +751,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">16/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">16/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$525.08</td>
             <td class="num-col">846</td>
             <td class="num-col">516</td>
@@ -567,7 +761,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">15/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">15/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$518.95</td>
             <td class="num-col">881</td>
             <td class="num-col">472</td>
@@ -577,7 +771,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">14/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">14/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$536.13</td>
             <td class="num-col">940</td>
             <td class="num-col">620</td>
@@ -587,7 +781,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">13/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">13/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$550.30</td>
             <td class="num-col">889</td>
             <td class="num-col">601</td>
@@ -597,7 +791,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">12/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">12/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$539.75</td>
             <td class="num-col">781</td>
             <td class="num-col">593</td>
@@ -607,7 +801,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">11/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">11/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$478.22</td>
             <td class="num-col">885</td>
             <td class="num-col">535</td>
@@ -617,7 +811,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">10/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">10/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$501.60</td>
             <td class="num-col">856</td>
             <td class="num-col">569</td>
@@ -627,7 +821,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">09/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">09/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$526.15</td>
             <td class="num-col">949</td>
             <td class="num-col">606</td>
@@ -637,7 +831,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">08/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">08/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$512.31</td>
             <td class="num-col">895</td>
             <td class="num-col">604</td>
@@ -647,7 +841,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">07/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">07/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$545.62</td>
             <td class="num-col">945</td>
             <td class="num-col">619</td>
@@ -657,7 +851,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">06/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">06/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$557.43</td>
             <td class="num-col">950</td>
             <td class="num-col">632</td>
@@ -667,7 +861,7 @@
         </tr>
         
         <tr>
-            <td style="font-weight:600; color:var(--text-main);">05/07/2026</td>
+            <td style="font-weight:600; color:var(--text-main); text-align:left;">05/07/2026</td>
             <td class="num-col" style="font-weight:600; color:var(--primary);">$536.19</td>
             <td class="num-col">888</td>
             <td class="num-col">622</td>
@@ -682,298 +876,116 @@
         </div>
     </div>
 
+    <footer>
+        <p>Báo cáo hiệu suất quảng cáo Umoney — Tự động cập nhật vào 8:00 AM VN Time hàng ngày | Developed for <strong>Umoney (Unitel)</strong></p>
+    </footer>
+
     <!-- Chart Configuration Script -->
     <script>
-        const chartCtx = document.getElementById('dailyTrendChart').getContext('2d');
-        
         const chartDates = ["05/07", "06/07", "07/07", "08/07", "09/07", "10/07", "11/07", "12/07", "13/07", "14/07", "15/07", "16/07", "17/07", "18/07", "19/07", "20/07", "21/07", "22/07", "23/07", "24/07", "25/07", "26/07", "27/07", "28/07", "29/07", "30/07", "31/07", "01/08", "02/08", "03/08"];
-        const chartSpends = [536.19, 557.43, 545.62, 512.31, 526.15, 501.6, 478.22, 539.75, 550.3, 536.13, 518.95, 525.08, 541.51, 518.24, 570.09, 531.83, 524.08, 493.49, 501.67, 534.93, 484.55, 559.38, 456.17, 328.69, 320.33, 520.8, 580.57, 633.69, 541.49, 466.69];
+        const chartSpends = [536.19, 557.43, 545.62, 512.31, 526.15, 501.6, 478.22, 539.75, 550.3, 536.13, 518.95, 525.08, 541.51, 518.24, 570.09, 531.83, 524.08, 493.49, 501.67, 534.93, 484.55, 559.38, 456.17, 328.69, 320.33, 520.8, 580.57, 633.69, 541.49, 466.74];
         const chartInstalls = [888, 950, 945, 895, 949, 856, 885, 781, 889, 940, 881, 846, 848, 766, 770, 859, 960, 855, 940, 820, 735, 761, 849, 635, 726, 924, 1050, 989, 870, 985];
         const chartLikes = [622, 632, 619, 604, 606, 569, 535, 593, 601, 620, 472, 516, 539, 486, 508, 599, 573, 479, 472, 491, 417, 536, 471, 441, 550, 436, 471, 526, 506, 428];
 
-        new Chart(chartCtx, {
-            type: 'bar',
-            data: {
-                labels: chartDates,
-                datasets: [
-                    {
-                        label: 'Chi phí (USD)',
-                        data: chartSpends,
-                        type: 'line',
-                        borderColor: '#ff6600',
-                        backgroundColor: 'rgba(255, 102, 0, 0.1)',
-                        borderWidth: 3,
-                        pointBackgroundColor: '#ff6600',
-                        pointRadius: 4,
-                        yAxisID: 'y-spend'
-                    },
-                    {
-                        label: 'Lượt tải App',
-                        data: chartInstalls,
-                        backgroundColor: '#10b981',
-                        hoverBackgroundColor: '#059669',
-                        borderRadius: 6,
-                        yAxisID: 'y-counts'
-                    },
-                    {
-                        label: 'Lượt thích FB',
-                        data: chartLikes,
-                        backgroundColor: '#0284c7',
-                        hoverBackgroundColor: '#0369a1',
-                        borderRadius: 6,
-                        yAxisID: 'y-counts'
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                        labels: {
-                            boxWidth: 12,
-                            font: {
-                                family: 'Outfit',
-                                weight: 600,
-                                size: 12
-                            }
-                        }
-                    },
-                    tooltip: {
-                        padding: 12,
-                        backgroundColor: 'rgba(15, 23, 42, 0.95)',
-                        titleFont: {
-                            family: 'Outfit',
-                            weight: 700,
-                            size: 13
-                        },
-                        bodyFont: {
-                            family: 'Outfit',
-                            size: 13
-                        },
-                        callbacks: {
-                            label: function(context) {
-                                let label = context.dataset.label || '';
-                                if (label) {
-                                    label += ': ';
-                                }
-                                if (context.dataset.yAxisID === 'y-spend') {
-                                    label += '$' + context.raw.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-                                } else {
-                                    label += context.raw.toLocaleString();
-                                }
-                                return label;
-                            }
-                        }
-                    }
-                },
-                scales: {
-                    x: {
-                        grid: {
-                            display: false
-                        },
-                        ticks: {
-                            font: {
-                                family: 'Outfit',
-                                weight: 500,
-                                size: 11
-                            }
-                        }
-                    },
-                    'y-spend': {
-                        type: 'linear',
-                        position: 'left',
-                        title: {
-                            display: true,
-                            text: 'Chi phí (USD)',
-                            font: {
-                                family: 'Outfit',
-                                weight: 600,
-                                size: 12
-                            }
-                        },
-                        grid: {
-                            color: '#e2e8f0'
-                        },
-                        ticks: {
-                            callback: function(value) {
-                                return '$' + value.toLocaleString();
-                            },
-                            font: {
-                                family: 'Outfit',
-                                size: 11
-                            }
-                        }
-                    },
-                    'y-counts': {
-                        type: 'linear',
-                        position: 'right',
-                        title: {
-                            display: true,
-                            text: 'Số lượng',
-                            font: {
-                                family: 'Outfit',
-                                weight: 600,
-                                size: 12
-                            }
-                        },
-                        grid: {
-                            drawOnChartArea: false
-                        },
-                        ticks: {
-                            font: {
-                                family: 'Outfit',
-                                size: 11
-                            }
-                        }
-                    }
-                }
-            }
-        });
-    </script>
+        const indexLabels = ["05/07", "06/07", "07/07", "08/07", "09/07", "10/07", "11/07", "12/07", "13/07", "14/07", "15/07", "16/07", "17/07", "18/07", "19/07", "20/07", "21/07", "22/07", "23/07", "24/07", "25/07", "26/07", "27/07", "28/07", "29/07", "30/07", "31/07", "01/08", "02/08", "03/08"];
+        const regCurrent = [738, 854, 828, 845, 791, 790, 694, 686, 702, 723, 683, 713, 693, 642, 620, 633, 718, 680, 754, 720, 607, 604, 693, 670, 678, 722, 756, 724, 657, null];
+        const regPrev = [666, 557, 538, 554, 548, 583, 637, 734, 773, 686, 824, 831, 859, 905, 843, 778, 791, 953, 1054, 892, 859, 827, 696, 649, 903, 862, null, 834, 850, 821];
+        const kycCurrent = [38, 135, 123, 138, 76, 98, 28, 25, 60, 56, 62, 44, 51, 47, 44, 49, 67, 150, 126, 104, 94, 69, 61, 75, 95, 87, 123, 112, 103, null];
+        const kycPrev = [71, 42, 30, 42, 49, 66, 39, 45, 40, 34, 52, 58, 77, 98, 120, 82, 62, 138, 112, 134, 150, 150, 64, 26, 137, 106, null, 127, 130, 109];
+        const psgdCurrent = [45, 154, 127, 172, 87, 116, 32, 41, 82, 78, 95, 73, 109, 74, 34, 79, 77, 90, 140, 119, 46, 44, 131, 119, 125, 135, 101, null, null, null];
+        const psgdPrev = [75, 50, 37, 54, 63, 93, 61, 57, 67, 48, 84, 110, 116, 170, 163, 104, 72, 227, 210, 120, 113, 134, 48, 20, 119, 86, null, 81, 105, 119];
 
-    <!-- Register Online 30D Chart Script -->
-    <script>
+        // ── Chart 1: Spend & Installs Combo ──
         (function() {
-            const labels = ["05/07", "06/07", "07/07", "08/07", "09/07", "10/07", "11/07", "12/07", "13/07", "14/07", "15/07", "16/07", "17/07", "18/07", "19/07", "20/07", "21/07", "22/07", "23/07", "24/07", "25/07", "26/07", "27/07", "28/07", "29/07", "30/07", "31/07", "01/08", "02/08", "03/08"];
-            const regCurrent = [738, 854, 828, 845, 791, 790, 694, 686, 702, 723, 683, 713, 693, 642, 620, 633, 718, 680, 754, 720, 607, 604, 693, 670, 678, 722, 756, 724, 657, null];
-            const regPrev = [666, 557, 538, 554, 548, 583, 637, 734, 773, 686, 824, 831, 859, 905, 843, 778, 791, 953, 1054, 892, 859, 827, 696, 649, 903, 862, null, 834, 850, 821];
-
-            if (!labels.length) {
-                document.getElementById('reg30dChart').parentElement.innerHTML =
-                    '<p style="text-align:center;color:#94a3b8;padding:2rem;">Chưa có dữ liệu Register Online.</p>';
-                return;
-            }
-
-            const ctx = document.getElementById('reg30dChart').getContext('2d');
+            const ctx = document.getElementById('spendInstallsChart').getContext('2d');
             new Chart(ctx, {
-                type: 'line',
+                type: 'bar',
                 data: {
-                    labels: labels,
+                    labels: chartDates,
                     datasets: [
                         {
-                            label: 'Register Online (30 ngày gần đây)',
-                            data: regCurrent,
-                            borderColor: '#0284c7',
-                            backgroundColor: 'rgba(2, 132, 199, 0.12)',
-                            borderWidth: 3,
-                            pointBackgroundColor: '#0284c7',
-                            pointRadius: 4,
-                            pointHoverRadius: 7,
-                            tension: 0.4,
-                            fill: true,
-                            spanGaps: true
+                            label: 'Chi phí (USD)',
+                            data: chartSpends,
+                            backgroundColor: 'rgba(255, 102, 0, 0.75)',
+                            borderColor: '#ff6600',
+                            borderWidth: 1,
+                            borderRadius: 4,
+                            yAxisID: 'y'
                         },
                         {
-                            label: 'Register Online (Kỳ trước)',
-                            data: regPrev,
-                            borderColor: '#38bdf8',
-                            backgroundColor: 'rgba(56, 189, 248, 0.08)',
-                            borderWidth: 2,
-                            borderDash: [6, 4],
-                            pointBackgroundColor: '#38bdf8',
+                            label: 'Lượt tải App',
+                            data: chartInstalls,
+                            type: 'line',
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            borderWidth: 2.5,
+                            pointBackgroundColor: '#10b981',
                             pointRadius: 3,
-                            pointHoverRadius: 6,
-                            tension: 0.4,
+                            tension: 0.3,
                             fill: true,
-                            spanGaps: true
+                            yAxisID: 'y1'
                         }
                     ]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    interaction: {
-                        mode: 'index',
-                        intersect: false
-                    },
+                    interaction: { mode: 'index', intersect: false },
                     plugins: {
-                        legend: {
-                            position: 'top',
-                            labels: {
-                                boxWidth: 14,
-                                usePointStyle: true,
-                                font: { family: 'Outfit', weight: 600, size: 12 }
-                            }
-                        },
-                        tooltip: {
-                            padding: 12,
-                            backgroundColor: 'rgba(15, 23, 42, 0.95)',
-                            titleFont: { family: 'Outfit', weight: 700, size: 13 },
-                            bodyFont: { family: 'Outfit', size: 13 },
-                            callbacks: {
-                                label: function(context) {
-                                    const v = context.raw;
-                                    return ' ' + (context.dataset.label || '') + ': ' + (v !== null ? v.toLocaleString() : 'N/A');
-                                }
-                            }
-                        }
+                        legend: { position: 'top', labels: { font: { family: 'Outfit', weight: 600 } } }
                     },
                     scales: {
-                        x: {
-                            grid: { display: false },
-                            ticks: { font: { family: 'Outfit', weight: 500, size: 11 } }
-                        },
+                        x: { grid: { display: false }, ticks: { font: { family: 'Outfit', size: 11 } } },
                         y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'Số Register Online',
-                                font: { family: 'Outfit', weight: 600, size: 12 }
-                            },
-                            grid: { color: '#e2e8f0' },
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: { display: true, text: 'Chi phí (USD)', font: { family: 'Outfit', weight: 600 } },
+                            ticks: { font: { family: 'Outfit', size: 11 } }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            grid: { drawOnChartArea: false },
+                            title: { display: true, text: 'Lượt tải App', font: { family: 'Outfit', weight: 600 } },
                             ticks: { font: { family: 'Outfit', size: 11 } }
                         }
                     }
                 }
             });
         })();
-    </script>
 
-    <!-- New KYC Online 30D Chart Script -->
-    <script>
+        // ── Chart 2: Register Online 30D ──
         (function() {
-            const labels = ["05/07", "06/07", "07/07", "08/07", "09/07", "10/07", "11/07", "12/07", "13/07", "14/07", "15/07", "16/07", "17/07", "18/07", "19/07", "20/07", "21/07", "22/07", "23/07", "24/07", "25/07", "26/07", "27/07", "28/07", "29/07", "30/07", "31/07", "01/08", "02/08", "03/08"];
-            const kycCurrent = [38, 135, 123, 138, 76, 98, 28, 25, 60, 56, 62, 44, 51, 47, 44, 49, 67, 150, 126, 104, 94, 69, 61, 75, 95, 87, 123, 112, 103, null];
-            const kycPrev = [71, 42, 30, 42, 49, 66, 39, 45, 40, 34, 52, 58, 77, 98, 120, 82, 62, 138, 112, 134, 150, 150, 64, 26, 137, 106, null, 127, 130, 109];
-
-            if (!labels.length) {
-                document.getElementById('kyc30dChart').parentElement.innerHTML =
-                    '<p style="text-align:center;color:#94a3b8;padding:2rem;">Chưa có dữ liệu KYC.</p>';
-                return;
-            }
-
-            const ctx = document.getElementById('kyc30dChart').getContext('2d');
+            if (!indexLabels.length) return;
+            const ctx = document.getElementById('reg30dChart').getContext('2d');
             new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: labels,
+                    labels: indexLabels,
                     datasets: [
                         {
-                            label: 'New KYC Online (30 ngày gần đây)',
-                            data: kycCurrent,
-                            borderColor: '#8b5cf6',
-                            backgroundColor: 'rgba(139, 92, 246, 0.12)',
+                            label: 'Register Online (30 ngày gần đây)',
+                            data: regCurrent,
+                            borderColor: '#f59e0b',
+                            backgroundColor: 'rgba(245, 158, 11, 0.12)',
                             borderWidth: 3,
-                            pointBackgroundColor: '#8b5cf6',
-                            pointRadius: 4,
-                            pointHoverRadius: 7,
-                            tension: 0.4,
+                            pointBackgroundColor: '#f59e0b',
+                            pointRadius: 3,
+                            tension: 0.3,
                             fill: true,
                             spanGaps: true
                         },
                         {
-                            label: 'New KYC Online (Kỳ trước)',
-                            data: kycPrev,
-                            borderColor: '#c4b5fd',
-                            backgroundColor: 'rgba(196, 181, 253, 0.08)',
+                            label: 'Register Online (Kỳ trước)',
+                            data: regPrev,
+                            borderColor: '#fcd34d',
+                            backgroundColor: 'rgba(252, 211, 77, 0.05)',
                             borderWidth: 2,
-                            borderDash: [6, 4],
-                            pointBackgroundColor: '#c4b5fd',
-                            pointRadius: 3,
-                            pointHoverRadius: 6,
-                            tension: 0.4,
+                            borderDash: [5, 4],
+                            pointRadius: 2,
+                            tension: 0.3,
                             fill: true,
                             spanGaps: true
                         }
@@ -982,47 +994,103 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    interaction: {
-                        mode: 'index',
-                        intersect: false
-                    },
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                            labels: {
-                                boxWidth: 14,
-                                usePointStyle: true,
-                                font: { family: 'Outfit', weight: 600, size: 12 }
-                            }
-                        },
-                        tooltip: {
-                            padding: 12,
-                            backgroundColor: 'rgba(15, 23, 42, 0.95)',
-                            titleFont: { family: 'Outfit', weight: 700, size: 13 },
-                            bodyFont: { family: 'Outfit', size: 13 },
-                            callbacks: {
-                                label: function(context) {
-                                    const v = context.raw;
-                                    return ' ' + (context.dataset.label || '') + ': ' + (v !== null ? v.toLocaleString() : 'N/A');
-                                }
-                            }
-                        }
-                    },
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: { legend: { position: 'top', labels: { font: { family: 'Outfit', weight: 600 } } } },
                     scales: {
-                        x: {
-                            grid: { display: false },
-                            ticks: { font: { family: 'Outfit', weight: 500, size: 11 } }
+                        x: { grid: { display: false }, ticks: { font: { family: 'Outfit', size: 11 } } },
+                        y: { beginAtZero: true, title: { display: true, text: 'Số Register Online', font: { family: 'Outfit', weight: 600 } } }
+                    }
+                }
+            });
+        })();
+
+        // ── Chart 3: New KYC Online 30D ──
+        (function() {
+            if (!indexLabels.length) return;
+            const ctx = document.getElementById('kyc30dChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: indexLabels,
+                    datasets: [
+                        {
+                            label: 'New KYC Online (30 ngày gần đây)',
+                            data: kycCurrent,
+                            backgroundColor: 'rgba(139, 92, 246, 0.75)',
+                            borderColor: '#8b5cf6',
+                            borderWidth: 1,
+                            borderRadius: 4,
+                            order: 1
                         },
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'Số New KYC Online',
-                                font: { family: 'Outfit', weight: 600, size: 12 }
-                            },
-                            grid: { color: '#e2e8f0' },
-                            ticks: { font: { family: 'Outfit', size: 11 } }
+                        {
+                            label: 'New KYC Online (Kỳ trước)',
+                            data: kycPrev,
+                            type: 'line',
+                            borderColor: '#c4b5fd',
+                            backgroundColor: 'rgba(196,181,253,0.1)',
+                            borderWidth: 2,
+                            borderDash: [5, 4],
+                            pointRadius: 2,
+                            tension: 0.3,
+                            order: 0,
+                            spanGaps: true
                         }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: { legend: { position: 'top', labels: { font: { family: 'Outfit', weight: 600 } } } },
+                    scales: {
+                        x: { grid: { display: false }, ticks: { font: { family: 'Outfit', size: 11 } } },
+                        y: { beginAtZero: true, title: { display: true, text: 'Số New KYC Online', font: { family: 'Outfit', weight: 600 } } }
+                    }
+                }
+            });
+        })();
+
+        // ── Chart 4: TB Mới PSGD 30D ──
+        (function() {
+            if (!indexLabels.length) return;
+            const ctx = document.getElementById('psgd30dChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: indexLabels,
+                    datasets: [
+                        {
+                            label: 'TB Mới PSGD (30 ngày gần đây)',
+                            data: psgdCurrent,
+                            backgroundColor: 'rgba(2, 132, 199, 0.75)',
+                            borderColor: '#0284c7',
+                            borderWidth: 1,
+                            borderRadius: 4,
+                            order: 1
+                        },
+                        {
+                            label: 'TB Mới PSGD (Kỳ trước)',
+                            data: psgdPrev,
+                            type: 'line',
+                            borderColor: '#38bdf8',
+                            backgroundColor: 'rgba(56, 189, 248, 0.1)',
+                            borderWidth: 2,
+                            borderDash: [5, 4],
+                            pointRadius: 2,
+                            tension: 0.3,
+                            order: 0,
+                            spanGaps: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: { legend: { position: 'top', labels: { font: { family: 'Outfit', weight: 600 } } } },
+                    scales: {
+                        x: { grid: { display: false }, ticks: { font: { family: 'Outfit', size: 11 } } },
+                        y: { beginAtZero: true, title: { display: true, text: 'Số TB Mới PSGD', font: { family: 'Outfit', weight: 600 } } }
                     }
                 }
             });
